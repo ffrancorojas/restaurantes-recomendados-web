@@ -7,7 +7,13 @@ export function AppRouter({ app }: AppRouterProps) {
   if (!app.session) return <LoginScreen error={app.error} onLogin={app.login} />;
 
   if (app.view === 'create' && app.editing === 'new') {
-    return <RestaurantCreateScreen onCancel={app.cancelEditing} onSave={app.saveRestaurant} />;
+    return (
+      <RestaurantCreateScreen
+        error={app.error}
+        onCancel={app.cancelEditing}
+        onSave={app.saveRestaurant}
+      />
+    );
   }
 
   return (

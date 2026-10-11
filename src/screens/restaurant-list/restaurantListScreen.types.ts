@@ -7,7 +7,7 @@ export type FilterRestaurantsParams = {
 export type UseRestaurantListScreenParams = { restaurants: Restaurant[] };
 export type RestaurantSelectionParams = { restaurant: Restaurant };
 export type RestaurantIdParams = { id: string };
-export type SaveRestaurantParams = { data: RestaurantFormData };
+export type SaveRestaurantParams = { data: RestaurantFormData; id?: string };
 export type RestaurantListScreenProps = {
   restaurants: Restaurant[];
   loading: boolean;

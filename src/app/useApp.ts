@@ -46,19 +46,24 @@ export function useApp(): AppState & AppActions {
     setView('list');
     setRestaurants([]);
   };
-  const saveRestaurant = async ({ data }: SaveRestaurantParams) => {
-    if (!session || !editing) return;
-    const saved =
-      editing === 'new'
+  const saveRestaurant = async ({ data, id }: SaveRestaurantParams) => {
+    if (!session) return;
+    const isNew = editing === 'new';
+    const restaurantId = id ?? (editing && !isNew ? editing.id : undefined);
+    if (!isNew && !restaurantId) return;
+    setError('');
+    try {
+      const saved = isNew
         ? await api.create({ token: session.accessToken, data })
-        : await api.update({ token: session.accessToken, id: editing.id, data });
-    setRestaurants((current) =>
-      editing === 'new'
-        ? [saved, ...current]
-        : current.map((item) => (item.id === saved.id ? saved : item)),
-    );
-    setEditing(null);
-    setView('list');
+        : await api.update({ token: session.accessToken, id: restaurantId!, data });
+      setRestaurants((current) =>
+        isNew ? [saved, ...current] : current.map((item) => (item.id === saved.id ? saved : item)),
+      );
+      setEditing(null);
+      setView('list');
+    } catch (cause) {
+      setError(getErrorMessage({ cause, fallback: 'No se pudo guardar el restaurante.' }));
+    }
   };
   const removeRestaurant = async ({ id }: RemoveRestaurantParams) => {
     if (!session || !window.confirm('¿Quieres eliminar esta entrada?')) return;

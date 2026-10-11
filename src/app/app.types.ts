@@ -9,7 +9,7 @@ export type AppState = {
 };
 export type AppView = 'list' | 'create';
 export type StartEditingParams = { restaurant: Restaurant };
-export type SaveRestaurantParams = { data: RestaurantFormData };
+export type SaveRestaurantParams = { data: RestaurantFormData; id?: string };
 export type RemoveRestaurantParams = { id: string };
 export type GetErrorMessageParams = { cause: unknown; fallback: string };
 export type AppActions = {
