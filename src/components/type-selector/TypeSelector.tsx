@@ -1,4 +1,4 @@
-import { RESTAURANT_TYPES } from '@contracts';
+import { RESTAURANT_TYPES } from '@assets/constants';
 import { styles } from './typeSelector.styles';
 import type { TypeSelectorProps } from './typeSelector.types';
 

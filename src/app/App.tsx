@@ -1,12 +1,21 @@
 import { AppLayout } from '@components/app-layout';
-import { useApp } from '@app/useApp';
+import { AppProvider } from '@app/AppProvider';
+import { useAppContext } from '@app/app.context';
 import { AppRouter } from '@app/router';
 
 export function App() {
-  const app = useApp();
   return (
-    <AppLayout user={app.session?.user} onLogout={app.session ? app.logout : undefined}>
-      <AppRouter app={app} />
+    <AppProvider>
+      <AppContent />
+    </AppProvider>
+  );
+}
+
+function AppContent() {
+  const { session, logout } = useAppContext();
+  return (
+    <AppLayout user={session?.user} onLogout={session ? logout : undefined}>
+      <AppRouter />
     </AppLayout>
   );
 }

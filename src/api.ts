@@ -41,6 +41,8 @@ export const api = {
     request<void>({ path: '/auth/logout', options: { method: 'POST' }, token }),
   restaurants: ({ token }: AuthRequestParams) =>
     request<RestaurantPage>({ path: '/restaurants?limit=100', token }),
+  getById: ({ token, id }: RestaurantRequestParams) =>
+    request<Restaurant>({ path: `/restaurants/${id}`, token }),
   create: ({ token, data }: CreateRestaurantParams) =>
     request<Restaurant>({
       path: '/restaurants',

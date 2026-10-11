@@ -1,23 +1,6 @@
-import type { AuthSession, Restaurant, RestaurantFormData } from '@contracts';
-export type AppState = {
-  session: AuthSession | null;
-  view: AppView;
-  restaurants: Restaurant[];
-  loading: boolean;
-  error: string;
-  editing: Restaurant | 'new' | null;
-};
-export type AppView = 'list' | 'create';
-export type StartEditingParams = { restaurant: Restaurant };
+import type { ReactNode } from 'react';
+import type { RestaurantFormData } from '@contracts';
+export type AppProviderProps = { children: ReactNode };
 export type SaveRestaurantParams = { data: RestaurantFormData; id?: string };
 export type RemoveRestaurantParams = { id: string };
 export type GetErrorMessageParams = { cause: unknown; fallback: string };
-export type AppActions = {
-  login: () => Promise<void>;
-  logout: () => Promise<void>;
-  startCreating: () => void;
-  startEditing: (params: StartEditingParams) => void;
-  cancelEditing: () => void;
-  saveRestaurant: (params: SaveRestaurantParams) => Promise<void>;
-  removeRestaurant: (params: RemoveRestaurantParams) => Promise<void>;
-};

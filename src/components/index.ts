@@ -3,6 +3,7 @@ export * from './app-layout';
 export * from './buttons';
 export * from './checkbox';
 export * from './select-field';
+export * from './spinner';
 export * from './text-area';
 export * from './text-field';
 export * from './install-prompt';
