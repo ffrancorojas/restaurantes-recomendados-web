@@ -20,9 +20,7 @@ export function RestaurantListScreen(props: RestaurantListScreenProps) {
             {props.restaurants.length} lugares guardados para tu próxima salida.
           </p>
         </div>
-        <Button data-responsive-new onClick={props.onCreate}>
-          ＋ Nueva entrada
-        </Button>
+        <Button text="＋ Nueva entrada" data-responsive-new onClick={props.onCreate} />
       </section>
       <Filters
         query={query}
