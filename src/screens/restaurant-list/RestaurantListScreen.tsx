@@ -21,7 +21,7 @@ export function RestaurantListScreen(props: RestaurantListScreenProps) {
           </p>
         </div>
         <Button.Text
-          text="Nueva entrada"
+          rightText="Nueva entrada"
           iconName="add"
           data-responsive-new
           onClick={props.onCreate}

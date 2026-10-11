@@ -89,8 +89,8 @@ export function RestaurantForm({
           </>
         )}
         <div style={styles.actions}>
-          <Button.Text text="Cancelar" variant="secondary" type="button" onClick={onCancel} />
-          <Button.Text text={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
+          <Button.Text leftText="Cancelar" variant="secondary" type="button" onClick={onCancel} />
+          <Button.Text leftText={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
         </div>
       </form>
     </div>

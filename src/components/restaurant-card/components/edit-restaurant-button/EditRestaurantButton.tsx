@@ -4,7 +4,7 @@ import type { EditRestaurantButtonProps } from './editRestaurantButton.types';
 export function EditRestaurantButton({ visited, onClick }: EditRestaurantButtonProps) {
   return (
     <Button.Text
-      text={`${visited ? 'Editar visita' : 'Registrar visita'} →`}
+      rightText={`${visited ? 'Editar visita' : 'Registrar visita'} →`}
       style={styles.button}
       onClick={onClick}
     />
