@@ -11,7 +11,7 @@ export function InstallPrompt() {
         <small>Accede más rápido desde tu dispositivo.</small>
       </span>
       <TextButton text="Instalar" variant="secondary" style={styles.install} onClick={install} />
-      <IconButton icon={<span aria-hidden="true">×</span>} name="Cerrar" onClick={hide} />
+      <IconButton iconName="close" name="Cerrar" onClick={hide} />
     </aside>
   );
 }

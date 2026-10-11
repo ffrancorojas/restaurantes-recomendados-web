@@ -1,10 +1,20 @@
-import { styles } from '../button.styles';
+import { ButtonBase } from '../button-base';
+import { ICONS } from '../buttons.tools';
 import type { TextButtonProps } from './textButton.types';
 
-export function TextButton({ text, variant = 'primary', style, ...buttonProps }: TextButtonProps) {
+export function TextButton({
+  text,
+  iconName,
+  iconPosition = 'left',
+  ...buttonProps
+}: TextButtonProps) {
   return (
-    <button {...buttonProps} style={{ ...styles.base, ...styles[variant], ...style }}>
-      {text}
-    </button>
+    <ButtonBase
+      {...buttonProps}
+      variant={buttonProps.variant ?? 'primary'}
+      icon={iconName ? <span aria-hidden="true">{ICONS[iconName]}</span> : undefined}
+      leftText={!iconName || iconPosition === 'right' ? text : undefined}
+      rightText={iconName && iconPosition === 'left' ? text : undefined}
+    />
   );
 }
