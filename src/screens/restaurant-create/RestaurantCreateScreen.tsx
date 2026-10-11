@@ -2,7 +2,7 @@ import { RestaurantForm } from '@components/restaurant-form';
 import { styles } from './restaurantCreateScreen.styles';
 import type { RestaurantCreateScreenProps } from './restaurantCreateScreen.types';
 
-export function RestaurantCreateScreen({ onCancel, onSave }: RestaurantCreateScreenProps) {
+export function RestaurantCreateScreen({ error, onCancel, onSave }: RestaurantCreateScreenProps) {
   return (
     <main data-responsive-screen>
       <section style={styles.intro}>
@@ -12,7 +12,13 @@ export function RestaurantCreateScreen({ onCancel, onSave }: RestaurantCreateScr
           Guarda un sitio nuevo para tenerlo siempre a mano en tu mapa gastronómico.
         </p>
       </section>
-      <RestaurantForm initial="new" variant="page" onCancel={onCancel} onSave={onSave} />
+      <RestaurantForm
+        error={error}
+        initial="new"
+        variant="page"
+        onCancel={onCancel}
+        onSave={onSave}
+      />
     </main>
   );
 }

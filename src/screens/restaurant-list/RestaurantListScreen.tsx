@@ -56,6 +56,7 @@ export function RestaurantListScreen(props: RestaurantListScreenProps) {
       )}
       {props.editing && (
         <RestaurantForm
+          error={props.error}
           initial={props.editing}
           onCancel={props.onCancelEdit}
           onSave={props.onSave}

@@ -12,15 +12,21 @@ import { styles } from './restaurantForm.styles';
 import type { RestaurantFormProps } from './restaurantForm.types';
 
 export function RestaurantForm({
+  error,
   initial,
   variant = 'modal',
   onCancel,
   onSave,
 }: RestaurantFormProps) {
-  const { data, saving, setField, submit } = useRestaurantForm({ initial, onSave });
+  const { data, saving, setField, submit } = useRestaurantForm({
+    initial,
+    onSave: ({ data: formData }) =>
+      onSave({ data: formData, id: initial === 'new' ? undefined : initial.id }),
+  });
   return (
     <div style={variant === 'page' ? styles.page : styles.backdrop}>
       <form style={variant === 'page' ? styles.pageForm : styles.form} onSubmit={submit}>
+        {error && <p style={styles.error}>{error}</p>}
         <div style={styles.title}>
           <div>
             <p style={styles.eyebrow}>NUEVA HISTORIA</p>
