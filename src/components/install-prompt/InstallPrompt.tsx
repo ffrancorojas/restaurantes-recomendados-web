@@ -1,5 +1,5 @@
 import { useInstallPrompt } from './useInstallPrompt';
-import { IconButton } from '@components/icon-button';
+import { IconButton, TextButton } from '@components/buttons';
 import { styles } from './installPrompt.styles';
 export function InstallPrompt() {
   const { installEvent, hidden, hide, install } = useInstallPrompt();
@@ -10,10 +10,8 @@ export function InstallPrompt() {
         <b>Instala Restaurantes</b>
         <small>Accede más rápido desde tu dispositivo.</small>
       </span>
-      <button style={styles.install} onClick={install}>
-        Instalar
-      </button>
-      <IconButton icon="close" label="Cerrar" onClick={hide} />
+      <TextButton text="Instalar" variant="secondary" style={styles.install} onClick={install} />
+      <IconButton icon={<span aria-hidden="true">×</span>} name="Cerrar" onClick={hide} />
     </aside>
   );
 }

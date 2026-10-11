@@ -1,4 +1,4 @@
-import { IconButton } from '@components/icon-button';
+import { IconButton } from '@components/buttons';
 import { useRestaurantLinks } from '@hooks/restaurant-links';
 import { styles } from './restaurantLinkActions.styles';
 import type { RestaurantLinkActionsProps } from './restaurantLinkActions.types';
@@ -11,14 +11,14 @@ export function RestaurantLinkActions({ name, locality }: RestaurantLinkActionsP
   return (
     <div style={styles.container}>
       <IconButton
-        icon="location"
-        label="Abrir en Google Maps"
+        icon={<span aria-hidden="true">⌖</span>}
+        name="Abrir en Google Maps"
         disabled={disabled}
         onClick={() => openMaps({ restaurant })}
       />
       <IconButton
-        icon="search"
-        label="Buscar en Google"
+        icon={<span aria-hidden="true">⌕</span>}
+        name="Buscar en Google"
         disabled={disabled}
         onClick={() => openGoogle({ restaurant })}
       />
