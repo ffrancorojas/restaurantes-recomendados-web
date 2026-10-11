@@ -4,4 +4,3 @@ export type FilterRestaurantsParams = {
   query: string;
   onlyVisited: boolean;
 };
-export type UseRestaurantListScreenParams = { restaurants: Restaurant[] };
