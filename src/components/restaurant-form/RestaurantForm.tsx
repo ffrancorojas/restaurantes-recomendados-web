@@ -30,7 +30,7 @@ export function RestaurantForm({
           </div>
           <div style={{ display: 'flex', alignItems: 'start', gap: 12 }}>
             <RestaurantLinkActions name={data.name} locality={data.locality} />
-            <IconButton icon={<span aria-hidden="true">×</span>} name="Cerrar" onClick={onCancel} />
+            <IconButton iconName="close" name="Cerrar" onClick={onCancel} />
           </div>
         </div>
         <TextField

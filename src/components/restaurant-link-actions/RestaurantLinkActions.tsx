@@ -11,13 +11,13 @@ export function RestaurantLinkActions({ name, locality }: RestaurantLinkActionsP
   return (
     <div style={styles.container}>
       <IconButton
-        icon={<span aria-hidden="true">⌖</span>}
+        iconName="location"
         name="Abrir en Google Maps"
         disabled={disabled}
         onClick={() => openMaps({ restaurant })}
       />
       <IconButton
-        icon={<span aria-hidden="true">⌕</span>}
+        iconName="search"
         name="Buscar en Google"
         disabled={disabled}
         onClick={() => openGoogle({ restaurant })}
