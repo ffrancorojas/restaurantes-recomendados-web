@@ -15,6 +15,7 @@ export default defineConfig({
       '@api.types': fileURLToPath(new URL('./src/api.types.ts', import.meta.url)),
       '@auth': fileURLToPath(new URL('./src/firebase.ts', import.meta.url)),
       '@hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
       '@styles': fileURLToPath(new URL('./src/styles/index.scss', import.meta.url)),
     },
   },
