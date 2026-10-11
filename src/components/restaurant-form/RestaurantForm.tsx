@@ -1,6 +1,6 @@
 import { PRICE_RANGES } from '@contracts';
 import { Checkbox } from '@components/checkbox';
-import { IconButton, TextButton } from '@components/buttons';
+import { Button } from '@components/buttons';
 import { SelectField } from '@components/select-field';
 import { TextArea } from '@components/text-area';
 import { TextField } from '@components/text-field';
@@ -12,15 +12,21 @@ import { styles } from './restaurantForm.styles';
 import type { RestaurantFormProps } from './restaurantForm.types';
 
 export function RestaurantForm({
+  error,
   initial,
   variant = 'modal',
   onCancel,
   onSave,
 }: RestaurantFormProps) {
-  const { data, saving, setField, submit } = useRestaurantForm({ initial, onSave });
+  const { data, saving, setField, submit } = useRestaurantForm({
+    initial,
+    onSave: ({ data: formData }) =>
+      onSave({ data: formData, id: initial === 'new' ? undefined : initial.id }),
+  });
   return (
     <div style={variant === 'page' ? styles.page : styles.backdrop}>
       <form style={variant === 'page' ? styles.pageForm : styles.form} onSubmit={submit}>
+        {error && <p style={styles.error}>{error}</p>}
         <div style={styles.title}>
           <div>
             <p style={styles.eyebrow}>NUEVA HISTORIA</p>
@@ -28,7 +34,7 @@ export function RestaurantForm({
               {initial === 'new' ? 'Añadir restaurante' : 'Editar restaurante'}
             </h2>
           </div>
-          <IconButton iconName="close" name="Cerrar" onClick={onCancel} />
+          <Button.Icon iconName="close" name="Cerrar" onClick={onCancel} />
         </div>
         <div style={styles.nameRow}>
           <TextField
@@ -83,8 +89,8 @@ export function RestaurantForm({
           </>
         )}
         <div style={styles.actions}>
-          <TextButton text="Cancelar" variant="secondary" type="button" onClick={onCancel} />
-          <TextButton text={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
+          <Button.Text leftText="Cancelar" variant="secondary" type="button" onClick={onCancel} />
+          <Button.Text leftText={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
         </div>
       </form>
     </div>
