@@ -28,17 +28,17 @@ export function RestaurantForm({
               {initial === 'new' ? 'Añadir restaurante' : 'Editar restaurante'}
             </h2>
           </div>
-          <div style={{ display: 'flex', alignItems: 'start', gap: 12 }}>
-            <RestaurantLinkActions name={data.name} locality={data.locality} />
-            <IconButton iconName="close" name="Cerrar" onClick={onCancel} />
-          </div>
+          <IconButton iconName="close" name="Cerrar" onClick={onCancel} />
         </div>
-        <TextField
-          label="Nombre"
-          required
-          value={data.name}
-          onChange={({ value }) => setField({ key: 'name', value })}
-        />
+        <div style={styles.nameRow}>
+          <TextField
+            label="Nombre"
+            required
+            value={data.name}
+            onChange={({ value }) => setField({ key: 'name', value })}
+          />
+          <RestaurantLinkActions name={data.name} locality={data.locality} compact />
+        </div>
         <div style={styles.two}>
           <TextField
             label="Localidad"
