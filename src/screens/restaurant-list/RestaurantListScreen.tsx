@@ -1,5 +1,5 @@
 import { RestaurantCard } from '@components/restaurant-card';
-import { TextButton } from '@components/buttons';
+import { Button } from '@components/buttons';
 import { RestaurantForm } from '@components/restaurant-form';
 import { Filters } from '@screens/restaurant-list/components';
 import { useRestaurantListScreen } from '@screens/restaurant-list/useRestaurantListScreen';
@@ -20,7 +20,7 @@ export function RestaurantListScreen(props: RestaurantListScreenProps) {
             {props.restaurants.length} lugares guardados para tu próxima salida.
           </p>
         </div>
-        <TextButton
+        <Button.Text
           text="Nueva entrada"
           iconName="add"
           data-responsive-new
