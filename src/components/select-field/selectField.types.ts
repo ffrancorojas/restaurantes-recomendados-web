@@ -1,0 +1,8 @@
+export type SelectOption = { value: string; label: string };
+export type SelectFieldChangeParams = { value: string };
+export type SelectFieldProps = {
+  label: string;
+  value: string;
+  options: SelectOption[];
+  onChange: (params: SelectFieldChangeParams) => void;
+};
