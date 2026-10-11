@@ -1,6 +1,6 @@
 import { PRICE_RANGES } from '@contracts';
 import { Checkbox } from '@components/checkbox';
-import { IconButton } from '@components/icon-button';
+import { IconButton, TextButton } from '@components/buttons';
 import { SelectField } from '@components/select-field';
 import { TextArea } from '@components/text-area';
 import { TextField } from '@components/text-field';
@@ -30,7 +30,7 @@ export function RestaurantForm({
           </div>
           <div style={{ display: 'flex', alignItems: 'start', gap: 12 }}>
             <RestaurantLinkActions name={data.name} locality={data.locality} />
-            <IconButton icon="close" label="Cerrar" onClick={onCancel} />
+            <IconButton icon={<span aria-hidden="true">×</span>} name="Cerrar" onClick={onCancel} />
           </div>
         </div>
         <TextField
@@ -83,12 +83,8 @@ export function RestaurantForm({
           </>
         )}
         <div style={styles.actions}>
-          <button type="button" style={styles.secondary} onClick={onCancel}>
-            Cancelar
-          </button>
-          <button style={styles.primary} disabled={saving}>
-            {saving ? 'Guardando…' : 'Guardar'}
-          </button>
+          <TextButton text="Cancelar" variant="secondary" type="button" onClick={onCancel} />
+          <TextButton text={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
         </div>
       </form>
     </div>
