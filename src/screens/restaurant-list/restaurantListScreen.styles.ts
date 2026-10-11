@@ -16,14 +16,6 @@ export const styles: Record<string, CSSProperties> = {
     letterSpacing: '-.06em',
   },
   muted: { margin: 0, color: 'var(--color-muted)', fontSize: 'var(--font-size-md)' },
-  newButton: {
-    padding: '14px 20px',
-    color: 'var(--color-surface)',
-    background: 'var(--color-primary)',
-    borderRadius: 'var(--radius-button)',
-    fontWeight: 750,
-    boxShadow: '0 8px 16px color-mix(in srgb, var(--color-primary) 14%, transparent)',
-  },
   error: {
     padding: '10px 14px',
     color: 'var(--color-danger)',

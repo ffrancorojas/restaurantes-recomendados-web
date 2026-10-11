@@ -1,5 +1,6 @@
 export * from './app-header';
 export * from './app-layout';
+export * from './button';
 export * from './checkbox';
 export * from './icon-button';
 export * from './select-field';
