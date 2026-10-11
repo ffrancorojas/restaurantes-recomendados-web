@@ -48,6 +48,20 @@ export const styles: Record<string, CSSProperties> = {
     letterSpacing: '.16em',
   },
   heading: { margin: 0, fontSize: 'var(--font-size-xxl)', letterSpacing: '-.04em' },
+  error: {
+    margin: '0 0 16px',
+    padding: '10px 12px',
+    color: 'var(--color-danger)',
+    background: 'var(--color-soft-sand)',
+    borderRadius: 'var(--radius-md)',
+    fontSize: 'var(--font-size-sm)',
+  },
+  nameRow: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr) auto',
+    gap: 10,
+    alignItems: 'end',
+  },
   label: {
     display: 'flex',
     flexDirection: 'column',

@@ -26,6 +26,8 @@
       "@auth": ["src/firebase.ts"],
       "@hooks": ["src/hooks/index.ts"],
       "@hooks/*": ["src/hooks/*"],
+      "@assets": ["src/assets/index.ts"],
+      "@assets/*": ["src/assets/*"],
       "@styles": ["src/styles/index.scss"]
     },
     "resolveJsonModule": true,

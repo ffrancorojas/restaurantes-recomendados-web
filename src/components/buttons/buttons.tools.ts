@@ -8,4 +8,7 @@ export const ICONS = {
   favoriteFilled: '♥',
   menu: '☰',
   search: '⌕',
+  google: 'G',
 } as const;
+
+export type IconName = keyof typeof ICONS;

@@ -1,18 +1,32 @@
 import { RestaurantForm } from '@components/restaurant-form';
-import { styles } from './restaurantCreateScreen.styles';
-import type { RestaurantCreateScreenProps } from './restaurantCreateScreen.types';
+import { useAuthenticatedSession } from '@app/router/router.context';
+import { api } from '@api';
+import { getErrorMessage } from '@app/app.tools';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { RestaurantCreateHeader } from './components';
 
-export function RestaurantCreateScreen({ onCancel, onSave }: RestaurantCreateScreenProps) {
+export function RestaurantCreateScreen() {
+  const navigate = useNavigate();
+  const session = useAuthenticatedSession();
+  const [error, setError] = useState('');
   return (
     <main data-responsive-screen>
-      <section style={styles.intro}>
-        <p style={styles.eyebrow}>NUEVA HISTORIA</p>
-        <h1 style={styles.heading}>Añadir restaurante</h1>
-        <p style={styles.description}>
-          Guarda un sitio nuevo para tenerlo siempre a mano en tu mapa gastronómico.
-        </p>
-      </section>
-      <RestaurantForm initial="new" variant="page" onCancel={onCancel} onSave={onSave} />
+      <RestaurantCreateHeader />
+      <RestaurantForm
+        error={error}
+        initial="new"
+        variant="page"
+        onCancel={() => navigate('/restaurants')}
+        onSave={async ({ data }) => {
+          try {
+            await api.create({ token: session.accessToken, data });
+            navigate('/restaurants');
+          } catch (cause) {
+            setError(getErrorMessage({ cause, fallback: 'No se pudo crear el restaurante.' }));
+          }
+        }}
+      />
     </main>
   );
 }

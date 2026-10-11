@@ -1,25 +1,31 @@
-import { IconButton } from '@components/icon-button';
+import { Button } from '@components/buttons';
 import { useRestaurantLinks } from '@hooks/restaurant-links';
 import { styles } from './restaurantLinkActions.styles';
 import type { RestaurantLinkActionsProps } from './restaurantLinkActions.types';
 
-export function RestaurantLinkActions({ name, locality }: RestaurantLinkActionsProps) {
+export function RestaurantLinkActions({
+  name,
+  locality,
+  compact = false,
+}: RestaurantLinkActionsProps) {
   const { openMaps, openGoogle } = useRestaurantLinks();
   const disabled = !name.trim() && !locality.trim();
   const restaurant = { name, locality };
 
   return (
-    <div style={styles.container}>
-      <IconButton
-        icon="location"
-        label="Abrir en Google Maps"
+    <div style={{ ...styles.container, ...(compact ? styles.compact : undefined) }}>
+      <Button.Icon
+        iconName="location"
+        name="Abrir en Google Maps"
         disabled={disabled}
+        style={{ ...styles.mapsButton, ...(compact ? styles.compactButton : undefined) }}
         onClick={() => openMaps({ restaurant })}
       />
-      <IconButton
-        icon="search"
-        label="Buscar en Google"
+      <Button.Icon
+        iconName="google"
+        name="Buscar en Google"
         disabled={disabled}
+        style={{ ...styles.googleButton, ...(compact ? styles.compactButton : undefined) }}
         onClick={() => openGoogle({ restaurant })}
       />
     </div>

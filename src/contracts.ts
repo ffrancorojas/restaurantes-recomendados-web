@@ -1,18 +1,6 @@
-export const RESTAURANT_TYPES = [
-  'Hamburguesería',
-  'Sushi',
-  'Carne',
-  'Pescado',
-  'Italiano',
-  'Mexicano',
-  'Tapas',
-  'Vegetariano',
-  'Mediterráneo',
-  'Japonés',
-  'Chino',
-  'Turco',
-  'Otro',
-] as const;
+export { RESTAURANT_TYPES } from '@assets/constants/restaurantTypes';
+export type { RestaurantType } from '@assets/constants/restaurantTypes';
+import type { RestaurantType } from '@assets/constants/restaurantTypes';
 export const PRICE_RANGES = [
   { value: 'under20', label: 'Menos de 20 €' },
   { value: '20to40', label: '20–40 €' },
@@ -21,7 +9,6 @@ export const PRICE_RANGES = [
   { value: '80to100', label: '80–100 €' },
   { value: 'over100', label: 'Más de 100 €' },
 ] as const;
-export type RestaurantType = (typeof RESTAURANT_TYPES)[number];
 export type PriceRange = '' | 'under20' | '20to40' | '40to60' | '60to80' | '80to100' | 'over100';
 export type RestaurantRating = '' | 'loved' | 'liked' | 'neutral' | 'disliked' | 'disappointed';
 export type RestaurantFormData = {

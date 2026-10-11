@@ -1,6 +1,6 @@
 import { PRICE_RANGES } from '@contracts';
 import { Checkbox } from '@components/checkbox';
-import { IconButton } from '@components/icon-button';
+import { Button } from '@components/buttons';
 import { SelectField } from '@components/select-field';
 import { TextArea } from '@components/text-area';
 import { TextField } from '@components/text-field';
@@ -12,15 +12,21 @@ import { styles } from './restaurantForm.styles';
 import type { RestaurantFormProps } from './restaurantForm.types';
 
 export function RestaurantForm({
+  error,
   initial,
   variant = 'modal',
   onCancel,
   onSave,
 }: RestaurantFormProps) {
-  const { data, saving, setField, submit } = useRestaurantForm({ initial, onSave });
+  const { data, saving, setField, submit } = useRestaurantForm({
+    initial,
+    onSave: ({ data: formData }) =>
+      onSave({ data: formData, id: initial === 'new' ? undefined : initial.id }),
+  });
   return (
     <div style={variant === 'page' ? styles.page : styles.backdrop}>
       <form style={variant === 'page' ? styles.pageForm : styles.form} onSubmit={submit}>
+        {error && <p style={styles.error}>{error}</p>}
         <div style={styles.title}>
           <div>
             <p style={styles.eyebrow}>NUEVA HISTORIA</p>
@@ -28,17 +34,17 @@ export function RestaurantForm({
               {initial === 'new' ? 'Añadir restaurante' : 'Editar restaurante'}
             </h2>
           </div>
-          <div style={{ display: 'flex', alignItems: 'start', gap: 12 }}>
-            <RestaurantLinkActions name={data.name} locality={data.locality} />
-            <IconButton icon="close" label="Cerrar" onClick={onCancel} />
-          </div>
+          <Button.Icon iconName="close" name="Cerrar" onClick={onCancel} />
         </div>
-        <TextField
-          label="Nombre"
-          required
-          value={data.name}
-          onChange={({ value }) => setField({ key: 'name', value })}
-        />
+        <div style={styles.nameRow}>
+          <TextField
+            label="Nombre"
+            required
+            value={data.name}
+            onChange={({ value }) => setField({ key: 'name', value })}
+          />
+          <RestaurantLinkActions name={data.name} locality={data.locality} compact />
+        </div>
         <div style={styles.two}>
           <TextField
             label="Localidad"
@@ -83,12 +89,8 @@ export function RestaurantForm({
           </>
         )}
         <div style={styles.actions}>
-          <button type="button" style={styles.secondary} onClick={onCancel}>
-            Cancelar
-          </button>
-          <button style={styles.primary} disabled={saving}>
-            {saving ? 'Guardando…' : 'Guardar'}
-          </button>
+          <Button.Text leftText="Cancelar" variant="secondary" type="button" onClick={onCancel} />
+          <Button.Text leftText={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
         </div>
       </form>
     </div>

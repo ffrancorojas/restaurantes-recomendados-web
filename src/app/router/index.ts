@@ -1,2 +1,2 @@
 export * from './AppRouter';
-export * from './router.types';
+export * from './router.context';
