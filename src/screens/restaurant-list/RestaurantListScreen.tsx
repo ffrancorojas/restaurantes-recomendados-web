@@ -1,4 +1,5 @@
 import { RestaurantCard } from '@components/restaurant-card';
+import { Button } from '@components/button';
 import { RestaurantForm } from '@components/restaurant-form';
 import { Filters } from '@screens/restaurant-list/components';
 import { useRestaurantListScreen } from '@screens/restaurant-list/useRestaurantListScreen';
@@ -19,9 +20,9 @@ export function RestaurantListScreen(props: RestaurantListScreenProps) {
             {props.restaurants.length} lugares guardados para tu próxima salida.
           </p>
         </div>
-        <button data-responsive-new style={styles.newButton} onClick={props.onCreate}>
+        <Button data-responsive-new onClick={props.onCreate}>
           ＋ Nueva entrada
-        </button>
+        </Button>
       </section>
       <Filters
         query={query}
