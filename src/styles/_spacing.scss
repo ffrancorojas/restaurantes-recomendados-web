@@ -1,0 +1,27 @@
+$space-1: 4px;
+$space-2: 6px;
+$space-3: 8px;
+$space-4: 10px;
+$space-5: 12px;
+$space-6: 14px;
+$space-7: 16px;
+$space-8: 18px;
+$space-9: 20px;
+$space-10: 22px;
+$space-11: 24px;
+$space-12: 28px;
+
+:root {
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-5: #{$space-5};
+  --space-6: #{$space-6};
+  --space-7: #{$space-7};
+  --space-8: #{$space-8};
+  --space-9: #{$space-9};
+  --space-10: #{$space-10};
+  --space-11: #{$space-11};
+  --space-12: #{$space-12};
+}

@@ -1,0 +1,72 @@
+@use 'colors';
+@use 'typography';
+@use 'radii';
+@use 'sizes';
+@use 'shadows';
+@use 'spacing';
+
+:root {
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: var(--font-family);
+  font-synthesis: none;
+  line-height: var(--line-height-base);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  border: 0;
+}
+
+@media (max-width: 800px) {
+  [data-responsive-grid] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 560px) {
+  [data-responsive-header] {
+    padding: 0 18px !important;
+  }
+  [data-responsive-account] {
+    display: none !important;
+  }
+  [data-responsive-screen] {
+    padding: 36px 18px 70px !important;
+  }
+  [data-responsive-hero] {
+    display: block !important;
+  }
+  [data-responsive-new] {
+    width: 100%;
+    margin-top: 20px;
+  }
+  [data-responsive-toolbar] {
+    display: block !important;
+  }
+  [data-responsive-search] {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 12px;
+  }
+  [data-responsive-grid] {
+    grid-template-columns: 1fr !important;
+  }
+  [data-responsive-install] {
+    right: 14px !important;
+    bottom: 14px !important;
+    left: 14px !important;
+  }
+}
