@@ -10,7 +10,12 @@ export function InstallPrompt() {
         <b>Instala Restaurantes</b>
         <small>Accede más rápido desde tu dispositivo.</small>
       </span>
-      <Button.Text text="Instalar" variant="secondary" style={styles.install} onClick={install} />
+      <Button.Text
+        leftText="Instalar"
+        variant="secondary"
+        style={styles.install}
+        onClick={install}
+      />
       <Button.Icon iconName="close" name="Cerrar" onClick={hide} />
     </aside>
   );
