@@ -1,0 +1,9 @@
+export const RESTAURANT_TYPES = ['Hamburguesería', 'Sushi', 'Carne', 'Pescado', 'Italiano', 'Mexicano', 'Tapas', 'Vegetariano', 'Mediterráneo', 'Japonés', 'Chino', 'Turco', 'Otro'] as const;
+export type RestaurantType = (typeof RESTAURANT_TYPES)[number];
+export type PriceRange = '' | 'under20' | '20to40' | '40to60' | '60to80' | '80to100' | 'over100';
+export type RestaurantRating = '' | 'loved' | 'liked' | 'neutral' | 'disliked' | 'disappointed';
+export type RestaurantFormData = { name: string; locality: string; dishes: string; price: PriceRange; type: RestaurantType[]; notes: string; recommendedBy: string; visited: boolean; opinion: string; rating: RestaurantRating };
+export type Restaurant = RestaurantFormData & { id: string; createdAt: string };
+export type User = { id: string; email: string; name: string; nick: string | null; createdAt: string };
+export type AuthSession = { accessToken: string; expiresAt: string; user: User };
+export type RestaurantPage = { items: Restaurant[]; limit: number; offset: number };
