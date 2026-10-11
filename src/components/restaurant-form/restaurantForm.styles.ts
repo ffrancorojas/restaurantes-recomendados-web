@@ -48,6 +48,12 @@ export const styles: Record<string, CSSProperties> = {
     letterSpacing: '.16em',
   },
   heading: { margin: 0, fontSize: 'var(--font-size-xxl)', letterSpacing: '-.04em' },
+  nameRow: {
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr) auto',
+    gap: 10,
+    alignItems: 'end',
+  },
   label: {
     display: 'flex',
     flexDirection: 'column',
