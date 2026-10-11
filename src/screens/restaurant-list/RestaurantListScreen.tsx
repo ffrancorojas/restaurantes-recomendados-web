@@ -1,66 +1,48 @@
-import { RestaurantCard } from '@components/restaurant-card';
-import { TextButton } from '@components/buttons';
-import { RestaurantForm } from '@components/restaurant-form';
-import { Filters } from '@screens/restaurant-list/components';
+import {
+  Filters,
+  RestaurantListContent,
+  RestaurantListHeader,
+} from '@screens/restaurant-list/components';
 import { useRestaurantListScreen } from '@screens/restaurant-list/useRestaurantListScreen';
 import { styles } from '@screens/restaurant-list/restaurantListScreen.styles';
-import type { RestaurantListScreenProps } from '@screens/restaurant-list/restaurantListScreen.types';
+import { useNavigate } from 'react-router-dom';
 
-export function RestaurantListScreen(props: RestaurantListScreenProps) {
-  const { query, onlyVisited, filtered, setQuery, setOnlyVisited } = useRestaurantListScreen({
-    restaurants: props.restaurants,
-  });
+export function RestaurantListScreen() {
+  const navigate = useNavigate();
+  const {
+    restaurants,
+    loading,
+    error,
+    filtered,
+    query,
+    onlyVisited,
+    setQuery,
+    setOnlyVisited,
+    removeRestaurant,
+  } = useRestaurantListScreen();
+
   return (
     <main data-responsive-screen style={styles.screen}>
-      <section data-responsive-hero style={styles.hero}>
-        <div>
-          <p style={styles.eyebrow}>TU MAPA GASTRONÓMICO</p>
-          <h1 style={styles.heading}>Mis restaurantes</h1>
-          <p style={styles.muted}>
-            {props.restaurants.length} lugares guardados para tu próxima salida.
-          </p>
-        </div>
-        <TextButton
-          text="Nueva entrada"
-          iconName="add"
-          data-responsive-new
-          onClick={props.onCreate}
-        />
-      </section>
-      <Filters
-        query={query}
-        onlyVisited={onlyVisited}
-        onQueryChange={({ value }) => setQuery(value)}
-        onVisitedChange={({ checked }) => setOnlyVisited(checked)}
+      <RestaurantListHeader
+        restaurantCount={restaurants.length}
+        onCreate={() => navigate('/restaurants/new')}
       />
-      {props.error && <p style={styles.error}>{props.error}</p>}
-      {props.loading ? (
-        <div style={styles.empty}>Cargando tus restaurantes…</div>
-      ) : filtered.length ? (
-        <div data-responsive-grid style={styles.grid}>
-          {filtered.map((restaurant) => (
-            <RestaurantCard
-              key={restaurant.id}
-              restaurant={restaurant}
-              onEdit={() => props.onEdit({ restaurant })}
-              onRemove={() => props.onRemove({ id: restaurant.id })}
-            />
-          ))}
-        </div>
-      ) : (
-        <div style={styles.empty}>
-          <span>🍽️</span>
-          <h2>Aún no hay coincidencias</h2>
-          <p>Añade un restaurante o prueba otra búsqueda.</p>
-        </div>
-      )}
-      {props.editing && (
-        <RestaurantForm
-          initial={props.editing}
-          onCancel={props.onCancelEdit}
-          onSave={props.onSave}
+      {!loading && restaurants.length && (
+        <Filters
+          query={query}
+          onlyVisited={onlyVisited}
+          onQueryChange={({ value }) => setQuery(value)}
+          onVisitedChange={({ checked }) => setOnlyVisited(checked)}
         />
       )}
+      {error && <p style={styles.error}>{error}</p>}
+      <RestaurantListContent
+        loading={loading}
+        totalRestaurants={restaurants.length}
+        restaurants={filtered}
+        onEdit={(restaurant) => navigate(`/restaurants/${restaurant.id}/edit`)}
+        onRemove={removeRestaurant}
+      />
     </main>
   );
 }
