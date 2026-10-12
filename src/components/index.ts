@@ -11,3 +11,4 @@ export * from './restaurant-card';
 export * from './restaurant-form';
 export * from './restaurant-link-actions';
 export * from './type-selector';
+export * from './confirm-dialog';

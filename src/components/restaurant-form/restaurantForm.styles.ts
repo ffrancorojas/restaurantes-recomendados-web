@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   page: {
     minHeight: 'calc(100vh - var(--header-height))',
-    padding: '48px 28px 80px',
+    padding: '0 28px 80px',
     background: 'var(--color-background)',
   },
   pageForm: {
@@ -15,39 +15,6 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: 'var(--radius-card)',
     boxShadow: 'var(--shadow-card)',
   },
-  backdrop: {
-    position: 'fixed',
-    inset: 0,
-    zIndex: 5,
-    display: 'grid',
-    placeItems: 'center',
-    padding: 20,
-    background: 'color-mix(in srgb, var(--color-text) 40%, transparent)',
-  },
-  form: {
-    width: '100%',
-    maxWidth: 600,
-    maxHeight: 'calc(100vh - 40px)',
-    overflow: 'auto',
-    padding: 28,
-    background: 'var(--color-background)',
-    borderRadius: 'var(--radius-modal)',
-    boxShadow: 'var(--shadow-modal)',
-  },
-  title: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'start',
-    marginBottom: 22,
-  },
-  eyebrow: {
-    margin: '0 0 14px',
-    color: 'var(--color-secondary)',
-    fontSize: 'var(--font-size-xs)',
-    fontWeight: 800,
-    letterSpacing: '.16em',
-  },
-  heading: { margin: 0, fontSize: 'var(--font-size-xxl)', letterSpacing: '-.04em' },
   error: {
     margin: '0 0 16px',
     padding: '10px 12px',
@@ -73,18 +40,4 @@ export const styles: Record<string, CSSProperties> = {
   },
   two: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 },
   actions: { display: 'flex', justifyContent: 'flex-end', gap: 10, paddingTop: 10 },
-  primary: {
-    padding: '14px 20px',
-    color: 'var(--color-surface)',
-    background: 'var(--color-primary)',
-    borderRadius: 'var(--radius-button)',
-    fontWeight: 700,
-  },
-  secondary: {
-    padding: '14px 20px',
-    color: 'var(--color-muted)',
-    background: 'var(--color-soft-sand)',
-    borderRadius: 'var(--radius-button)',
-    fontWeight: 700,
-  },
 };

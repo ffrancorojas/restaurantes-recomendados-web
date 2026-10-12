@@ -6,6 +6,7 @@ import {
 import { useRestaurantListScreen } from '@screens/restaurant-list/useRestaurantListScreen';
 import { styles } from '@screens/restaurant-list/restaurantListScreen.styles';
 import { useNavigate } from 'react-router-dom';
+import { shareRestaurant } from '@tools';
 
 export function RestaurantListScreen() {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ export function RestaurantListScreen() {
         restaurants={filtered}
         onEdit={(restaurant) => navigate(`/restaurants/${restaurant.id}/edit`)}
         onRemove={removeRestaurant}
+        onShare={(restaurant) => shareRestaurant({ data: restaurant })}
       />
     </main>
   );

@@ -1,1 +1,1 @@
-export type LoginScreenProps = { error: string; onLogin: () => Promise<void> };
+export type LoginScreenProps = { error: string; loading: boolean; onLogin: () => Promise<void> };
