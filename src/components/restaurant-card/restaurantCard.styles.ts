@@ -11,5 +11,12 @@ export const styles: Record<string, CSSProperties> = {
     boxShadow: 'none',
   },
   top: { display: 'flex', justifyContent: 'space-between' },
-  title: { flex: 1, minWidth: 0, margin: 0, fontSize: 17, fontWeight: 900, letterSpacing: '-.02em' },
+  title: {
+    flex: 1,
+    minWidth: 0,
+    margin: 0,
+    fontSize: 17,
+    fontWeight: 900,
+    letterSpacing: '-.02em',
+  },
 };
