@@ -6,4 +6,5 @@ export type RestaurantListContentProps = {
   restaurants: Restaurant[];
   onEdit: (restaurant: Restaurant) => void;
   onRemove: (restaurantId: string) => void | Promise<void>;
+  onShare: (restaurant: Restaurant) => void | Promise<void>;
 };

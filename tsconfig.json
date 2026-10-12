@@ -28,6 +28,8 @@
       "@hooks/*": ["src/hooks/*"],
       "@assets": ["src/assets/index.ts"],
       "@assets/*": ["src/assets/*"],
+      "@tools": ["src/tools/index.ts"],
+      "@tools/*": ["src/tools/*"],
       "@styles": ["src/styles/index.scss"]
     },
     "resolveJsonModule": true,
