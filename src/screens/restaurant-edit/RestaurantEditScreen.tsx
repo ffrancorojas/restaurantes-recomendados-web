@@ -3,7 +3,7 @@ import { Spinner } from '@components/spinner';
 import { useRestaurantEditScreen } from './useRestaurantEditScreen';
 
 export function RestaurantEditScreen() {
-  const { restaurant, loading, error, onCancel, onSave } = useRestaurantEditScreen();
+  const { restaurant, loading, error, onSave } = useRestaurantEditScreen();
 
   if (loading) {
     return (
@@ -17,13 +17,5 @@ export function RestaurantEditScreen() {
     return <main data-responsive-screen>{error || 'Restaurante no encontrado.'}</main>;
   }
 
-  return (
-    <RestaurantForm
-      error={error}
-      initial={restaurant}
-      variant="page"
-      onCancel={onCancel}
-      onSave={onSave}
-    />
-  );
+  return <RestaurantForm error={error} initial={restaurant} onSave={onSave} />;
 }

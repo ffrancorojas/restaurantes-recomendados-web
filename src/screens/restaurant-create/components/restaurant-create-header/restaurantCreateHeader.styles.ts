@@ -9,11 +9,7 @@ export const styles: Record<string, CSSProperties> = {
   },
   eyebrow: {
     margin: '0 0 10px',
-    color: 'var(--color-secondary)',
-    fontSize: 'var(--font-size-xs)',
-    fontWeight: 800,
-    letterSpacing: '.16em',
   },
-  heading: { margin: 0, fontSize: 'var(--font-size-xxl)', letterSpacing: '-.04em' },
-  description: { margin: '10px 0 0', color: 'var(--color-muted)' },
+  heading: { margin: 0 },
+  description: { margin: '10px 0 0' },
 };
