@@ -4,7 +4,7 @@ export function AppHeader({ user, onLogout }: AppHeaderProps) {
   return (
     <header data-responsive-header style={styles.header}>
       <div style={styles.wordmark}>
-        <span style={styles.mark}>✦</span>
+        <img src="/icon.png" alt="" style={styles.mark} />
         <b style={styles.name}>
           Restaurantes
           <br />

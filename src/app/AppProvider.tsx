@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { api } from '@api';
+import { authService } from '@services';
 import { loginWithGoogle } from '@auth';
 import { AppContext } from './app.context';
 import { SESSION_KEY, getErrorMessage, readSavedSession } from './app.tools';
@@ -25,7 +25,7 @@ export function AppProvider({ children }: AppProviderProps) {
   };
 
   const logout = async () => {
-    if (session) await api.logout({ token: session.accessToken }).catch(() => undefined);
+    if (session) await authService.logout({ token: session.accessToken }).catch(() => undefined);
     localStorage.removeItem(SESSION_KEY);
     setSession(null);
   };

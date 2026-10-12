@@ -2,18 +2,12 @@ import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   tags: { display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8, paddingTop: 0 },
   tag: {
-    padding: '6px 9px',
-    color: 'var(--color-muted)',
-    background: 'var(--color-soft-sand)',
-    borderRadius: 'var(--radius-pill)',
-    fontSize: 'var(--font-size-xs)',
-  },
-  visited: {
-    padding: '6px 9px',
-    color: 'var(--color-secondary)',
+    alignSelf: 'flex-start',
+    padding: '3px 7px',
+    color: 'var(--color-map)',
     background: 'var(--color-soft-green)',
-    borderRadius: 'var(--radius-pill)',
-    fontSize: 'var(--font-size-xs)',
-    fontWeight: 700,
+    borderRadius: 12,
+    fontSize: 11,
+    fontWeight: 800,
   },
 };

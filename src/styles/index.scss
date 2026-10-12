@@ -79,11 +79,14 @@ button:disabled {
     grid-template-columns: 1fr !important;
   }
   [data-responsive-form] {
-    padding: 0 12px 56px !important;
+    padding: 0 0 56px !important;
   }
   [data-responsive-form] form {
     padding: 18px 14px !important;
-    border-radius: 14px !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
   [data-responsive-install] {
     right: 14px !important;

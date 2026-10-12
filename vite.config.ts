@@ -11,8 +11,7 @@ export default defineConfig({
       '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
       '@screens': fileURLToPath(new URL('./src/screens', import.meta.url)),
       '@contracts': fileURLToPath(new URL('./src/contracts.ts', import.meta.url)),
-      '@api': fileURLToPath(new URL('./src/api.ts', import.meta.url)),
-      '@api.types': fileURLToPath(new URL('./src/api.types.ts', import.meta.url)),
+      '@services': fileURLToPath(new URL('./src/services', import.meta.url)),
       '@auth': fileURLToPath(new URL('./src/firebase.ts', import.meta.url)),
       '@hooks': fileURLToPath(new URL('./src/hooks', import.meta.url)),
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
@@ -24,7 +23,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'icon.png'],
       manifest: {
         name: 'Restaurantes recomendados',
         short_name: 'Restaurantes',
@@ -34,7 +33,7 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
+          { src: 'icon.png', sizes: '1024x1024', type: 'image/png', purpose: 'any maskable' },
         ],
       },
     }),

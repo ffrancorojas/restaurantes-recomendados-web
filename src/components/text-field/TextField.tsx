@@ -1,20 +1,23 @@
-import { styles } from './textField.styles';
+import { TextField as MuiTextField } from '@mui/material';
+import type { TextFieldProps as MuiTextFieldProps } from '@mui/material';
+import { muiStyles } from './textField.styles';
 import type { TextFieldProps } from './textField.types';
+
 export function TextField({ error, label, value, onChange, ...inputProps }: TextFieldProps) {
+  const muiInputProps = inputProps as unknown as MuiTextFieldProps;
+
   return (
-    <label style={styles.field}>
-      {label && <span>{label}</span>}
-      <input
-        {...inputProps}
-        style={{ ...styles.input, ...(error ? styles.inputError : {}) }}
-        value={value}
-        onChange={(event) => onChange({ value: event.target.value })}
-      />
-      {error && (
-        <span role="alert" style={styles.error}>
-          {error}
-        </span>
-      )}
-    </label>
+    <MuiTextField
+      {...muiInputProps}
+      label={label}
+      value={value}
+      onChange={(event) => onChange({ value: event.target.value })}
+      error={Boolean(error)}
+      helperText={error}
+      fullWidth
+      size="small"
+      variant="outlined"
+      sx={muiStyles}
+    />
   );
 }

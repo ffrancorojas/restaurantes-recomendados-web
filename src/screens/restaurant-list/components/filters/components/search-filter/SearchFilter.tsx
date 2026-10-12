@@ -8,7 +8,7 @@ export function SearchFilter({ value, onChange }: SearchFilterProps) {
         data-responsive-search
         value={value}
         onChange={onChange}
-        placeholder="Buscar por nombre, ciudad o plato…"
+        placeholder="Buscar en mis recomendaciones"
       />
     </div>
   );

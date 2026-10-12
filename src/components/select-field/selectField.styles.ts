@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import type { SxProps, Theme } from '@mui/material';
 export const styles: Record<string, CSSProperties> = {
   field: {
     display: 'flex',
@@ -10,13 +11,16 @@ export const styles: Record<string, CSSProperties> = {
     fontWeight: 700,
   },
   select: {
-    width: '100%',
     minHeight: 'var(--field-height)',
-    padding: '13px 15px',
     color: 'var(--color-text)',
     background: 'var(--color-surface)',
-    border: '1px solid var(--color-border)',
     borderRadius: 'var(--radius-md)',
-    outline: 'none',
   },
+};
+
+export const muiStyles: SxProps<Theme> = {
+  marginBottom: 2,
+  '& .MuiOutlinedInput-root': { borderRadius: 'var(--radius-md)' },
+  '& .MuiOutlinedInput-notchedOutline': { borderColor: 'var(--color-border)' },
+  '& .MuiInputLabel-root': { color: 'var(--color-muted)', fontWeight: 600 },
 };
