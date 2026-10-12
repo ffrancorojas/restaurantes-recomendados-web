@@ -4,6 +4,7 @@
 @use 'sizes';
 @use 'shadows';
 @use 'spacing';
+@use 'utilities';
 
 :root {
   color: var(--color-text);
@@ -30,6 +31,10 @@ button {
   cursor: pointer;
   border: 0;
 }
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
 
 @keyframes spin {
   to {
@@ -47,10 +52,13 @@ button {
     padding: 0 18px !important;
   }
   [data-responsive-account] {
+    gap: 10px !important;
+  }
+  [data-responsive-account] > span {
     display: none !important;
   }
   [data-responsive-screen] {
-    padding: 36px 18px 70px !important;
+    padding: 28px 12px 56px !important;
   }
   [data-responsive-hero] {
     display: block !important;
@@ -69,6 +77,13 @@ button {
   }
   [data-responsive-grid] {
     grid-template-columns: 1fr !important;
+  }
+  [data-responsive-form] {
+    padding: 0 12px 56px !important;
+  }
+  [data-responsive-form] form {
+    padding: 18px 14px !important;
+    border-radius: 14px !important;
   }
   [data-responsive-install] {
     right: 14px !important;

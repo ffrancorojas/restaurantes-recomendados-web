@@ -4,6 +4,7 @@ import type { AuthSession } from '@contracts';
 export type AppContextValue = {
   session: AuthSession | null;
   error: string;
+  loggingIn: boolean;
   login: () => Promise<void>;
   logout: () => Promise<void>;
 };

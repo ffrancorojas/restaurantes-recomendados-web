@@ -1,16 +1,15 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   card: {
-    minHeight: 'var(--card-min-height)',
+    minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
-    padding: 22,
+    padding: 12,
     background: 'var(--color-surface)',
     border: '1px solid var(--color-border)',
-    borderRadius: 'var(--radius-card)',
-    boxShadow: 'var(--shadow-card)',
+    borderRadius: 16,
+    boxShadow: 'none',
   },
   top: { display: 'flex', justifyContent: 'space-between' },
-  pin: { color: 'var(--color-primary)', fontSize: 24 },
-  title: { margin: '18px 0 4px', fontSize: 'var(--font-size-xl)', letterSpacing: '-.03em' },
+  title: { flex: 1, minWidth: 0, margin: 0, fontSize: 17, fontWeight: 900, letterSpacing: '-.02em' },
 };

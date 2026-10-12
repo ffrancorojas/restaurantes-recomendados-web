@@ -1,28 +1,51 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
-import type { Restaurant, RestaurantFormData } from '@contracts';
-import { initialRestaurantForm } from '@components/restaurant-form/restaurantForm.tools';
-import type {
-  SetRestaurantFieldParams,
-  UseRestaurantFormParams,
-} from '@components/restaurant-form/restaurantForm.types';
+import { useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import type { RestaurantFormData } from '@contracts';
+import type { UseRestaurantFormParams } from './restaurantForm.types';
+
 export function useRestaurantForm({ initial, onSave }: UseRestaurantFormParams) {
-  const [data, setData] = useState<RestaurantFormData>(
-    initial === 'new' ? initialRestaurantForm : initial,
-  );
-  const [saving, setSaving] = useState(false);
-  const setField = <K extends keyof RestaurantFormData>({
-    key,
-    value,
-  }: SetRestaurantFieldParams<K>) => setData((current) => ({ ...current, [key]: value }));
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSaving(true);
-    try {
-      await onSave({ data });
-    } finally {
-      setSaving(false);
+  const navigate = useNavigate();
+  const isEditing = Boolean(initial.id);
+  const initialValues = useMemo(() => {
+    const { id: _id, createdAt: _createdAt, source: _source, ...values } = initial;
+    return values;
+  }, [initial]);
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { isDirty, isSubmitting },
+  } = useForm<RestaurantFormData>({ defaultValues: initialValues });
+  const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
+  const data = watch();
+  const submit = handleSubmit((formData) => onSave({ data: formData, id: initial.id }));
+
+  const requestCancel = () => {
+    if (isSubmitting) return;
+    if (isDirty) {
+      setShowLeaveConfirmation(true);
+      return;
     }
+    if (isEditing || initial.source === 'shared') navigate('/restaurants');
+    else navigate(-1);
   };
-  return { data, saving, setField, submit };
+
+  const cancelLeave = () => setShowLeaveConfirmation(false);
+  const confirmLeave = () => {
+    if (isEditing || initial.source === 'shared') navigate('/restaurants');
+    else navigate(-1);
+  };
+
+  return {
+    control,
+    data,
+    isDirty,
+    saving: isSubmitting,
+    showLeaveConfirmation,
+    requestCancel,
+    cancelLeave,
+    confirmLeave,
+    submit,
+  };
 }
