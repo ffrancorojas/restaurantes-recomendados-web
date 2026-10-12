@@ -1,11 +1,13 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   button: {
-    padding: '16px 0 0',
-    color: 'var(--color-primary)',
+    minHeight: 32,
+    padding: '0 12px',
+    color: 'var(--color-map)',
     textAlign: 'left',
-    background: 'none',
-    fontSize: 'var(--font-size-sm)',
-    fontWeight: 750,
+    background: 'var(--color-soft-green)',
+    borderRadius: 'var(--radius-button)',
+    fontSize: 'var(--font-size-xs)',
+    fontWeight: 800,
   },
 };

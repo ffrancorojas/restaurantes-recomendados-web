@@ -1,6 +1,6 @@
 import { styles } from './restaurantTags.styles';
 import type { RestaurantTagsProps } from './restaurantTags.types';
-export function RestaurantTags({ types, visited }: RestaurantTagsProps) {
+export function RestaurantTags({ types }: RestaurantTagsProps) {
   return (
     <div style={styles.tags}>
       {types.map((type) => (
@@ -8,7 +8,6 @@ export function RestaurantTags({ types, visited }: RestaurantTagsProps) {
           {type}
         </span>
       ))}
-      {visited && <span style={styles.visited}>✓ Visitado</span>}
     </div>
   );
 }

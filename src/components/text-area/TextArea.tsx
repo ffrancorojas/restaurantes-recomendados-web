@@ -1,15 +1,21 @@
-import { styles } from './textArea.styles';
+import { TextField as MuiTextField } from '@mui/material';
+import type { TextFieldProps as MuiTextFieldProps } from '@mui/material';
+import { muiStyles } from './textArea.styles';
 import type { TextAreaProps } from './textArea.types';
 export function TextArea({ label, value, onChange, ...textareaProps }: TextAreaProps) {
+  const muiInputProps = textareaProps as unknown as MuiTextFieldProps;
+
   return (
-    <label style={styles.field}>
-      {label}
-      <textarea
-        {...textareaProps}
-        style={styles.textarea}
-        value={value}
-        onChange={(event) => onChange({ value: event.target.value })}
-      />
-    </label>
+    <MuiTextField
+      {...muiInputProps}
+      label={label}
+      value={value}
+      onChange={(event) => onChange({ value: event.target.value })}
+      multiline
+      minRows={4}
+      fullWidth
+      size="small"
+      sx={muiStyles}
+    />
   );
 }

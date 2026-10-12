@@ -11,12 +11,9 @@ export const styles: Record<string, CSSProperties> = {
   },
   wordmark: { display: 'flex', alignItems: 'center', gap: 10, lineHeight: 1 },
   mark: {
-    display: 'grid',
-    placeItems: 'center',
     width: 'var(--icon-size)',
     height: 'var(--icon-size)',
-    color: 'var(--color-surface)',
-    background: 'var(--color-primary)',
+    objectFit: 'cover',
     borderRadius: 10,
   },
   name: { fontSize: 14 },

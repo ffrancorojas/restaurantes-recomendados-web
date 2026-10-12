@@ -48,7 +48,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
               />
             )}
           />
-          <RestaurantLinkActions name={data.name} locality={data.locality} compact />
+          <RestaurantLinkActions name={data.name} locality={data.locality} />
         </div>
         <div style={styles.two}>
           <Controller
@@ -85,7 +85,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
           control={control}
           render={({ field }) => (
             <TextField
-              label="Platos o especialidad"
+              label="Platos recomendados"
               value={field.value}
               onChange={({ value }) => field.onChange(value)}
               onBlur={field.onBlur}
