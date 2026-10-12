@@ -34,5 +34,6 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: 13,
     background: 'none',
     borderLeft: '1px solid var(--color-border)',
+    whiteSpace: 'nowrap',
   },
 };

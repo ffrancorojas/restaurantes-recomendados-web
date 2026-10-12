@@ -1,0 +1,46 @@
+.text-eyebrow {
+  color: var(--color-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.text-title {
+  color: var(--color-text);
+  font-size: var(--font-size-xxl);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.text-body {
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+}
+.text-muted {
+  color: var(--color-muted);
+}
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+.text-danger {
+  color: var(--color-danger);
+}
+.font-medium {
+  font-weight: 600;
+}
+.font-semibold {
+  font-weight: 700;
+}
+.font-bold {
+  font-weight: 750;
+}
+.font-extrabold {
+  font-weight: 800;
+}
+.font-black {
+  font-weight: 900;
+}
