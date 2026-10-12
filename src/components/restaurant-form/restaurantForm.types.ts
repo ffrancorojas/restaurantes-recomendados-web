@@ -1,9 +1,12 @@
-import type { Restaurant, RestaurantFormData } from '@contracts';
+import type { RestaurantFormData } from '@contracts';
+export type RestaurantFormInitialData = RestaurantFormData & {
+  id?: string;
+  createdAt?: string;
+  source?: 'shared';
+};
 export type RestaurantFormProps = {
   error?: string;
-  initial: Restaurant | 'new';
-  variant?: 'modal' | 'page';
-  onCancel: () => void;
+  initial: RestaurantFormInitialData;
   onSave: (params: SaveRestaurantFormParams) => Promise<void>;
 };
 export type SaveRestaurantFormParams = { data: RestaurantFormData; id?: string };
@@ -12,6 +15,6 @@ export type SetRestaurantFieldParams<K extends keyof RestaurantFormData> = {
   value: RestaurantFormData[K];
 };
 export type UseRestaurantFormParams = {
-  initial: Restaurant | 'new';
+  initial: RestaurantFormInitialData;
   onSave: (params: SaveRestaurantFormParams) => Promise<void>;
 };

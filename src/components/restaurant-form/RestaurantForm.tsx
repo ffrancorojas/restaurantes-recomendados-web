@@ -1,98 +1,164 @@
+import { Controller } from 'react-hook-form';
 import { PRICE_RANGES } from '@contracts';
-import { Checkbox } from '@components/checkbox';
 import { Button } from '@components/buttons';
+import { Checkbox } from '@components/checkbox';
+import { ConfirmDialog } from '@components/confirm-dialog';
+import { RatingSelector, RestaurantFormHeader } from '@components/restaurant-form/components';
+import { RestaurantLinkActions } from '@components/restaurant-link-actions';
 import { SelectField } from '@components/select-field';
 import { TextArea } from '@components/text-area';
 import { TextField } from '@components/text-field';
 import { TypeSelector } from '@components/type-selector';
-import { RatingSelector } from '@components/restaurant-form/components';
-import { RestaurantLinkActions } from '@components/restaurant-link-actions';
 import { useRestaurantForm } from '@components/restaurant-form/useRestaurantForm';
 import { styles } from './restaurantForm.styles';
 import type { RestaurantFormProps } from './restaurantForm.types';
 
-export function RestaurantForm({
-  error,
-  initial,
-  variant = 'modal',
-  onCancel,
-  onSave,
-}: RestaurantFormProps) {
-  const { data, saving, setField, submit } = useRestaurantForm({
-    initial,
-    onSave: ({ data: formData }) =>
-      onSave({ data: formData, id: initial === 'new' ? undefined : initial.id }),
-  });
+export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) {
+  const {
+    control,
+    data,
+    saving,
+    showLeaveConfirmation,
+    requestCancel,
+    cancelLeave,
+    confirmLeave,
+    submit,
+  } = useRestaurantForm({ initial, onSave });
+  const isEditing = Boolean(initial.id);
+
   return (
-    <div style={variant === 'page' ? styles.page : styles.backdrop}>
-      <form style={variant === 'page' ? styles.pageForm : styles.form} onSubmit={submit}>
+    <div data-responsive-form style={styles.page}>
+      <form style={styles.pageForm} onSubmit={submit}>
         {error && <p style={styles.error}>{error}</p>}
-        <div style={styles.title}>
-          <div>
-            <p style={styles.eyebrow}>NUEVA HISTORIA</p>
-            <h2 style={styles.heading}>
-              {initial === 'new' ? 'Añadir restaurante' : 'Editar restaurante'}
-            </h2>
-          </div>
-          <Button.Icon iconName="close" name="Cerrar" onClick={onCancel} />
-        </div>
+        <RestaurantFormHeader isEditing={isEditing} onBack={requestCancel} />
         <div style={styles.nameRow}>
-          <TextField
-            label="Nombre"
-            required
-            value={data.name}
-            onChange={({ value }) => setField({ key: 'name', value })}
+          <Controller
+            name="name"
+            control={control}
+            rules={{ required: 'El nombre es obligatorio.' }}
+            render={({ field, fieldState }) => (
+              <TextField
+                label="Nombre"
+                required
+                error={fieldState.error?.message}
+                value={field.value}
+                onChange={({ value }) => field.onChange(value)}
+                onBlur={field.onBlur}
+                name={field.name}
+              />
+            )}
           />
           <RestaurantLinkActions name={data.name} locality={data.locality} compact />
         </div>
         <div style={styles.two}>
-          <TextField
-            label="Localidad"
-            value={data.locality}
-            onChange={({ value }) => setField({ key: 'locality', value })}
+          <Controller
+            name="locality"
+            control={control}
+            rules={{ required: 'La localidad es obligatoria.' }}
+            render={({ field, fieldState }) => (
+              <TextField
+                label="Localidad"
+                required
+                error={fieldState.error?.message}
+                value={field.value}
+                onChange={({ value }) => field.onChange(value)}
+                onBlur={field.onBlur}
+                name={field.name}
+              />
+            )}
           />
-          <SelectField
-            label="Precio"
-            value={data.price}
-            options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
-            onChange={({ value }) => setField({ key: 'price', value: value as typeof data.price })}
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => (
+              <SelectField
+                label="Precio"
+                value={field.value}
+                options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
+                onChange={({ value }) => field.onChange(value)}
+              />
+            )}
           />
         </div>
-        <TextField
-          label="Platos o especialidad"
-          value={data.dishes}
-          onChange={({ value }) => setField({ key: 'dishes', value })}
+        <Controller
+          name="dishes"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              label="Platos o especialidad"
+              value={field.value}
+              onChange={({ value }) => field.onChange(value)}
+              onBlur={field.onBlur}
+              name={field.name}
+            />
+          )}
         />
         <label style={styles.label}>
           Tipos de cocina
-          <TypeSelector
-            value={data.type}
-            onChange={({ value }) => setField({ key: 'type', value })}
+          <Controller
+            name="type"
+            control={control}
+            render={({ field }) => (
+              <TypeSelector value={field.value} onChange={({ value }) => field.onChange(value)} />
+            )}
           />
         </label>
-        <Checkbox
-          label="Ya he estado"
-          checked={data.visited}
-          onChange={({ checked }) => setField({ key: 'visited', value: checked })}
+        <Controller
+          name="visited"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              label="Ya he estado"
+              checked={field.value}
+              onChange={({ checked }) => field.onChange(checked)}
+            />
+          )}
         />
         {data.visited && (
           <>
-            <TextArea
-              label="Mi opinión"
-              value={data.opinion}
-              onChange={({ value }) => setField({ key: 'opinion', value })}
+            <Controller
+              name="opinion"
+              control={control}
+              render={({ field }) => (
+                <TextArea
+                  label="Mi opinión"
+                  value={field.value}
+                  onChange={({ value }) => field.onChange(value)}
+                  onBlur={field.onBlur}
+                  name={field.name}
+                />
+              )}
             />
-            <RatingSelector
-              value={data.rating}
-              onChange={({ value }) => setField({ key: 'rating', value })}
+            <Controller
+              name="rating"
+              control={control}
+              render={({ field }) => (
+                <RatingSelector
+                  value={field.value}
+                  onChange={({ value }) => field.onChange(value)}
+                />
+              )}
             />
           </>
         )}
         <div style={styles.actions}>
-          <Button.Text leftText="Cancelar" variant="secondary" type="button" onClick={onCancel} />
+          <Button.Text
+            leftText="Cancelar"
+            variant="secondary"
+            type="button"
+            onClick={requestCancel}
+          />
           <Button.Text leftText={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
         </div>
       </form>
+      {showLeaveConfirmation && (
+        <ConfirmDialog
+          title="¿Salir sin guardar?"
+          message="Si continúas se perderán los datos introducidos en el formulario."
+          onCancel={cancelLeave}
+          onConfirm={confirmLeave}
+        />
+      )}
     </div>
   );
 }

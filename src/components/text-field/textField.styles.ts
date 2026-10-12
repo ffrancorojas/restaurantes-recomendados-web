@@ -19,4 +19,6 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: 'var(--radius-md)',
     outline: 'none',
   },
+  inputError: { borderColor: 'var(--color-danger)' },
+  error: { color: 'var(--color-danger)', fontSize: 'var(--font-size-xs)', fontWeight: 600 },
 };
