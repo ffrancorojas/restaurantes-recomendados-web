@@ -8,15 +8,19 @@ import type { AppProviderProps } from './app.types';
 export function AppProvider({ children }: AppProviderProps) {
   const [session, setSession] = useState(readSavedSession);
   const [error, setError] = useState('');
+  const [loggingIn, setLoggingIn] = useState(false);
 
   const login = async () => {
     setError('');
+    setLoggingIn(true);
     try {
       const nextSession = await loginWithGoogle();
       localStorage.setItem(SESSION_KEY, JSON.stringify(nextSession));
       setSession(nextSession);
     } catch (cause) {
       setError(getErrorMessage({ cause, fallback: 'No se pudo iniciar sesión.' }));
+    } finally {
+      setLoggingIn(false);
     }
   };
 
@@ -27,6 +31,8 @@ export function AppProvider({ children }: AppProviderProps) {
   };
 
   return (
-    <AppContext.Provider value={{ session, error, login, logout }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ session, error, loggingIn, login, logout }}>
+      {children}
+    </AppContext.Provider>
   );
 }

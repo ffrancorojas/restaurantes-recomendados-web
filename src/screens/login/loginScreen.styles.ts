@@ -24,10 +24,6 @@ export const styles: Record<string, CSSProperties> = {
   },
   eyebrow: {
     margin: '0 0 14px',
-    color: 'var(--color-secondary)',
-    fontSize: 'var(--font-size-xs)',
-    fontWeight: 800,
-    letterSpacing: '.16em',
   },
   title: {
     margin: '0 0 24px',
@@ -35,11 +31,10 @@ export const styles: Record<string, CSSProperties> = {
     lineHeight: 0.98,
     letterSpacing: '-.06em',
   },
-  accent: { color: 'var(--color-primary)', fontStyle: 'normal' },
+  accent: { fontStyle: 'normal' },
   lead: {
     maxWidth: 460,
     margin: '0 0 36px',
-    color: 'var(--color-muted)',
     fontSize: 'var(--font-size-lg)',
   },
   submit: {
@@ -52,12 +47,22 @@ export const styles: Record<string, CSSProperties> = {
     fontWeight: 750,
     boxShadow: '0 8px 16px color-mix(in srgb, var(--color-primary) 14%, transparent)',
   },
+  spinner: {
+    display: 'inline-block',
+    width: 16,
+    height: 16,
+    marginRight: 8,
+    verticalAlign: '-3px',
+    border: '2px solid color-mix(in srgb, var(--color-surface) 45%, transparent)',
+    borderTopColor: 'var(--color-surface)',
+    borderRadius: '50%',
+    animation: 'spin .7s linear infinite',
+  },
   error: {
     padding: '10px 14px',
-    color: 'var(--color-danger)',
     background: 'color-mix(in srgb, var(--color-danger) 12%, var(--color-surface))',
     borderRadius: 'var(--radius-md)',
     fontSize: 'var(--font-size-md)',
   },
-  hint: { marginTop: 20, color: 'var(--color-muted)', fontSize: 'var(--font-size-md)' },
+  hint: { marginTop: 20, fontSize: 'var(--font-size-md)' },
 };
