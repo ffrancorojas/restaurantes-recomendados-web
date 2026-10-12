@@ -11,6 +11,9 @@ export const ICONS = {
   search: '⌕',
   google: 'G',
   share: '↗',
+  filter: '☷',
+  chevronDown: '⌄',
+  chevronUp: '⌃',
 } as const;
 
 export type IconName = keyof typeof ICONS;

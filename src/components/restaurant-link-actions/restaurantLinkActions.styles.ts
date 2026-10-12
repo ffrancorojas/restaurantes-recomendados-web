@@ -4,8 +4,8 @@ export const styles: Record<string, CSSProperties> = {
   container: { display: 'flex', gap: 8 },
   compact: { gap: 6 },
   mapsButton: {
-    width: 42,
-    height: 42,
+    width: 'var(--field-height)',
+    height: 'var(--field-height)',
     padding: 0,
     color: 'var(--color-map)',
     background: 'var(--color-soft-green)',
@@ -19,5 +19,5 @@ export const styles: Record<string, CSSProperties> = {
     background: 'var(--color-soft-sand)',
     borderRadius: 'var(--radius-md)',
   },
-  compactButton: { width: 34, height: 34 },
+  compactButton: { width: 28, height: 32 },
 };

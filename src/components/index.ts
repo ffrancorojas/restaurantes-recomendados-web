@@ -12,3 +12,4 @@ export * from './restaurant-form';
 export * from './restaurant-link-actions';
 export * from './type-selector';
 export * from './confirm-dialog';
+export * from './switch';

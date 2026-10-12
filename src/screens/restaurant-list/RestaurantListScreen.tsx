@@ -1,5 +1,6 @@
 import {
   Filters,
+  FilterButton,
   RestaurantListContent,
   RestaurantListHeader,
 } from '@screens/restaurant-list/components';
@@ -16,9 +17,18 @@ export function RestaurantListScreen() {
     error,
     filtered,
     query,
+    locality,
+    price,
+    types,
     onlyVisited,
+    filtersOpen,
+    availableTypes,
     setQuery,
+    setLocality,
+    setPrice,
+    setTypes,
     setOnlyVisited,
+    setFiltersOpen,
     removeRestaurant,
   } = useRestaurantListScreen();
 
@@ -28,13 +38,25 @@ export function RestaurantListScreen() {
         restaurantCount={restaurants.length}
         onCreate={() => navigate('/restaurants/new')}
       />
-      {!loading && restaurants.length && (
-        <Filters
-          query={query}
-          onlyVisited={onlyVisited}
-          onQueryChange={({ value }) => setQuery(value)}
-          onVisitedChange={({ checked }) => setOnlyVisited(checked)}
-        />
+      {!loading && restaurants.length > 0 && (
+        <>
+          <FilterButton open={filtersOpen} onClick={() => setFiltersOpen((current) => !current)} />
+          {filtersOpen && (
+            <Filters
+              query={query}
+              locality={locality}
+              price={price}
+              types={types}
+              availableTypes={availableTypes}
+              onlyVisited={onlyVisited}
+              onQueryChange={({ value }) => setQuery(value)}
+              onLocalityChange={({ value }) => setLocality(value)}
+              onPriceChange={({ value }) => setPrice(value as typeof price)}
+              onTypesChange={({ value }) => setTypes(value)}
+              onVisitedChange={({ checked }) => setOnlyVisited(checked)}
+            />
+          )}
+        </>
       )}
       {error && <p style={styles.error}>{error}</p>}
       <RestaurantListContent

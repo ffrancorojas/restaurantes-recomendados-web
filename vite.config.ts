@@ -23,7 +23,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'icon.png'],
       manifest: {
         name: 'Restaurantes recomendados',
         short_name: 'Restaurantes',
@@ -33,7 +33,7 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
+          { src: 'icon.png', sizes: '1024x1024', type: 'image/png', purpose: 'any maskable' },
         ],
       },
     }),

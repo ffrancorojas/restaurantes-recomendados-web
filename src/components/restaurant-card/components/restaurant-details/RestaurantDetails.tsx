@@ -1,11 +1,21 @@
-import { getPriceLabel } from '../../restaurantCard.tools';
 import { styles } from './restaurantDetails.styles';
 import type { RestaurantDetailsProps } from './restaurantDetails.types';
-export function RestaurantDetails({ dishes, price }: RestaurantDetailsProps) {
-  const priceLabel = getPriceLabel({ price });
+export function RestaurantDetails({ recommendedBy, dishes, notes }: RestaurantDetailsProps) {
   return (
-    <p style={styles.details}>
-      {dishes || 'Sin platos indicados'} {priceLabel && `· ${priceLabel}`}
-    </p>
+    <div style={styles.details}>
+      {recommendedBy && (
+        <p style={styles.row}>
+          <b>Recomendado por</b>: {recommendedBy}
+        </p>
+      )}
+      <p style={styles.row}>
+        <b>Platos recomendados</b>: {dishes || 'Sin indicar'}
+      </p>
+      {notes && (
+        <p style={styles.row}>
+          <b>Observaciones</b>: {notes}
+        </p>
+      )}
+    </div>
   );
 }

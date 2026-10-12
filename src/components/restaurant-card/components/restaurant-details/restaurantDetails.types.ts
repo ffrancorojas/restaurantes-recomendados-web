@@ -1,2 +1,1 @@
-import type { PriceRange } from '@contracts';
-export type RestaurantDetailsProps = { dishes: string; price: PriceRange };
+export type RestaurantDetailsProps = { recommendedBy: string; dishes: string; notes: string };

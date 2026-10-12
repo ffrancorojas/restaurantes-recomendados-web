@@ -1,20 +1,22 @@
-import { styles } from './selectField.styles';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { muiStyles, styles } from './selectField.styles';
 import type { SelectFieldProps } from './selectField.types';
 export function SelectField({ label, value, options, onChange }: SelectFieldProps) {
   return (
-    <label style={styles.field}>
-      {label}
-      <select
-        style={styles.select}
+    <FormControl fullWidth size="small" sx={muiStyles}>
+      <InputLabel>{label}</InputLabel>
+      <Select
+        label={label}
         value={value}
         onChange={(event) => onChange({ value: event.target.value })}
+        sx={styles.select}
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <MenuItem key={option.value} value={option.value}>
             {option.label}
-          </option>
+          </MenuItem>
         ))}
-      </select>
-    </label>
+      </Select>
+    </FormControl>
   );
 }

@@ -1,26 +1,23 @@
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { RESTAURANT_TYPES } from '@assets/constants';
-import { styles } from './typeSelector.styles';
+import { muiStyles } from './typeSelector.styles';
 import type { TypeSelectorProps } from './typeSelector.types';
 
 export function TypeSelector({ value, onChange }: TypeSelectorProps) {
   return (
-    <div style={styles.container}>
+    <ToggleButtonGroup
+      value={value}
+      onChange={(_, nextValue: string[]) =>
+        onChange({ value: nextValue as TypeSelectorProps['value'] })
+      }
+      sx={muiStyles.group}
+      aria-label="Tipos de cocina"
+    >
       {RESTAURANT_TYPES.map((type) => (
-        <button
-          type="button"
-          style={{ ...styles.button, ...(value.includes(type) ? styles.selected : {}) }}
-          key={type}
-          onClick={() =>
-            onChange({
-              value: value.includes(type)
-                ? value.filter((item) => item !== type)
-                : [...value, type],
-            })
-          }
-        >
+        <ToggleButton key={type} value={type} sx={muiStyles.button}>
           {type}
-        </button>
+        </ToggleButton>
       ))}
-    </div>
+    </ToggleButtonGroup>
   );
 }
