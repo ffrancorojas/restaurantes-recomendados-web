@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { api } from '@api';
+import { restaurantService } from '@services';
 import { getErrorMessage } from '@app/app.tools';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import type { SaveRestaurantFormParams } from '@components/restaurant-form';
@@ -15,7 +15,7 @@ export function useRestaurantEditScreen() {
   const [error, setError] = useState('');
 
   const getRestaurant = async (): Promise<void> => {
-    api
+    restaurantService
       .getById({ token: session.accessToken, id: restaurantId! })
       .then(setRestaurant)
       .catch((cause) =>
@@ -29,7 +29,7 @@ export function useRestaurantEditScreen() {
   }, [restaurantId, session.accessToken]);
 
   const updateRestaurant = async ({ data }: SaveRestaurantFormParams): Promise<void> => {
-    return api
+    return restaurantService
       .update({ token: session.accessToken, id: restaurantId!, data })
       .then(() => navigate('/restaurants'))
       .catch((cause) =>

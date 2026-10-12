@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { api } from '@api';
+import { authService } from '@services';
 
 const config = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,5 +14,5 @@ const config = {
 const auth = getAuth(initializeApp(config));
 export async function loginWithGoogle() {
   const result = await signInWithPopup(auth, new GoogleAuthProvider());
-  return api.exchangeGoogleToken({ idToken: await result.user.getIdToken(true) });
+  return authService.exchangeGoogleToken({ idToken: await result.user.getIdToken(true) });
 }

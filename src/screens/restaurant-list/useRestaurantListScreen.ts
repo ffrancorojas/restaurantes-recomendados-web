@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { api } from '@api';
+import { restaurantService } from '@services';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { getErrorMessage } from '@app/app.tools';
 import type { Restaurant } from '@contracts';
@@ -13,8 +13,8 @@ export function useRestaurantListScreen() {
   const [onlyVisited, setOnlyVisited] = useState(false);
   useEffect(() => {
     setLoading(true);
-    api
-      .restaurants({ token: session.accessToken })
+    restaurantService
+      .list({ token: session.accessToken })
       .then((page) => setRestaurants(page.items))
       .catch((cause) =>
         setError(getErrorMessage({ cause, fallback: 'No se pudieron cargar tus restaurantes.' })),
@@ -27,7 +27,7 @@ export function useRestaurantListScreen() {
   );
   const removeRestaurant = async (id: string) => {
     if (!window.confirm('¿Quieres eliminar esta entrada?')) return;
-    await api.remove({ token: session.accessToken, id });
+    await restaurantService.remove({ token: session.accessToken, id });
     setRestaurants((current) => current.filter((item) => item.id !== id));
   };
   return {

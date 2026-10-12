@@ -1,16 +1,16 @@
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { getErrorMessage } from '@app/app.tools';
-import { api } from '@api';
+import { restaurantService } from '@services';
 import type { SaveRestaurantFormParams } from '@components/restaurant-form';
 import { initialRestaurantForm } from '@components/restaurant-form/restaurantForm.tools';
 import { decodeRestaurantShare } from '@tools';
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import type { CreateRestaurantParams } from '@api.types';
+import type { CreateRestaurantParams } from '@services';
 import type { Restaurant } from '@contracts';
 
 async function createRestaurant({ token, data }: CreateRestaurantParams): Promise<Restaurant> {
-  return api.create({ token, data });
+  return restaurantService.create({ token, data });
 }
 
 export function useRestaurantCreateScreen() {
