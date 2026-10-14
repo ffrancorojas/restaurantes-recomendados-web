@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
 
 export const styles: Record<string, CSSProperties> = {
-  button: { marginBottom: 14 },
+  button: { width: 52, minWidth: 52, padding: '14px', flexShrink: 0 },
 };

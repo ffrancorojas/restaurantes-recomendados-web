@@ -39,6 +39,6 @@ export const styles: Record<string, CSSProperties> = {
     width: '100%',
     maxWidth: 360,
   },
-  actionButton: { width: '100%', justifyContent: 'space-between' },
+  actionButton: { width: '100%', justifyContent: 'center' },
   footer: { display: 'flex', justifyContent: 'center', paddingTop: 24 },
 };

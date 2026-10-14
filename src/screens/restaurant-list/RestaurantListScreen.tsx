@@ -1,6 +1,5 @@
 import {
   Filters,
-  FilterButton,
   RestaurantListContent,
   RestaurantListHeader,
 } from '@screens/restaurant-list/components';
@@ -37,10 +36,12 @@ export function RestaurantListScreen() {
       <RestaurantListHeader
         onBack={() => navigate('/')}
         onCreate={() => navigate('/restaurants/new')}
+        showFilters={!loading && restaurants.length > 0}
+        filtersOpen={filtersOpen}
+        onToggleFilters={() => setFiltersOpen((current) => !current)}
       />
       {!loading && restaurants.length > 0 && (
         <>
-          <FilterButton open={filtersOpen} onClick={() => setFiltersOpen((current) => !current)} />
           {filtersOpen && (
             <Filters
               query={query}
