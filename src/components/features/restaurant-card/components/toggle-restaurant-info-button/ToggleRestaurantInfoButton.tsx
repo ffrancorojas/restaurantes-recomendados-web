@@ -8,6 +8,7 @@ export function ToggleRestaurantInfoButton({
   return (
     <Button.Icon
       iconName={expanded ? 'chevronUp' : 'chevronDown'}
+      iconSize={18}
       name={expanded ? 'Ocultar información' : 'Mostrar información'}
       aria-expanded={expanded}
       onClick={(event) => {

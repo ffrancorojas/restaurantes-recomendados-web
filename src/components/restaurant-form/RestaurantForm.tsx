@@ -33,7 +33,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
       <form className="background-transparent margin-none padding-form padding-form-mobile width-full restaurant-form-pageForm" onSubmit={submit}>
         {error && <p className="background-danger-subtle text-danger radius-md font-size-sm restaurant-form-error">{error}</p>}
         <RestaurantFormHeader isEditing={isEditing} onBack={requestCancel} />
-        <div className="flex-column gap-medium">
+        <div className="flex-column gap-large">
           <TextFieldForm
             control={control}
             name="name"

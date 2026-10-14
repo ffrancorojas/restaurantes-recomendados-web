@@ -13,7 +13,7 @@ export function InstallPrompt() {
       <Button.Text
         leftText="Instalar"
         variant="secondary"
-        className="text-surface radius-sm font-semibold padding-compact install-prompt-install"
+        className="text-on-accent radius-sm font-semibold padding-compact install-prompt-install"
         onClick={install}
       />
       <Button.Icon iconName="close" name="Cerrar" onClick={hide} />

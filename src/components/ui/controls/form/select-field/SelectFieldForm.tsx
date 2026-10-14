@@ -27,7 +27,7 @@ export function SelectFieldForm<
           size="small"
           className="width-full"
         >
-          <InputLabel>{props.label}</InputLabel>
+          <InputLabel className="select-field-label text-muted">{props.label}</InputLabel>
           <SelectField
             {...props}
             value={field.value}

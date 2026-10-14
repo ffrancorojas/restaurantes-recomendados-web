@@ -51,19 +51,23 @@
 
 .text-muted,
 .select-field-root .MuiSelect-icon,
+.select-field-label,
 .text-field-root .MuiInputLabel-root,
-.text-area-root .MuiInputLabel-root,
+.text-area-root .MuiInputLabel-root {
+  color: var(--color-muted) !important;
+}
+
 .text-field-root .MuiOutlinedInput-root input::placeholder,
 .text-area-root .MuiOutlinedInput-root textarea::placeholder {
-  color: var(--color-muted) !important;
+  color: var(--color-placeholder) !important;
 }
 
 .text-map {
   color: var(--color-map) !important;
 }
 
-.text-surface {
-  color: var(--color-surface) !important;
+.text-on-accent {
+  color: var(--color-on-accent) !important;
 }
 
 .text-primary {
@@ -71,6 +75,7 @@
 }
 
 .text-secondary,
+.select-field-label.Mui-focused,
 .text-field-root .MuiInputLabel-root.Mui-focused,
 .text-area-root .MuiInputLabel-root.Mui-focused,
 .MuiCheckbox-root.Mui-checked,
@@ -83,7 +88,8 @@
   color: var(--color-danger) !important;
 }
 .text-field-root .MuiInputLabel-root,
-.text-area-root .MuiInputLabel-root {
+.text-area-root .MuiInputLabel-root,
+.select-field-label {
   font-weight: 600;
 }
 .font-bold {
