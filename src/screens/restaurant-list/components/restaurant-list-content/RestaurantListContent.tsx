@@ -1,5 +1,5 @@
-import { RestaurantCard } from '@components/restaurant-card';
-import { Spinner } from '@components/spinner';
+import { RestaurantCard } from '@components/features/restaurant-card';
+import { Spinner } from '@components/ui/feedback/spinner';
 import { styles } from './restaurantListContent.styles';
 import type { RestaurantListContentProps } from './restaurantListContent.types';
 

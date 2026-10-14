@@ -1,5 +1,5 @@
 import { RestaurantForm } from '@components/restaurant-form';
-import { Spinner } from '@components/spinner';
+import { Spinner } from '@components/ui/feedback/spinner';
 import { useRestaurantEditScreen } from './useRestaurantEditScreen';
 
 export function RestaurantEditScreen() {

@@ -1,4 +1,4 @@
-import { Switch } from '@components/switch';
+import { Switch } from '@components/ui/controls/switch';
 import { styles } from './visitedFilter.styles';
 import type { VisitedFilterProps } from './visitedFilter.types';
 export function VisitedFilter({ value, onChange }: VisitedFilterProps) {

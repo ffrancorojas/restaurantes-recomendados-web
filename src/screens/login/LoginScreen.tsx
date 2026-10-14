@@ -1,5 +1,5 @@
 import { styles } from '@screens/login/loginScreen.styles';
-import { Icon } from '@components/icons';
+import { Icon } from '@components/ui/icons';
 import type { LoginScreenProps } from '@screens/login/loginScreen.types';
 export function LoginScreen({ error, loading, onLogin }: LoginScreenProps) {
   return (

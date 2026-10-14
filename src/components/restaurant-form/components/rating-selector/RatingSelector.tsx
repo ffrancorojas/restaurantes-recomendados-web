@@ -1,5 +1,5 @@
 import { RESTAURANT_RATING_OPTIONS } from '@assets/constants';
-import { Icon, RATING_ICON_NAMES } from '@components/icons';
+import { Icon, RATING_ICON_NAMES } from '@components/ui/icons';
 import { styles } from './ratingSelector.styles';
 import type { RatingSelectorProps } from './ratingSelector.types';
 export function RatingSelector({ value, onChange }: RatingSelectorProps) {

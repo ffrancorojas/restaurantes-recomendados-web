@@ -1,8 +1,8 @@
 import { PRICE_RANGES } from '@contracts';
-import { Button } from '@components/buttons';
+import { Button } from '@components/ui/actions/buttons';
 import { RatingSelector } from '@components/restaurant-form/components';
-import { Spinner } from '@components/spinner';
-import { TextArea } from '@components/text-area';
+import { Spinner } from '@components/ui/feedback/spinner';
+import { TextArea } from '@components/ui/controls/text-area';
 import { getErrorMessage } from '@app/app.tools';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { restaurantService } from '@services';
