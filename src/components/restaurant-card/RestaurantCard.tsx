@@ -26,9 +26,15 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
     >
       <div style={styles.top}>
         <h2 style={styles.title}>{restaurant.name}</h2>
+        <CardActions
+          onEdit={onEdit}
+          onRemove={onRemove}
+          onShare={onShare}
+          showRemove={false}
+          showShare={false}
+        />
         <div style={{ display: 'flex', gap: 8 }}>
           <RestaurantLinkActions name={restaurant.name} locality={restaurant.locality} compact />
-          <CardActions onEdit={onEdit} onRemove={onRemove} onShare={onShare} />
           <ToggleRestaurantInfoButton
             expanded={expanded}
             onToggle={() => setExpanded((current) => !current)}
@@ -37,10 +43,12 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
       </div>
       <div style={styles.summaryRow}>
         <div style={styles.metadata}>
-          <RestaurantLocation locality={restaurant.locality} />
+          <RestaurantLocation locality={restaurant.locality} collapsed={!expanded} />
           <RestaurantTags types={restaurant.type} />
           {restaurant.price && (
-            <span style={styles.price}>{getPriceLabel({ price: restaurant.price })}</span>
+            <span style={{ ...styles.price, ...(expanded ? {} : styles.collapsedText) }}>
+              {getPriceLabel({ price: restaurant.price })}
+            </span>
           )}
         </div>
         <RestaurantVisitStatus restaurant={restaurant} onVisit={onVisit} />
@@ -53,6 +61,14 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
             notes={restaurant.notes}
           />
           <RestaurantOpinion opinion={restaurant.opinion} />
+          <div style={styles.expandedActions}>
+            <CardActions
+              onEdit={onEdit}
+              onRemove={onRemove}
+              onShare={onShare}
+              showEdit={false}
+            />
+          </div>
         </>
       )}
     </article>

@@ -30,4 +30,6 @@ export const styles: Record<string, CSSProperties> = {
     gap: 6,
   },
   price: { color: 'var(--color-text)', fontSize: 'var(--font-size-xs)', fontWeight: 700 },
+  collapsedText: { minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
+  expandedActions: { display: 'flex', justifyContent: 'flex-end', marginTop: 8 },
 };

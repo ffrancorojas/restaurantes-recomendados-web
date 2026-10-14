@@ -5,7 +5,7 @@ export function RestaurantCreateScreen() {
   const { error, initial, onSave } = useRestaurantCreateScreen();
 
   return (
-    <main data-responsive-screen>
+    <main data-responsive-screen data-responsive-form-screen>
       <RestaurantForm error={error} initial={initial} onSave={onSave} />
     </main>
   );
