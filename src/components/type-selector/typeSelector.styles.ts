@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { SxProps, Theme } from '@mui/material';
 
 export const styles: Record<string, CSSProperties> = {
-  container: { display: 'flex', flexWrap: 'wrap', gap: 8 },
+  container: { display: 'flex', flexWrap: 'wrap', gap: '0.5rem' },
   selected: {
     color: 'var(--color-secondary)',
     background: 'var(--color-soft-green)',
@@ -14,14 +14,14 @@ export const muiStyles: Record<'group' | 'button', SxProps<Theme>> = {
   group: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: 1,
+    gap: '0.5rem',
     '& .MuiToggleButtonGroup-grouped': {
       border: '1px solid var(--color-border)',
       borderRadius: 'var(--radius-pill)',
     },
   },
   button: {
-    padding: '8px 11px',
+    padding: '0.5rem 0.6875rem',
     color: 'var(--color-muted)',
     backgroundColor: 'var(--color-surface)',
     borderColor: 'var(--color-border)',

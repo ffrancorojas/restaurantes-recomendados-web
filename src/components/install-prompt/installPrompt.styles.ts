@@ -2,13 +2,13 @@ import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   container: {
     position: 'fixed',
-    right: 24,
-    bottom: 24,
+    right: '1.5rem',
+    bottom: '1.5rem',
     zIndex: 4,
     display: 'flex',
     alignItems: 'center',
-    gap: 12,
-    padding: 14,
+    gap: '0.75rem',
+    padding: '0.875rem',
     background: 'var(--color-surface)',
     border: '1px solid var(--color-border)',
     borderRadius: 'var(--radius-button)',
@@ -16,7 +16,7 @@ export const styles: Record<string, CSSProperties> = {
   },
   copy: { display: 'flex', flexDirection: 'column' },
   install: {
-    padding: '9px 14px',
+    padding: '0.5625rem 0.875rem',
     color: 'var(--color-surface)',
     background: 'var(--color-secondary)',
     borderRadius: 'var(--radius-sm)',

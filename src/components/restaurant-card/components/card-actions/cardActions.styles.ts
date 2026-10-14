@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
-  container: { display: 'flex', gap: 8 },
-  compactEdit: { width: 28, height: 32, padding: 0 },
+  container: { display: 'flex', gap: '0.5rem' },
+  compactEdit: { width: '1.75rem', height: '2rem', padding: 0 },
 };
