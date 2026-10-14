@@ -1,14 +1,15 @@
-import { Controller } from 'react-hook-form';
 import { PRICE_RANGES } from '@contracts';
 import { Button } from '@components/ui/buttons';
 import { ConfirmDialog } from '@components/ui/feedback/confirm-dialog';
-import { RatingSelector, RestaurantFormHeader } from '@components/restaurant-form/components';
+import { RestaurantFormHeader } from '@components/restaurant-form/components';
 import { RestaurantLinkActions } from '@components/features/restaurant-link-actions';
 import {
   SelectFieldForm,
+  RatingSelectorForm,
   TextAreaForm,
   TextFieldForm,
   TypeSelectorForm,
+  VisitStatusButtonForm,
 } from '@components/ui/controls/form';
 import { useRestaurantForm } from '@components/restaurant-form/useRestaurantForm';
 import { styles } from './restaurantForm.styles';
@@ -62,31 +63,11 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
           Tipos de cocina
           <TypeSelectorForm control={control} name="type" />
         </label>
-        <Controller
-          name="visited"
-          control={control}
-          render={({ field }) => (
-            <Button.Text
-              leftText={field.value ? 'Quitar visita' : 'Registrar visita'}
-              variant="secondary"
-              type="button"
-              onClick={() => field.onChange(!field.value)}
-            />
-          )}
-        />
+        <VisitStatusButtonForm control={control} name="visited" />
         {data.visited && (
           <>
             <TextAreaForm control={control} name="opinion" label="Mi opinión" />
-            <Controller
-              name="rating"
-              control={control}
-              render={({ field }) => (
-                <RatingSelector
-                  value={field.value}
-                  onChange={({ value }) => field.onChange(value)}
-                />
-              )}
-            />
+            <RatingSelectorForm control={control} name="rating" />
           </>
         )}
         <div style={styles.actions}>
