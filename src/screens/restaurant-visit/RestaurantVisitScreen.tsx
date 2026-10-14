@@ -1,15 +1,15 @@
 import { PRICE_RANGES } from '@contracts';
-import { Button } from '@components/buttons';
+import { Button } from '@components/ui/buttons';
 import { RatingSelector } from '@components/restaurant-form/components';
-import { Spinner } from '@components/spinner';
-import { TextArea } from '@components/text-area';
+import { Spinner } from '@components/ui/feedback/spinner';
+import { TextArea } from '@components/ui/controls/standalone/text-area';
 import { getErrorMessage } from '@app/app.tools';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { restaurantService } from '@services';
 import type { Restaurant, RestaurantRating } from '@contracts';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { styles } from './restaurantVisitScreen.styles';
+import './restaurantVisitScreen.styles.scss';
 
 export function RestaurantVisitScreen() {
   const { restaurantId } = useParams<{ restaurantId: string }>();
@@ -33,7 +33,8 @@ export function RestaurantVisitScreen() {
         setRating(item.rating);
       })
       .catch((cause) => {
-        if (active) setError(getErrorMessage({ cause, fallback: 'No se pudo cargar el restaurante.' }));
+        if (active)
+          setError(getErrorMessage({ cause, fallback: 'No se pudo cargar el restaurante.' }));
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -64,34 +65,73 @@ export function RestaurantVisitScreen() {
     }
   };
 
-  if (loading) return <main data-responsive-screen style={styles.page}><Spinner label="Cargando restaurante…" /></main>;
-  if (!restaurant) return <main data-responsive-screen style={styles.page}>{error || 'Restaurante no encontrado.'}</main>;
+  if (loading)
+    return (
+      <main className="background-app padding-none-mobile restaurant-visit-screen-page">
+        <Spinner label="Cargando restaurante…" />
+      </main>
+    );
+  if (!restaurant)
+    return <main className="background-app padding-none-mobile restaurant-visit-screen-page">{error || 'Restaurante no encontrado.'}</main>;
 
-  const price = PRICE_RANGES.find((range) => range.value === restaurant.price)?.label ?? 'Sin indicar';
+  const price =
+    PRICE_RANGES.find((range) => range.value === restaurant.price)?.label ?? 'Sin indicar';
 
   return (
-    <main data-responsive-screen data-responsive-form style={styles.page}>
-      <form style={styles.form} onSubmit={(event) => { event.preventDefault(); void saveVisit(); }}>
-        <header style={styles.header}>
+    <main className="background-app padding-none-mobile restaurant-visit-screen-page">
+      <form
+        className="background-surface radius-card border-default margin-auto padding-form padding-form-mobile width-full restaurant-visit-screen-form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          void saveVisit();
+        }}
+      >
+        <header className="flex align-items-flex-start justify-content-space-between gap-large margin-bottom-section">
           <div>
-            <p style={styles.eyebrow}>REGISTRAR EXPERIENCIA</p>
-            <h1 style={styles.title}>Valorar visita</h1>
+            <p className="margin-bottom-small text-muted font-extrabold font-size-xs restaurant-visit-screen-eyebrow">REGISTRAR EXPERIENCIA</p>
+            <h1 className="margin-none font-black font-size-xl restaurant-visit-screen-title">Valorar visita</h1>
           </div>
-          <Button.Text leftText="Volver" iconName="back" variant="ghost" type="button" onClick={() => navigate('/restaurants')} />
+          <Button.Text
+            leftText="Volver"
+            iconName="back"
+            variant="ghost"
+            type="button"
+            onClick={() => navigate('/restaurants')}
+          />
         </header>
-        <section style={styles.summary} aria-label="Datos del restaurante">
-          <h2 style={styles.name}>{restaurant.name}</h2>
-          <p style={styles.row}><b>Localidad</b>: {restaurant.locality || 'Sin indicar'}</p>
-          <p style={styles.row}><b>Precio</b>: {price}</p>
-          <p style={styles.row}><b>Platos recomendados</b>: {restaurant.dishes || 'Sin indicar'}</p>
-          <p style={styles.row}><b>Tipos de cocina</b>: {restaurant.type.join(', ') || 'Sin indicar'}</p>
-          {restaurant.recommendedBy && <p style={styles.row}><b>Recomendado por</b>: {restaurant.recommendedBy}</p>}
-          {restaurant.notes && <p style={styles.row}><b>Observaciones</b>: {restaurant.notes}</p>}
+        <section className="background-soft-sand radius-md margin-bottom-large restaurant-visit-screen-summary" aria-label="Datos del restaurante">
+          <h2 className="font-size-lg restaurant-visit-screen-name">{restaurant.name}</h2>
+          <p className="text-muted font-size-sm restaurant-visit-screen-row">
+            <b>Localidad</b>: {restaurant.locality || 'Sin indicar'}
+          </p>
+          <p className="text-muted font-size-sm restaurant-visit-screen-row">
+            <b>Precio</b>: {price}
+          </p>
+          <p className="text-muted font-size-sm restaurant-visit-screen-row">
+            <b>Platos recomendados</b>: {restaurant.dishes || 'Sin indicar'}
+          </p>
+          <p className="text-muted font-size-sm restaurant-visit-screen-row">
+            <b>Tipos de cocina</b>: {restaurant.type.join(', ') || 'Sin indicar'}
+          </p>
+          {restaurant.recommendedBy && (
+            <p className="text-muted font-size-sm restaurant-visit-screen-row">
+              <b>Recomendado por</b>: {restaurant.recommendedBy}
+            </p>
+          )}
+          {restaurant.notes && (
+            <p className="text-muted font-size-sm restaurant-visit-screen-row">
+              <b>Observaciones</b>: {restaurant.notes}
+            </p>
+          )}
         </section>
         <TextArea label="Mi opinión" value={opinion} onChange={({ value }) => setOpinion(value)} />
         <RatingSelector value={rating} onChange={({ value }) => setRating(value)} />
-        {error && <p role="alert" style={styles.error}>{error}</p>}
-        <div style={styles.actions}>
+        {error && (
+          <p role="alert" className="text-danger font-size-sm">
+            {error}
+          </p>
+        )}
+        <div className="flex justify-content-flex-end padding-top-medium">
           <Button.Text leftText="Guardar visita" disabled={!rating || saving} />
         </div>
       </form>

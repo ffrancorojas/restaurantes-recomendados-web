@@ -1,0 +1,19 @@
+.select-field-root {
+  min-height: var(--field-height);
+
+  .MuiSelect-icon {
+    right: 0.875rem;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: var(--color-border);
+  }
+
+  &:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--color-muted);
+  }
+
+  &.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: var(--color-secondary);
+  }
+}

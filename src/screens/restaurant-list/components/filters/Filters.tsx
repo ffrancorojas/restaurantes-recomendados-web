@@ -3,7 +3,7 @@ import { LocalityFilter } from './components/locality-filter';
 import { PriceFilter } from './components/price-filter';
 import { TypesFilter } from './components/types-filter';
 import { VisitedFilter } from './components/visited-filter';
-import { styles } from './filters.styles';
+import './filters.styles.scss';
 import type { FiltersProps } from './filters.types';
 
 export function Filters({
@@ -20,9 +20,9 @@ export function Filters({
   onVisitedChange,
 }: FiltersProps) {
   return (
-    <div data-responsive-toolbar style={styles.container}>
+    <div className="flex-column gap-medium filters-container">
       <SearchFilter value={query} onChange={onQueryChange} />
-      <div style={styles.row}>
+      <div className="flex gap-medium filters-row">
         <LocalityFilter value={locality} onChange={onLocalityChange} />
         <PriceFilter value={price} onChange={onPriceChange} />
       </div>

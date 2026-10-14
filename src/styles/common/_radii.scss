@@ -1,0 +1,23 @@
+.radius-card {
+  border-radius: var(--radius-card);
+}
+
+.radius-button {
+  border-radius: var(--radius-button);
+}
+
+.radius-pill,
+.radius-pill-group .MuiToggleButtonGroup-grouped {
+  border-radius: var(--radius-pill);
+}
+
+.radius-md,
+.select-field-root,
+.text-field-root .MuiOutlinedInput-root,
+.text-area-root .MuiOutlinedInput-root {
+  border-radius: var(--radius-md);
+}
+
+.radius-sm {
+  border-radius: var(--radius-sm);
+}

@@ -1,0 +1,26 @@
+.text-area-root {
+  .MuiOutlinedInput-root {
+    textarea {
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+
+    fieldset {
+      border-color: var(--color-border);
+    }
+
+    &:hover fieldset {
+      border-color: var(--color-muted);
+    }
+
+    &.Mui-focused fieldset {
+      border-color: var(--color-secondary);
+    }
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: var(--color-border);
+  }
+
+}

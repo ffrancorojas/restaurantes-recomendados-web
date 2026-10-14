@@ -1,0 +1,40 @@
+.background-app {
+  background: var(--color-background);
+}
+
+.background-surface {
+  background: var(--color-surface);
+}
+
+.background-transparent {
+  background: transparent;
+}
+
+.background-soft-sand {
+  background: var(--color-soft-sand);
+}
+
+.background-soft-green {
+  background: var(--color-soft-green);
+}
+
+.background-primary {
+  background: var(--color-primary);
+}
+
+.background-danger-subtle {
+  background: color-mix(in srgb, var(--color-danger) 12%, var(--color-surface));
+}
+
+.background-color-surface,
+.background-color-surface .MuiOutlinedInput-root,
+.MuiMenu-paper,
+.MuiPopover-paper {
+  background-color: var(--color-surface) !important;
+}
+
+.MuiMenuItem-root.Mui-selected,
+.MuiMenuItem-root:hover,
+.background-color-soft-green.Mui-selected {
+  background-color: var(--color-soft-green) !important;
+}

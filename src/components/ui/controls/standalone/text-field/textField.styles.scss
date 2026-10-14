@@ -1,0 +1,31 @@
+.text-field-root {
+  .MuiOutlinedInput-root {
+    min-height: var(--field-height);
+
+    input {
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+
+    fieldset {
+      border-color: var(--color-border);
+    }
+
+    &:hover fieldset {
+      border-color: var(--color-muted);
+    }
+
+    &.Mui-focused fieldset {
+      border-color: var(--color-secondary);
+    }
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: var(--color-border);
+  }
+
+  .MuiFormHelperText-root {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,15 @@
+$radius-sm: 0.625rem;
+$radius-md: 0.625rem;
+$radius-button: 0.75rem;
+$radius-card: 1.125rem;
+$radius-modal: 1.25rem;
+$radius-pill: 62.5rem;
+
+:root {
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-button: #{$radius-button};
+  --radius-card: #{$radius-card};
+  --radius-modal: #{$radius-modal};
+  --radius-pill: #{$radius-pill};
+}

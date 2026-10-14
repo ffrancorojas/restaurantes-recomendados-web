@@ -1,6 +1,6 @@
-import { Button } from '@components/buttons';
+import { Button } from '@components/ui/buttons';
 import { FilterButton } from '@screens/restaurant-list/components/filter-button';
-import { styles } from './restaurantListHeader.styles';
+import './restaurantListHeader.styles.scss';
 import type { RestaurantListHeaderProps } from './restaurantListHeader.types';
 
 export function RestaurantListHeader({
@@ -11,19 +11,22 @@ export function RestaurantListHeader({
   onToggleFilters,
 }: RestaurantListHeaderProps) {
   return (
-    <section data-responsive-hero style={styles.hero}>
-      <div style={styles.headingRow}>
-        <Button.Text rightText="Volver" iconName="back" variant="ghost" onClick={onBack} />
-        <h1 className="text-title" style={styles.heading}>
-          Mi listado
-        </h1>
+    <section className="flex align-items-center justify-content-space-between restaurant-list-header-hero">
+      <div className="flex align-items-center gap-extra-large">
+        <Button.Text
+          rightText="Volver"
+          iconName="back"
+          variant="ghost"
+          className="margin-left-compact padding-left-none"
+          onClick={onBack}
+        />
+        <h1 className="margin-none text-title font-size-lg">Mi listado</h1>
       </div>
-      <div data-responsive-actions style={styles.actions}>
+      <div className="flex align-items-stretch gap-small margin-left-none min-width-zero restaurant-list-header-actions">
         <Button.Text
           rightText="Nueva entrada"
           iconName="add"
-          data-responsive-new
-          style={styles.createButton}
+          className="min-width-zero font-extrabold font-size-base restaurant-list-header-createButton"
           onClick={onCreate}
         />
         {showFilters && <FilterButton open={filtersOpen} onClick={onToggleFilters} />}

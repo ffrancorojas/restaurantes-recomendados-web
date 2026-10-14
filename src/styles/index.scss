@@ -1,13 +1,21 @@
-@use 'colors';
-@use 'typography';
-@use 'radii';
-@use 'sizes';
-@use 'shadows';
-@use 'spacing';
-@use 'utilities';
+@use 'variables/colors';
+@use 'variables/typography';
+@use 'variables/radii';
+@use 'variables/sizes';
+@use 'variables/shadows';
+@use 'variables/spacing';
+@use 'common/text';
+@use 'common/flex';
+@use 'common/background';
+@use 'common/card';
+@use 'common/sizing';
+@use 'common/borders';
+@use 'common/filter-row';
+@use 'common/align';
+@use 'common/radii' as radii-utils;
+@use 'common/spacing' as spacing-utils;
 
 :root {
-  color: var(--color-text);
   background: var(--color-background);
   font-family: var(--font-family);
   font-size: 100%;
@@ -40,22 +48,8 @@ button:disabled {
 .MuiMenu-paper,
 .MuiPopover-paper {
   color: var(--color-text) !important;
-  background-color: var(--color-surface) !important;
   background-image: none !important;
-  border: 1px solid var(--color-border);
-}
-
-.MuiMenuItem-root {
-  color: var(--color-text);
-}
-
-.MuiMenuItem-root.Mui-selected,
-.MuiMenuItem-root:hover {
-  background-color: var(--color-soft-green) !important;
-}
-
-.MuiDialog-container .MuiPaper-root {
-  color: var(--color-text);
+  border: var(--border-default);
 }
 
 @keyframes spin {
@@ -71,58 +65,5 @@ button:disabled {
 @media (prefers-reduced-motion: reduce) {
   .app-icon-spinner {
     animation-duration: 1.6s;
-  }
-}
-
-@media (max-width: 800px) {
-  [data-responsive-grid] {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-}
-@media (max-width: 560px) {
-  [data-responsive-screen] {
-    padding: 1.75rem 0.75rem 3.5rem !important;
-  }
-  [data-responsive-form-screen] {
-    padding: 0 !important;
-  }
-  [data-responsive-list] {
-    padding-top: 1.75rem !important;
-    padding-right: 1.25rem !important;
-    padding-left: 1.25rem !important;
-  }
-  [data-responsive-hero] {
-    display: block !important;
-  }
-  [data-responsive-actions] {
-    display: flex;
-    width: 100%;
-    margin-top: 1rem;
-    margin-left: 0;
-  }
-  [data-responsive-new] {
-    min-width: 0;
-  }
-  [data-responsive-toolbar] {
-    display: block !important;
-  }
-  [data-responsive-search] {
-    width: 100%;
-    max-width: none;
-    margin-bottom: 0.75rem;
-  }
-  [data-responsive-grid] {
-    grid-template-columns: 1fr !important;
-  }
-  [data-responsive-form] {
-    padding: 0 !important;
-  }
-  [data-responsive-form] form {
-    padding: 1.125rem 0.875rem !important;
-  }
-  [data-responsive-install] {
-    right: 0.875rem !important;
-    bottom: 0.875rem !important;
-    left: 0.875rem !important;
   }
 }
