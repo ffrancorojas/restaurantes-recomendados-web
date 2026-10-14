@@ -1,5 +1,7 @@
 .restaurant-tags-tag {
+  display: inline-flex;
+  align-items: center;
   align-self: flex-start;
-  padding: 0.25rem 0.5rem;
+  padding: 0.1875rem 0.4375rem;
   border-radius: 0.75rem;
 }

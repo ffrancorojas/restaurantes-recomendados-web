@@ -3,6 +3,12 @@
 
   .MuiSelect-icon {
     right: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .MuiSelect-icon.MuiSelect-iconOpen {
+    transform: translateY(-50%) rotate(180deg);
   }
 
   .MuiOutlinedInput-notchedOutline {
