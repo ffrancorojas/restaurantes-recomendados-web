@@ -1,4 +1,4 @@
-import { TextField } from '@components/ui/controls/text-field';
+import { TextField } from '@components/ui/controls/standalone/text-field';
 import { styles } from './searchFilter.styles';
 import type { SearchFilterProps } from './searchFilter.types';
 export function SearchFilter({ value, onChange }: SearchFilterProps) {

@@ -1,4 +1,4 @@
-import { TextField } from '@components/ui/controls/text-field';
+import { TextField } from '@components/ui/controls/standalone/text-field';
 import type { FiltersValueChangeParams } from '../../filters.types';
 
 type LocalityFilterProps = { value: string; onChange: (params: FiltersValueChangeParams) => void };

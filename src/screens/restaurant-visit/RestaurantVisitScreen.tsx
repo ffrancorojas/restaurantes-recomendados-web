@@ -2,7 +2,7 @@ import { PRICE_RANGES } from '@contracts';
 import { Button } from '@components/ui/buttons';
 import { RatingSelector } from '@components/restaurant-form/components';
 import { Spinner } from '@components/ui/feedback/spinner';
-import { TextArea } from '@components/ui/controls/text-area';
+import { TextArea } from '@components/ui/controls/standalone/text-area';
 import { getErrorMessage } from '@app/app.tools';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { restaurantService } from '@services';
@@ -33,7 +33,8 @@ export function RestaurantVisitScreen() {
         setRating(item.rating);
       })
       .catch((cause) => {
-        if (active) setError(getErrorMessage({ cause, fallback: 'No se pudo cargar el restaurante.' }));
+        if (active)
+          setError(getErrorMessage({ cause, fallback: 'No se pudo cargar el restaurante.' }));
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -64,33 +65,76 @@ export function RestaurantVisitScreen() {
     }
   };
 
-  if (loading) return <main data-responsive-screen style={styles.page}><Spinner label="Cargando restaurante…" /></main>;
-  if (!restaurant) return <main data-responsive-screen style={styles.page}>{error || 'Restaurante no encontrado.'}</main>;
+  if (loading)
+    return (
+      <main data-responsive-screen style={styles.page}>
+        <Spinner label="Cargando restaurante…" />
+      </main>
+    );
+  if (!restaurant)
+    return (
+      <main data-responsive-screen style={styles.page}>
+        {error || 'Restaurante no encontrado.'}
+      </main>
+    );
 
-  const price = PRICE_RANGES.find((range) => range.value === restaurant.price)?.label ?? 'Sin indicar';
+  const price =
+    PRICE_RANGES.find((range) => range.value === restaurant.price)?.label ?? 'Sin indicar';
 
   return (
     <main data-responsive-screen data-responsive-form style={styles.page}>
-      <form style={styles.form} onSubmit={(event) => { event.preventDefault(); void saveVisit(); }}>
+      <form
+        style={styles.form}
+        onSubmit={(event) => {
+          event.preventDefault();
+          void saveVisit();
+        }}
+      >
         <header style={styles.header}>
           <div>
             <p style={styles.eyebrow}>REGISTRAR EXPERIENCIA</p>
             <h1 style={styles.title}>Valorar visita</h1>
           </div>
-          <Button.Text leftText="Volver" iconName="back" variant="ghost" type="button" onClick={() => navigate('/restaurants')} />
+          <Button.Text
+            leftText="Volver"
+            iconName="back"
+            variant="ghost"
+            type="button"
+            onClick={() => navigate('/restaurants')}
+          />
         </header>
         <section style={styles.summary} aria-label="Datos del restaurante">
           <h2 style={styles.name}>{restaurant.name}</h2>
-          <p style={styles.row}><b>Localidad</b>: {restaurant.locality || 'Sin indicar'}</p>
-          <p style={styles.row}><b>Precio</b>: {price}</p>
-          <p style={styles.row}><b>Platos recomendados</b>: {restaurant.dishes || 'Sin indicar'}</p>
-          <p style={styles.row}><b>Tipos de cocina</b>: {restaurant.type.join(', ') || 'Sin indicar'}</p>
-          {restaurant.recommendedBy && <p style={styles.row}><b>Recomendado por</b>: {restaurant.recommendedBy}</p>}
-          {restaurant.notes && <p style={styles.row}><b>Observaciones</b>: {restaurant.notes}</p>}
+          <p style={styles.row}>
+            <b>Localidad</b>: {restaurant.locality || 'Sin indicar'}
+          </p>
+          <p style={styles.row}>
+            <b>Precio</b>: {price}
+          </p>
+          <p style={styles.row}>
+            <b>Platos recomendados</b>: {restaurant.dishes || 'Sin indicar'}
+          </p>
+          <p style={styles.row}>
+            <b>Tipos de cocina</b>: {restaurant.type.join(', ') || 'Sin indicar'}
+          </p>
+          {restaurant.recommendedBy && (
+            <p style={styles.row}>
+              <b>Recomendado por</b>: {restaurant.recommendedBy}
+            </p>
+          )}
+          {restaurant.notes && (
+            <p style={styles.row}>
+              <b>Observaciones</b>: {restaurant.notes}
+            </p>
+          )}
         </section>
         <TextArea label="Mi opinión" value={opinion} onChange={({ value }) => setOpinion(value)} />
         <RatingSelector value={rating} onChange={({ value }) => setRating(value)} />
-        {error && <p role="alert" style={styles.error}>{error}</p>}
+        {error && (
+          <p role="alert" style={styles.error}>
+            {error}
+          </p>
+        )}
         <div style={styles.actions}>
           <Button.Text leftText="Guardar visita" disabled={!rating || saving} />
         </div>

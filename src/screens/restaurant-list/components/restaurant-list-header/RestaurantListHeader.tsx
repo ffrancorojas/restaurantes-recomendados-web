@@ -1,4 +1,4 @@
-import { Button } from '@components/buttons';
+import { Button } from '@components/ui/buttons';
 import { FilterButton } from '@screens/restaurant-list/components/filter-button';
 import { styles } from './restaurantListHeader.styles';
 import type { RestaurantListHeaderProps } from './restaurantListHeader.types';

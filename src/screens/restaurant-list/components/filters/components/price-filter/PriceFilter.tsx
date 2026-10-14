@@ -1,5 +1,5 @@
 import { PRICE_RANGES, type PriceRange } from '@contracts';
-import { SelectField } from '@components/ui/controls/select-field';
+import { SelectField } from '@components/ui/controls/standalone/select-field';
 import type { FiltersValueChangeParams } from '../../filters.types';
 
 type PriceFilterProps = { value: PriceRange; onChange: (params: FiltersValueChangeParams) => void };

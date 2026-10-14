@@ -1,4 +1,4 @@
-import { Button } from '@components/buttons';
+import { Button } from '@components/ui/buttons';
 import { styles } from './restaurantFormHeader.styles';
 import type { RestaurantFormHeaderProps } from './restaurantFormHeader.types';
 
