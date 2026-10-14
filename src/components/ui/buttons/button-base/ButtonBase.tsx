@@ -1,4 +1,5 @@
-import { styles } from '../button.styles';
+import classNames from 'classnames';
+import '../button.styles.scss';
 import type { ButtonBaseProps } from './buttonBase.types';
 
 export function ButtonBase({
@@ -6,7 +7,7 @@ export function ButtonBase({
   leftText,
   name,
   rightText,
-  style,
+  className,
   variant = 'ghost',
   ...buttonProps
 }: ButtonBaseProps) {
@@ -16,7 +17,26 @@ export function ButtonBase({
       name={name}
       aria-label={buttonProps['aria-label'] ?? name}
       title={buttonProps.title ?? name}
-      style={{ ...styles.base, ...styles[variant], ...style }}
+      className={classNames(
+        'inline-flex',
+        'align-items-center',
+        'justify-content-center',
+        'radius-button',
+        'font-bold',
+        'gap-small',
+        {
+          'background-primary': variant === 'primary',
+          'background-soft-sand': variant === 'secondary',
+          'background-transparent': variant === 'ghost',
+        },
+        {
+          'text-surface': variant === 'primary' || variant === 'danger',
+          'text-muted': variant === 'secondary' || variant === 'ghost',
+        },
+        { 'padding-button': variant !== 'ghost', 'padding-button-compact': variant === 'ghost' },
+        { 'button-primary': variant === 'primary', 'button-danger': variant === 'danger' },
+        className,
+      )}
     >
       {leftText && <span>{leftText}</span>}
       {icon}

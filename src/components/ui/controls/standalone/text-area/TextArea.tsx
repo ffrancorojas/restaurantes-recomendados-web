@@ -1,9 +1,17 @@
+import classNames from 'classnames';
 import { TextField as MuiTextField } from '@mui/material';
 import type { TextFieldProps as MuiTextFieldProps } from '@mui/material';
-import { muiStyles } from './textArea.styles';
+import './textArea.styles.scss';
 import type { TextAreaProps } from './textArea.types';
 
-export function TextArea({ error, label, value, onChange, ...textareaProps }: TextAreaProps) {
+export function TextArea({
+  error,
+  label,
+  value,
+  onChange,
+  className,
+  ...textareaProps
+}: TextAreaProps) {
   const muiInputProps = textareaProps as unknown as MuiTextFieldProps;
 
   return (
@@ -18,7 +26,7 @@ export function TextArea({ error, label, value, onChange, ...textareaProps }: Te
       minRows={4}
       fullWidth
       size="small"
-      sx={muiStyles}
+      className={classNames('margin-bottom-regular', 'width-full', 'background-color-surface', 'text-area-root', className)}
     />
   );
 }

@@ -7,6 +7,7 @@ export function LocalityFilter({ value, onChange }: LocalityFilterProps) {
   return (
     <TextField
       aria-label="Filtrar por localidad"
+      className="min-width-zero"
       value={value}
       onChange={onChange}
       placeholder="Localidad: ej. Madrid"

@@ -1,0 +1,41 @@
+.login-screen-screen {
+  max-width: 38.125rem;
+  min-height: 100vh;
+  padding: 12vh 1.75rem 3rem;
+}
+
+.login-screen-brand {
+  width: 3.625rem;
+  height: 3.625rem;
+  margin-bottom: 2.625rem;
+  box-shadow: 0 0.875rem 1.875rem color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.login-screen-title {
+  margin: 0 0 1.5rem;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.login-screen-accent {
+  font-style: normal;
+}
+
+.login-screen-lead {
+  max-width: 28.75rem;
+  margin: 0 0 2.25rem;
+}
+
+.login-screen-submit {
+  max-width: 20rem;
+  box-shadow: 0 0.5rem 1rem color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+
+.login-screen-spinner {
+  margin-right: 0.5rem;
+  vertical-align: -0.25rem;
+}
+
+.login-screen-hint {
+  margin-top: 1.25rem;
+}

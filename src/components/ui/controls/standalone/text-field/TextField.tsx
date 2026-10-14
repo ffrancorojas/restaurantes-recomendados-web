@@ -1,9 +1,17 @@
+import classNames from 'classnames';
 import { TextField as MuiTextField } from '@mui/material';
 import type { TextFieldProps as MuiTextFieldProps } from '@mui/material';
-import { muiStyles } from './textField.styles';
+import './textField.styles.scss';
 import type { TextFieldProps } from './textField.types';
 
-export function TextField({ error, label, value, onChange, ...inputProps }: TextFieldProps) {
+export function TextField({
+  error,
+  label,
+  value,
+  onChange,
+  className,
+  ...inputProps
+}: TextFieldProps) {
   const muiInputProps = inputProps as unknown as MuiTextFieldProps;
 
   return (
@@ -17,7 +25,7 @@ export function TextField({ error, label, value, onChange, ...inputProps }: Text
       fullWidth
       size="small"
       variant="outlined"
-      sx={muiStyles}
+      className={classNames('margin-bottom-regular', 'width-full', 'background-color-surface', 'text-field-root', className)}
     />
   );
 }

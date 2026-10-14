@@ -1,9 +1,10 @@
+import classNames from 'classnames';
 import { MenuItem, Select } from '@mui/material';
 import { Icon } from '@components/ui/icons';
-import { muiStyles } from './selectField.styles';
+import './selectField.styles.scss';
 import type { SelectFieldProps } from './selectField.types';
 
-export function SelectField({ label, value, options, onChange }: SelectFieldProps) {
+export function SelectField({ label, value, options, onChange, className }: SelectFieldProps) {
   return (
     <Select
       label={label}
@@ -11,7 +12,7 @@ export function SelectField({ label, value, options, onChange }: SelectFieldProp
       inputProps={{ 'aria-label': label }}
       IconComponent={() => <Icon name="chevronDown" size={18} />}
       onChange={(event) => onChange({ value: event.target.value as string })}
-      sx={muiStyles}
+      className={classNames('background-color-surface', 'text-color', 'select-field-root', className)}
       size="small"
     >
       {options.map((option) => (

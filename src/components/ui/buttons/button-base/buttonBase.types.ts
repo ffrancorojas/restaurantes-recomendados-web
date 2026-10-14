@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import type { ButtonVariant } from '../button.types';
 
 export type ButtonBaseProps = Omit<
@@ -9,6 +9,5 @@ export type ButtonBaseProps = Omit<
   leftText?: string;
   name?: string;
   rightText?: string;
-  style?: CSSProperties;
   variant?: ButtonVariant;
 };

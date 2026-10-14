@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from '@mui/material';
 import type { ConfirmDialogProps } from './confirmDialog.types';
+import './confirmDialog.styles.scss';
 
 export function ConfirmDialog({
   title,
@@ -22,29 +23,17 @@ export function ConfirmDialog({
       onClose={onCancel}
       aria-labelledby="confirm-dialog-title"
       aria-describedby="confirm-dialog-description"
-      slotProps={{
-        paper: {
-          sx: {
-            width: '100%',
-            maxWidth: '26.25rem',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-card)',
-            backgroundColor: 'var(--color-surface)',
-            backgroundImage: 'none',
-            boxShadow: 'var(--shadow-modal)',
-          },
-        },
-      }}
+      slotProps={{ paper: { className: 'background-color-surface radius-card border-default width-full confirm-dialog-paper' } }}
     >
-      <DialogTitle id="confirm-dialog-title" sx={{ fontWeight: 800 }}>
+      <DialogTitle id="confirm-dialog-title" className="font-extrabold">
         {title}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText id="confirm-dialog-description" sx={{ color: 'var(--color-muted)' }}>
+        <DialogContentText id="confirm-dialog-description" className="text-muted">
           {message}
         </DialogContentText>
       </DialogContent>
-      <DialogActions sx={{ gap: '0.5rem', padding: '0.5rem 1.5rem 1.5rem' }}>
+      <DialogActions className="gap-small confirm-dialog-actions">
         <Button.Text leftText={cancelText} variant="secondary" onClick={onCancel} />
         <Button.Text leftText={confirmText} onClick={onConfirm} />
       </DialogActions>

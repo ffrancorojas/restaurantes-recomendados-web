@@ -1,18 +1,18 @@
-import { styles } from './restaurantDetails.styles';
+import './restaurantDetails.styles.scss';
 import type { RestaurantDetailsProps } from './restaurantDetails.types';
 export function RestaurantDetails({ recommendedBy, dishes, notes }: RestaurantDetailsProps) {
   return (
-    <div style={styles.details}>
+    <div className="text-muted font-size-sm restaurant-details-details">
       {recommendedBy && (
-        <p style={styles.row}>
+        <p className="margin-bottom-small">
           <b>Recomendado por</b>: {recommendedBy}
         </p>
       )}
-      <p style={styles.row}>
+      <p className="margin-bottom-small">
         <b>Platos recomendados</b>: {dishes || 'Sin indicar'}
       </p>
       {notes && (
-        <p style={styles.row}>
+        <p className="margin-bottom-small">
           <b>Observaciones</b>: {notes}
         </p>
       )}

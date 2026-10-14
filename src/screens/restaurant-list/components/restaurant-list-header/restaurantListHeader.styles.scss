@@ -1,0 +1,25 @@
+.restaurant-list-header-hero {
+  margin-bottom: 0.625rem;
+}
+
+
+.restaurant-list-header-actions {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.restaurant-list-header-createButton.createButton {
+  flex: 1;
+}
+
+@media (max-width: 35rem) {
+  .restaurant-list-header-hero {
+    display: block;
+  }
+
+  .restaurant-list-header-actions {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+}

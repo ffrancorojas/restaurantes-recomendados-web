@@ -1,10 +1,10 @@
-import { styles } from './restaurantTags.styles';
+import './restaurantTags.styles.scss';
 import type { RestaurantTagsProps } from './restaurantTags.types';
 export function RestaurantTags({ types }: RestaurantTagsProps) {
   return (
-    <div style={styles.tags}>
+    <div className="flex flex-wrap gap-compact restaurant-tags-tags">
       {types.map((type) => (
-        <span style={styles.tag} key={type}>
+        <span className="background-soft-green text-map font-extrabold font-size-xs restaurant-tags-tag" key={type}>
           {type}
         </span>
       ))}

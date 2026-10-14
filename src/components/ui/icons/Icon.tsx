@@ -1,5 +1,7 @@
 import type { RestaurantRating } from '@contracts';
-import type { CSSProperties, ReactNode } from 'react';
+import classNames from 'classnames';
+import type { ReactNode } from 'react';
+import './icon.styles.scss';
 
 type RatedValue = Exclude<RestaurantRating, ''>;
 
@@ -68,7 +70,7 @@ function ratingFace(size: number, rating: RatedValue) {
       height={size}
       viewBox="0 0 32 32"
       aria-hidden="true"
-      style={{ display: 'block', flexShrink: 0 }}
+      className="icon-ratingFace"
     >
       <circle cx="16" cy="16" r="15.5" fill={faceColors[rating]} stroke="#24201D30" />
       <ellipse cx="10.8" cy="12.2" rx="1.6" ry="1.9" fill="#24201D" />
@@ -209,21 +211,10 @@ const iconRenderers = {
   ratingDisappointed: (size: number) => ratingFace(size, 'disappointed'),
 } satisfies Record<IconName, (size: number) => ReactNode>;
 
-type IconProps = {
-  name: IconName;
-  size?: number;
-  className?: string;
-  style?: CSSProperties;
-};
+type IconProps = { name: IconName; size?: number; className?: string };
 
-export function Icon({ name, size = 22, className, style }: IconProps) {
+export function Icon({ name, size = 22, className }: IconProps) {
   const icon = iconRenderers[name](size);
-  if (className || style) {
-    return (
-      <span className={className} style={{ display: 'inline-flex', flexShrink: 0, ...style }}>
-        {icon}
-      </span>
-    );
-  }
+  if (className) return <span className={classNames('inline-flex', 'icon-wrapper', className)}>{icon}</span>;
   return icon;
 }

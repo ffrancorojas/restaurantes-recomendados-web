@@ -1,4 +1,5 @@
-import { muiStyles } from './switch.styles';
+import classNames from 'classnames';
+import './switch.styles.scss';
 import { Switch as MuiSwitch } from '@mui/material';
 import type { SwitchProps } from './switch.types';
 
@@ -8,7 +9,7 @@ export function Switch({ checked, onChange, ...switchProps }: SwitchProps) {
       {...switchProps}
       checked={checked}
       onChange={(event) => onChange({ checked: event.target.checked })}
-      sx={muiStyles.switch}
+      className={classNames('switch-root', switchProps.className)}
     />
   );
 }

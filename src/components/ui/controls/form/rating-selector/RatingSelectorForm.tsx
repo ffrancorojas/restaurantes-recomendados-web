@@ -1,7 +1,6 @@
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import type { RestaurantRating } from '@contracts';
 import { RatingSelector } from '@components/restaurant-form/components/rating-selector';
-import { styles } from './ratingSelectorForm.styles';
 import type { RatingSelectorFormProps } from './ratingSelectorForm.types';
 
 export function RatingSelectorForm<
@@ -9,7 +8,7 @@ export function RatingSelectorForm<
   TName extends FieldPathByValue<TFieldValues, RestaurantRating>,
 >({ control, name }: RatingSelectorFormProps<TFieldValues, TName>) {
   return (
-    <div style={styles.root}>
+    <div className="width-full">
       <Controller
         control={control}
         name={name}

@@ -1,11 +1,11 @@
 import { TextField } from '@components/ui/controls/standalone/text-field';
-import { styles } from './searchFilter.styles';
+import './searchFilter.styles.scss';
 import type { SearchFilterProps } from './searchFilter.types';
 export function SearchFilter({ value, onChange }: SearchFilterProps) {
   return (
-    <div style={styles.container}>
+    <div className="width-full">
       <TextField
-        data-responsive-search
+        className="width-full search-filter-input"
         value={value}
         onChange={onChange}
         placeholder="Buscar en mis recomendaciones"

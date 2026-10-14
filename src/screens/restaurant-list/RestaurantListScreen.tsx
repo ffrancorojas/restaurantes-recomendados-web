@@ -4,7 +4,7 @@ import {
   RestaurantListHeader,
 } from '@screens/restaurant-list/components';
 import { useRestaurantListScreen } from '@screens/restaurant-list/useRestaurantListScreen';
-import { styles } from '@screens/restaurant-list/restaurantListScreen.styles';
+import '@screens/restaurant-list/restaurantListScreen.styles.scss';
 import { useNavigate } from 'react-router-dom';
 import { shareRestaurant } from '@tools';
 
@@ -32,7 +32,7 @@ export function RestaurantListScreen() {
   } = useRestaurantListScreen();
 
   return (
-    <main data-responsive-screen data-responsive-list style={styles.screen}>
+    <main className="margin-auto restaurant-list-screen-screen">
       <RestaurantListHeader
         onBack={() => navigate('/')}
         onCreate={() => navigate('/restaurants/new')}
@@ -59,7 +59,7 @@ export function RestaurantListScreen() {
           )}
         </>
       )}
-      {error && <p style={styles.error}>{error}</p>}
+      {error && <p className="background-danger-subtle text-danger radius-md padding-compact font-size-md">{error}</p>}
       <RestaurantListContent
         loading={loading}
         totalRestaurants={restaurants.length}

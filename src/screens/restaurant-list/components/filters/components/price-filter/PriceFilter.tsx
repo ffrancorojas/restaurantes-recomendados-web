@@ -8,6 +8,7 @@ export function PriceFilter({ value, onChange }: PriceFilterProps) {
   return (
     <SelectField
       label="Precio"
+      className="min-width-zero"
       value={value}
       options={[{ value: '', label: 'Todos los precios' }, ...PRICE_RANGES]}
       onChange={onChange}

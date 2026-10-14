@@ -1,5 +1,4 @@
 import { Button } from '@components/ui/buttons';
-import { styles } from './toggleRestaurantInfoButton.styles';
 import type { ToggleRestaurantInfoButtonProps } from './toggleRestaurantInfoButton.types';
 
 export function ToggleRestaurantInfoButton({
@@ -15,7 +14,7 @@ export function ToggleRestaurantInfoButton({
         event.stopPropagation();
         onToggle();
       }}
-      style={styles.button}
+      className="compact-control padding-none text-muted font-size-base"
     />
   );
 }

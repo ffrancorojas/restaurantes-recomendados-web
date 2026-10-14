@@ -1,5 +1,5 @@
+import classNames from 'classnames';
 import { Checkbox as MuiCheckbox } from '@mui/material';
-import { muiStyles } from './checkbox.styles';
 import type { CheckboxProps } from './checkbox.types';
 
 export function Checkbox({ checked, onChange, ...checkboxProps }: CheckboxProps) {
@@ -8,7 +8,7 @@ export function Checkbox({ checked, onChange, ...checkboxProps }: CheckboxProps)
       {...checkboxProps}
       checked={checked}
       onChange={(event) => onChange({ checked: event.target.checked })}
-      sx={muiStyles.checkbox}
+      className={classNames('text-border', checkboxProps.className)}
     />
   );
 }

@@ -1,4 +1,1 @@
-export type SpinnerProps = {
-  label?: string;
-  size?: number;
-};
+export type SpinnerProps = { label?: string; size?: number };

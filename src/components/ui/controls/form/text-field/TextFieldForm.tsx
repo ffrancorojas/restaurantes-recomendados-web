@@ -1,7 +1,6 @@
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { TextField } from '../../standalone/text-field';
 import { getFormFieldRules } from '../formField.tools';
-import { styles } from './textFieldForm.styles';
 import type { TextFieldFormProps } from './textFieldForm.types';
 
 export function TextFieldForm<
@@ -16,7 +15,7 @@ export function TextFieldForm<
   ...props
 }: TextFieldFormProps<TFieldValues, TName>) {
   return (
-    <div style={styles.root}>
+    <div className="min-width-zero width-full">
       <Controller
         control={control}
         name={name}

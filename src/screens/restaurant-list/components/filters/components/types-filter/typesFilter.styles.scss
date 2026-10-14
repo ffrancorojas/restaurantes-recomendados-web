@@ -1,0 +1,26 @@
+.types-filter-accordion {
+
+  &:before {
+    display: none;
+  }
+}
+
+.types-filter-summary {
+  cursor: pointer;
+}
+
+.types-filter-options {
+  padding: 0 0.75rem 0.75rem;
+
+  > :first-child {
+    flex: 0 0 100%;
+  }
+}
+
+.types-filter-option {
+  flex: 1 1 calc((100% - 0.5rem) / 2);
+}
+
+.types-filter-clear.clear {
+  padding: 0.375rem 0;
+}

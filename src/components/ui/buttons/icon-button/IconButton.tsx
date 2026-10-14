@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import { ButtonBase } from '../button-base';
 import { Icon } from '@components/ui/icons';
+import './iconButton.styles.scss';
 import type { IconButtonProps } from './iconButton.types';
 
 export function IconButton({
@@ -7,7 +9,7 @@ export function IconButton({
   name,
   leftText,
   rightText,
-  style,
+  className,
   ...buttonProps
 }: IconButtonProps) {
   return (
@@ -17,7 +19,7 @@ export function IconButton({
       icon={<Icon name={iconName} />}
       leftText={leftText}
       rightText={rightText}
-      style={{ fontSize: '1.375rem', lineHeight: 1, padding: '0 0.25rem', ...style }}
+      className={classNames('icon-button-button', className)}
     />
   );
 }

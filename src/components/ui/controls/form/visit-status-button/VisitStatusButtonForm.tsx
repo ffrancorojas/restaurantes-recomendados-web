@@ -1,6 +1,6 @@
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { Button } from '@components/ui/buttons';
-import { styles } from './visitStatusButtonForm.styles';
+import './visitStatusButtonForm.styles.scss';
 import type { VisitStatusButtonFormProps } from './visitStatusButtonForm.types';
 
 export function VisitStatusButtonForm<
@@ -13,7 +13,7 @@ export function VisitStatusButtonForm<
   removeVisitText = 'Quitar visita',
 }: VisitStatusButtonFormProps<TFieldValues, TName>) {
   return (
-    <div style={styles.root}>
+    <div className="visit-status-button-form-root">
       <Controller
         control={control}
         name={name}

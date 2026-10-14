@@ -2,7 +2,6 @@ import { FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { Checkbox } from '../../standalone/checkbox';
 import { getFormFieldRules } from '../formField.tools';
-import { styles } from './checkboxForm.styles';
 import type { CheckboxFormProps } from './checkboxForm.types';
 
 export function CheckboxForm<
@@ -23,7 +22,11 @@ export function CheckboxForm<
       name={name}
       rules={getFormFieldRules({ control, name, required, requiredMessage, rules })}
       render={({ field, fieldState }) => (
-        <FormControl required={required} error={Boolean(fieldState.error)} sx={styles.control}>
+        <FormControl
+          required={required}
+          error={Boolean(fieldState.error)}
+          className="width-full"
+        >
           <FormControlLabel
             label={label}
             control={

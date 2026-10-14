@@ -1,5 +1,4 @@
 import { Button } from '@components/ui/buttons';
-import { styles } from './cardActions.styles';
 import type { CardActionsProps } from './cardActions.types';
 export function CardActions({
   onEdit,
@@ -10,13 +9,13 @@ export function CardActions({
   showShare = true,
 }: CardActionsProps) {
   return (
-    <div style={styles.container}>
+    <div className="flex gap-small">
       {showEdit && (
         <Button.Icon
           iconName="edit"
           name="Editar"
           onClick={onEdit}
-          style={!showShare && !showRemove ? styles.compactEdit : undefined}
+          className={!showShare && !showRemove ? 'compact-control padding-none card-actions-compactEdit' : undefined}
         />
       )}
       {showShare && <Button.Icon iconName="share" name="Compartir" onClick={onShare} />}

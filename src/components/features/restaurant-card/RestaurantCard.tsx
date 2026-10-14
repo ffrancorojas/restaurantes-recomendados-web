@@ -8,24 +8,31 @@ import {
   ToggleRestaurantInfoButton,
 } from './components';
 import { RestaurantLinkActions } from '@components/features/restaurant-link-actions';
-import { styles } from './restaurantCard.styles';
+import './restaurantCard.styles.scss';
+import classNames from 'classnames';
 import type { RestaurantCardProps } from './restaurantCard.types';
 import { useState } from 'react';
 import { getPriceLabel } from './restaurantCard.tools';
 
-export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit }: RestaurantCardProps) {
+export function RestaurantCard({
+  restaurant,
+  onEdit,
+  onRemove,
+  onShare,
+  onVisit,
+}: RestaurantCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <article
-      style={styles.card}
+      className="card background-surface radius-card border-default flex-column min-width-zero"
       onClick={(event) => {
         if ((event.target as HTMLElement).closest('button')) return;
         setExpanded((current) => !current);
       }}
     >
-      <div style={styles.top}>
-        <h2 style={styles.title}>{restaurant.name}</h2>
+      <div className="flex align-items-flex-end justify-content-space-between gap-small">
+        <h2 className="margin-none min-width-zero font-black font-size-lg restaurant-card-title">{restaurant.name}</h2>
         <CardActions
           onEdit={onEdit}
           onRemove={onRemove}
@@ -33,7 +40,7 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
           showRemove={false}
           showShare={false}
         />
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="flex gap-small">
           <RestaurantLinkActions name={restaurant.name} locality={restaurant.locality} compact />
           <ToggleRestaurantInfoButton
             expanded={expanded}
@@ -41,12 +48,12 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
           />
         </div>
       </div>
-      <div style={styles.summaryRow}>
-        <div style={styles.metadata}>
+      <div className="flex align-items-flex-start gap-small margin-top-small">
+        <div className="flex flex-wrap align-items-center gap-compact min-height-2rem min-width-zero restaurant-card-metadata">
           <RestaurantLocation locality={restaurant.locality} collapsed={!expanded} />
           <RestaurantTags types={restaurant.type} />
           {restaurant.price && (
-            <span style={{ ...styles.price, ...(expanded ? {} : styles.collapsedText) }}>
+            <span className={classNames('text-color font-semibold font-size-xs', { ['min-width-zero text-truncate']: !expanded })}>
               {getPriceLabel({ price: restaurant.price })}
             </span>
           )}
@@ -61,13 +68,8 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
             notes={restaurant.notes}
           />
           <RestaurantOpinion opinion={restaurant.opinion} />
-          <div style={styles.expandedActions}>
-            <CardActions
-              onEdit={onEdit}
-              onRemove={onRemove}
-              onShare={onShare}
-              showEdit={false}
-            />
+          <div className="flex justify-content-flex-end margin-top-small">
+            <CardActions onEdit={onEdit} onRemove={onRemove} onShare={onShare} showEdit={false} />
           </div>
         </>
       )}

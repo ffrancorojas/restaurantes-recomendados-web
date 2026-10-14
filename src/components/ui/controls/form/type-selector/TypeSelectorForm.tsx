@@ -3,7 +3,6 @@ import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-
 import type { RestaurantType } from '@contracts';
 import { TypeSelector } from '../../standalone/type-selector';
 import { getFormFieldRules } from '../formField.tools';
-import { styles } from './typeSelectorForm.styles';
 import type { TypeSelectorFormProps } from './typeSelectorForm.types';
 
 export function TypeSelectorForm<
@@ -16,7 +15,11 @@ export function TypeSelectorForm<
       name={name}
       rules={getFormFieldRules({ control, name, required, requiredMessage, rules })}
       render={({ field, fieldState }) => (
-        <FormControl required={required} error={Boolean(fieldState.error)} sx={styles.control}>
+        <FormControl
+          required={required}
+          error={Boolean(fieldState.error)}
+          className="width-full"
+        >
           <TypeSelector value={field.value} onChange={({ value }) => field.onChange(value)} />
           {fieldState.error?.message && <FormHelperText>{fieldState.error.message}</FormHelperText>}
         </FormControl>

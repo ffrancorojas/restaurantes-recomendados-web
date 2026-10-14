@@ -1,0 +1,8 @@
+.type-selector-button {
+  border-color: var(--color-border);
+  text-transform: none;
+
+  &.Mui-selected {
+    border-color: var(--color-secondary);
+  }
+}

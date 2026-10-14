@@ -12,7 +12,7 @@ import {
   VisitStatusButtonForm,
 } from '@components/ui/controls/form';
 import { useRestaurantForm } from '@components/restaurant-form/useRestaurantForm';
-import { styles } from './restaurantForm.styles';
+import './restaurantForm.styles.scss';
 import type { RestaurantFormProps } from './restaurantForm.types';
 
 export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) {
@@ -29,9 +29,9 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
   const isEditing = Boolean(initial.id);
 
   return (
-    <div data-responsive-form style={styles.page}>
-      <form style={styles.pageForm} onSubmit={submit}>
-        {error && <p style={styles.error}>{error}</p>}
+    <div className="background-app width-full restaurant-form-page">
+      <form className="background-transparent margin-none padding-form padding-form-mobile width-full restaurant-form-pageForm" onSubmit={submit}>
+        {error && <p className="background-danger-subtle text-danger radius-md font-size-sm restaurant-form-error">{error}</p>}
         <RestaurantFormHeader isEditing={isEditing} onBack={requestCancel} />
         <TextFieldForm
           control={control}
@@ -40,7 +40,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
           required
           requiredMessage="El nombre es obligatorio."
         />
-        <div style={styles.localityRow}>
+        <div className="flex align-items-start gap-medium restaurant-form-localityRow">
           <TextFieldForm
             control={control}
             name="locality"
@@ -59,7 +59,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
         <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
         <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
         <TextAreaForm control={control} name="notes" label="Observaciones" />
-        <label style={styles.label}>
+        <label className="flex-column gap-small margin-bottom-regular text-muted font-semibold font-size-sm">
           Tipos de cocina
           <TypeSelectorForm control={control} name="type" />
         </label>
@@ -70,7 +70,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
             <RatingSelectorForm control={control} name="rating" />
           </>
         )}
-        <div style={styles.actions}>
+        <div className="flex justify-content-flex-end gap-medium padding-top-medium">
           <Button.Text
             leftText="Cancelar"
             variant="secondary"
