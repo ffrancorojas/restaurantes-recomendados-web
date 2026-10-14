@@ -25,7 +25,7 @@ export function TextField({
       fullWidth
       size="small"
       variant="outlined"
-      className={classNames('margin-bottom-regular', 'width-full', 'background-color-surface', 'text-field-root', className)}
+      className={classNames('margin-bottom-regular', 'width-full', 'text-field-root', className)}
     />
   );
 }
