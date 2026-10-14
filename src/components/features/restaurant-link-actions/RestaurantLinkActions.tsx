@@ -14,18 +14,20 @@ export function RestaurantLinkActions({
   const restaurant = { name, locality };
 
   return (
-    <div className={classNames('flex', 'gap-small', 'restaurant-link-actions-container', { ['gap-compact restaurant-link-actions-compact']: compact })}>
+    <div className={classNames('flex', 'gap-small', 'restaurant-link-actions-container', { ['restaurant-link-actions-compact']: compact })}>
       <Button.Icon
         iconName="location"
+        iconSize={compact ? 20 : 22}
         name="Abrir en Google Maps"
         disabled={disabled}
-        className={classNames('padding-none', 'background-soft-sand', 'text-map', 'radius-md', 'restaurant-link-actions-linkButton', {
+        className={classNames('padding-none', 'background-soft-green', 'text-map', 'radius-md', 'restaurant-link-actions-linkButton', {
           ['compact-control restaurant-link-actions-compactButton']: compact,
         })}
         onClick={() => openMaps({ restaurant })}
       />
       <Button.Icon
         iconName="google"
+        iconSize={compact ? 16 : 22}
         name="Buscar en Google"
         disabled={disabled}
         className={classNames('padding-none', 'background-soft-sand', 'radius-md', 'restaurant-link-actions-linkButton', 'restaurant-link-actions-googleButton', {
