@@ -4,6 +4,7 @@ $radius-button: 0.75rem;
 $radius-card: 1.125rem;
 $radius-modal: 1.25rem;
 $radius-pill: 62.5rem;
+$radius-toggle: 0.125rem;
 
 :root {
   --radius-sm: #{$radius-sm};
@@ -12,4 +13,5 @@ $radius-pill: 62.5rem;
   --radius-card: #{$radius-card};
   --radius-modal: #{$radius-modal};
   --radius-pill: #{$radius-pill};
+  --radius-toggle: #{$radius-toggle};
 }

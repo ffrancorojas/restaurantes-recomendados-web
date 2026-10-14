@@ -80,13 +80,13 @@ export function RestaurantVisitScreen() {
   return (
     <main className="background-app padding-none-mobile restaurant-visit-screen-page">
       <form
-        className="background-surface radius-card border-default margin-auto padding-form padding-form-mobile width-full restaurant-visit-screen-form"
+        className="flex-column gap-medium background-surface radius-card border-default margin-auto padding-form padding-form-mobile width-full restaurant-visit-screen-form"
         onSubmit={(event) => {
           event.preventDefault();
           void saveVisit();
         }}
       >
-        <header className="flex align-items-flex-start justify-content-space-between gap-large margin-bottom-section">
+        <header className="flex align-items-flex-start justify-content-space-between gap-large">
           <div>
             <p className="margin-bottom-small text-muted font-extrabold font-size-xs restaurant-visit-screen-eyebrow">REGISTRAR EXPERIENCIA</p>
             <h1 className="margin-none font-black font-size-xl restaurant-visit-screen-title">Valorar visita</h1>
@@ -99,7 +99,7 @@ export function RestaurantVisitScreen() {
             onClick={() => navigate('/restaurants')}
           />
         </header>
-        <section className="background-soft-sand radius-md margin-bottom-large restaurant-visit-screen-summary" aria-label="Datos del restaurante">
+        <section className="background-soft-sand radius-md restaurant-visit-screen-summary" aria-label="Datos del restaurante">
           <h2 className="font-size-lg restaurant-visit-screen-name">{restaurant.name}</h2>
           <p className="text-muted font-size-sm restaurant-visit-screen-row">
             <b>Localidad</b>: {restaurant.locality || 'Sin indicar'}
@@ -131,7 +131,7 @@ export function RestaurantVisitScreen() {
             {error}
           </p>
         )}
-        <div className="flex justify-content-flex-end padding-top-medium">
+        <div className="flex justify-content-flex-end">
           <Button.Text leftText="Guardar visita" disabled={!rating || saving} />
         </div>
       </form>

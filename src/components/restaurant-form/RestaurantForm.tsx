@@ -33,43 +33,45 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
       <form className="background-transparent margin-none padding-form padding-form-mobile width-full restaurant-form-pageForm" onSubmit={submit}>
         {error && <p className="background-danger-subtle text-danger radius-md font-size-sm restaurant-form-error">{error}</p>}
         <RestaurantFormHeader isEditing={isEditing} onBack={requestCancel} />
-        <TextFieldForm
-          control={control}
-          name="name"
-          label="Nombre"
-          required
-          requiredMessage="El nombre es obligatorio."
-        />
-        <div className="flex align-items-start gap-medium restaurant-form-localityRow">
+        <div className="flex-column gap-medium">
           <TextFieldForm
             control={control}
-            name="locality"
-            label="Localidad"
+            name="name"
+            label="Nombre"
             required
-            requiredMessage="La localidad es obligatoria."
+            requiredMessage="El nombre es obligatorio."
           />
-          <RestaurantLinkActions name={data.name} locality={data.locality} />
+          <div className="flex align-items-start gap-medium restaurant-form-localityRow">
+            <TextFieldForm
+              control={control}
+              name="locality"
+              label="Localidad"
+              required
+              requiredMessage="La localidad es obligatoria."
+            />
+            <RestaurantLinkActions name={data.name} locality={data.locality} />
+          </div>
+          <SelectFieldForm
+            control={control}
+            name="price"
+            label="Precio"
+            options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
+          />
+          <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
+          <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
+          <TextAreaForm control={control} name="notes" label="Observaciones" />
+          <label className="flex-column gap-small text-muted font-semibold font-size-sm">
+            Tipos de cocina
+            <TypeSelectorForm control={control} name="type" />
+          </label>
+          <VisitStatusButtonForm control={control} name="visited" />
+          {data.visited && (
+            <>
+              <TextAreaForm control={control} name="opinion" label="Mi opinión" />
+              <RatingSelectorForm control={control} name="rating" />
+            </>
+          )}
         </div>
-        <SelectFieldForm
-          control={control}
-          name="price"
-          label="Precio"
-          options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
-        />
-        <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
-        <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
-        <TextAreaForm control={control} name="notes" label="Observaciones" />
-        <label className="flex-column gap-small margin-bottom-regular text-muted font-semibold font-size-sm">
-          Tipos de cocina
-          <TypeSelectorForm control={control} name="type" />
-        </label>
-        <VisitStatusButtonForm control={control} name="visited" />
-        {data.visited && (
-          <>
-            <TextAreaForm control={control} name="opinion" label="Mi opinión" />
-            <RatingSelectorForm control={control} name="rating" />
-          </>
-        )}
         <div className="flex justify-content-flex-end gap-medium padding-top-medium">
           <Button.Text
             leftText="Cancelar"

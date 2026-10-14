@@ -2,7 +2,20 @@
   border-color: var(--color-border);
   text-transform: none;
 
-  &.Mui-selected {
+  &.MuiToggleButton-root {
+    background-color: var(--color-surface);
+  }
+
+  &.MuiToggleButton-root:hover {
+    background-color: var(--color-soft-sand);
+  }
+
+  &.MuiToggleButton-root.Mui-selected {
     border-color: var(--color-secondary);
+    background-color: var(--color-soft-green);
+  }
+
+  &.MuiToggleButton-root.Mui-selected:hover {
+    background-color: var(--color-soft-green);
   }
 }

@@ -36,22 +36,17 @@
   font-size: clamp(3rem, 9vw, 4.875rem);
 }
 
-.text-body {
-  @extend .font-size-md;
-  @extend .text-color;
-}
-
 .text-color,
 :root,
 .MuiMenuItem-root,
 .MuiDialog-container .MuiPaper-root,
 .text-field-root .MuiOutlinedInput-root input,
 .text-area-root .MuiOutlinedInput-root textarea {
-  color: var(--color-text);
+  color: var(--color-text) !important;
 }
 
 .text-border {
-  color: var(--color-border);
+  color: var(--color-border) !important;
 }
 
 .text-muted,
@@ -60,19 +55,19 @@
 .text-area-root .MuiInputLabel-root,
 .text-field-root .MuiOutlinedInput-root input::placeholder,
 .text-area-root .MuiOutlinedInput-root textarea::placeholder {
-  color: var(--color-muted);
+  color: var(--color-muted) !important;
 }
 
 .text-map {
-  color: var(--color-map);
+  color: var(--color-map) !important;
 }
 
 .text-surface {
-  color: var(--color-surface);
+  color: var(--color-surface) !important;
 }
 
 .text-primary {
-  color: var(--color-primary);
+  color: var(--color-primary) !important;
 }
 
 .text-secondary,
@@ -80,14 +75,13 @@
 .text-area-root .MuiInputLabel-root.Mui-focused,
 .MuiCheckbox-root.Mui-checked,
 .switch-root .MuiSwitch-switchBase.Mui-checked {
-  color: var(--color-secondary);
+  color: var(--color-secondary) !important;
 }
 
 .text-danger,
 .text-field-root .MuiFormHelperText-root {
-  color: var(--color-danger);
+  color: var(--color-danger) !important;
 }
-.font-medium,
 .text-field-root .MuiInputLabel-root,
 .text-area-root .MuiInputLabel-root {
   font-weight: 600;
