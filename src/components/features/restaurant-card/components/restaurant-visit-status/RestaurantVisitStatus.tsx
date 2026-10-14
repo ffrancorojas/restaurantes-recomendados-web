@@ -1,5 +1,5 @@
 import { RESTAURANT_RATING_OPTIONS } from '@assets/constants';
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { Icon, RATING_ICON_NAMES } from '@components/ui/icons';
 import type { Restaurant } from '@contracts';
 import { styles } from './restaurantVisitStatus.styles';

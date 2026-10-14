@@ -1,4 +1,4 @@
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import {
   Dialog,
   DialogActions,

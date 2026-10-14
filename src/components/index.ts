@@ -1,5 +1,5 @@
 export * from './ui/layout/app-layout';
-export * from './ui/actions/buttons';
+export * from './ui/buttons';
 export * from './ui/icons';
 export * from './ui/controls/checkbox';
 export * from './ui/controls/select-field';

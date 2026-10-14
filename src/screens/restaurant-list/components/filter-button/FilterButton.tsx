@@ -1,4 +1,4 @@
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { styles } from './filterButton.styles';
 import type { FilterButtonProps } from './filterButton.types';
 

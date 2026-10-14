@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { PRICE_RANGES } from '@contracts';
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { ConfirmDialog } from '@components/ui/feedback/confirm-dialog';
 import { RatingSelector, RestaurantFormHeader } from '@components/restaurant-form/components';
 import { RestaurantLinkActions } from '@components/features/restaurant-link-actions';

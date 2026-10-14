@@ -1,4 +1,4 @@
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { styles } from './cardActions.styles';
 import type { CardActionsProps } from './cardActions.types';
 export function CardActions({

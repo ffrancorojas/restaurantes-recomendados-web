@@ -1,4 +1,4 @@
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { useRestaurantLinks } from '@hooks/restaurant-links';
 import { styles } from './restaurantLinkActions.styles';
 import type { RestaurantLinkActionsProps } from './restaurantLinkActions.types';

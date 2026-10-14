@@ -6,7 +6,7 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import type { CSSProperties } from 'react';
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { Icon } from '@components/ui/icons';
 import type { RestaurantType } from '@contracts';
 import { styles } from './typesFilter.styles';

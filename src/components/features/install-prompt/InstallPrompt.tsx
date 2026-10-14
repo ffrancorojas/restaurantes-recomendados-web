@@ -1,5 +1,5 @@
 import { useInstallPrompt } from './useInstallPrompt';
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { styles } from './installPrompt.styles';
 export function InstallPrompt() {
   const { installEvent, hidden, hide, install } = useInstallPrompt();

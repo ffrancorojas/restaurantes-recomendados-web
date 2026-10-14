@@ -1,5 +1,5 @@
 import { PRICE_RANGES } from '@contracts';
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { RatingSelector } from '@components/restaurant-form/components';
 import { Spinner } from '@components/ui/feedback/spinner';
 import { TextArea } from '@components/ui/controls/text-area';

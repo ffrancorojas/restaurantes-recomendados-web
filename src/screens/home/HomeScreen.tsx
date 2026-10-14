@@ -1,4 +1,4 @@
-import { Button } from '@components/ui/actions/buttons';
+import { Button } from '@components/ui/buttons';
 import { useAppContext } from '@app/app.context';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { restaurantService } from '@services';
