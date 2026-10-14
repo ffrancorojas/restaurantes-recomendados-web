@@ -4,9 +4,9 @@ import type { FilterButtonProps } from './filterButton.types';
 
 export function FilterButton({ open, onClick }: FilterButtonProps) {
   return (
-    <Button.Text
+    <Button.Icon
       iconName="filter"
-      variant="secondary"
+      name={open ? 'Ocultar filtros' : 'Mostrar filtros'}
       type="button"
       aria-expanded={open}
       aria-label={open ? 'Ocultar filtros' : 'Mostrar filtros'}
