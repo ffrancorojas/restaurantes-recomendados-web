@@ -9,10 +9,5 @@ export const styles: Record<string, CSSProperties> = {
     color: 'var(--color-muted)',
     textAlign: 'center',
   },
-  spinner: {
-    border: '3px solid var(--color-border)',
-    borderTopColor: 'var(--color-primary)',
-    borderRadius: '50%',
-    animation: 'spin .8s linear infinite',
-  },
+  spinner: { color: 'var(--color-primary)' },
 };

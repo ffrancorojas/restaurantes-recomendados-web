@@ -1,6 +1,7 @@
 export * from './app-header';
 export * from './app-layout';
 export * from './buttons';
+export * from './icons';
 export * from './checkbox';
 export * from './select-field';
 export * from './spinner';

@@ -1,5 +1,5 @@
 import { RESTAURANT_RATING_OPTIONS } from '@assets/constants';
-import { RatingFace } from '@components/rating-face';
+import { Icon, RATING_ICON_NAMES } from '@components/icons';
 import { styles } from './ratingSelector.styles';
 import type { RatingSelectorProps } from './ratingSelector.types';
 export function RatingSelector({ value, onChange }: RatingSelectorProps) {
@@ -17,7 +17,7 @@ export function RatingSelector({ value, onChange }: RatingSelectorProps) {
             key={rating.value}
             onClick={() => onChange({ value: rating.value })}
           >
-            <RatingFace rating={rating.value} />
+            <Icon name={RATING_ICON_NAMES[rating.value]} size={32} />
             <span>{rating.label}</span>
           </button>
         ))}

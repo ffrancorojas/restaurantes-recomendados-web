@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react';
 import type { ButtonStyleProps, ButtonVariant } from '../button.types';
-import type { IconName } from '../buttons.tools';
+import type { IconName } from '@components/icons';
 
 type TextButtonContentProps =
   { leftText: string; rightText?: never } | { leftText?: never; rightText: string };

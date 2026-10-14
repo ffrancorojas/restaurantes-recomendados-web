@@ -1,1 +1,0 @@
-export { RatingFace } from './RatingFace';

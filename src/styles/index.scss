@@ -63,6 +63,16 @@ button:disabled {
   }
 }
 
+.app-icon-spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-icon-spinner {
+    animation-duration: 1.6s;
+  }
+}
+
 @media (max-width: 800px) {
   [data-responsive-grid] {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;

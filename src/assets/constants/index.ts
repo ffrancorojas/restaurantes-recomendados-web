@@ -1,2 +1,2 @@
 export * from './restaurantTypes';
-export * from './restaurantEmojis';
+export * from './restaurantRatings';

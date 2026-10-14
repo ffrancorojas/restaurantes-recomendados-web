@@ -1,6 +1,6 @@
 import { RESTAURANT_RATING_OPTIONS } from '@assets/constants';
 import { Button } from '@components/buttons';
-import { RatingFace } from '@components/rating-face';
+import { Icon, RATING_ICON_NAMES } from '@components/icons';
 import type { Restaurant } from '@contracts';
 import { styles } from './restaurantVisitStatus.styles';
 
@@ -29,8 +29,8 @@ export function RestaurantVisitStatus({ restaurant, onVisit }: RestaurantVisitSt
       aria-label={`Visitado${rating ? `, ${rating.label}` : ''}`}
       title={rating?.label ?? 'Visitado'}
     >
-      <span aria-hidden="true" style={styles.visitedIcon}>✓</span>
-      {rating && <RatingFace rating={rating.value} size={32} />}
+      <Icon name="check" size={20} style={styles.visitedIcon} />
+      {rating && <Icon name={RATING_ICON_NAMES[rating.value]} size={32} />}
     </div>
   );
 }
