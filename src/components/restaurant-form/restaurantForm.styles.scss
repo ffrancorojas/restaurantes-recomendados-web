@@ -21,3 +21,18 @@
     flex: 1;
   }
 }
+
+.restaurant-form-recommended-price-row {
+  > :first-child {
+    flex: 1;
+  }
+
+  .restaurant-form-price-select.MuiFormControl-root {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .restaurant-form-price-select .select-field-root {
+    width: calc(13ch + 3rem);
+  }
+}

@@ -5,4 +5,7 @@ import type { FormFieldProps } from '../formField.types';
 export type SelectFieldFormProps<
   TFieldValues extends FieldValues,
   TName extends FieldPathByValue<TFieldValues, string>,
-> = FormFieldProps<TFieldValues, TName> & Omit<SelectFieldProps, 'onChange' | 'value'>;
+> = FormFieldProps<TFieldValues, TName> &
+  Omit<SelectFieldProps, 'onChange' | 'value'> & {
+    containerClassName?: string;
+  };

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { FormControl, FormHelperText, InputLabel } from '@mui/material';
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { SelectField } from '../../standalone/select-field';
@@ -13,6 +14,7 @@ export function SelectFieldForm<
   required,
   requiredMessage,
   rules,
+  containerClassName,
   ...props
 }: SelectFieldFormProps<TFieldValues, TName>) {
   return (
@@ -25,7 +27,7 @@ export function SelectFieldForm<
           required={required}
           error={Boolean(fieldState.error)}
           size="small"
-          className="width-full"
+          className={classNames('width-full', containerClassName)}
         >
           <InputLabel className="select-field-label text-muted">{props.label}</InputLabel>
           <SelectField
