@@ -1,11 +1,16 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
-  container: { display: 'flex', flexWrap: 'wrap', gap: 7 },
+  label: { margin: '0 0 8px', color: 'var(--color-text)', fontWeight: 800 },
+  container: { display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 },
   button: {
-    padding: '6px 9px',
+    display: 'flex',
+    minHeight: 52,
+    alignItems: 'center',
+    gap: 8,
+    padding: '8px 10px',
     color: 'var(--color-muted)',
     background: 'var(--color-soft-sand)',
-    border: '1px solid transparent',
+    border: '1px solid var(--color-border)',
     borderRadius: 'var(--radius-pill)',
     fontSize: 'var(--font-size-xs)',
   },

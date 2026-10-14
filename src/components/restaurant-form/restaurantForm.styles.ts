@@ -23,11 +23,11 @@ export const styles: Record<string, CSSProperties> = {
     borderRadius: 'var(--radius-md)',
     fontSize: 'var(--font-size-sm)',
   },
-  nameRow: {
+  localityRow: {
     display: 'grid',
     gridTemplateColumns: 'minmax(0, 1fr) auto',
     gap: 10,
-    alignItems: 'end',
+    alignItems: 'start',
   },
   label: {
     display: 'flex',
@@ -38,6 +38,5 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: 'var(--font-size-sm)',
     fontWeight: 700,
   },
-  two: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 },
   actions: { display: 'flex', justifyContent: 'flex-end', gap: 10, paddingTop: 10 },
 };

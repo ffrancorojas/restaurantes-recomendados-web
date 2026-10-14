@@ -66,6 +66,7 @@ export function RestaurantListScreen() {
         onEdit={(restaurant) => navigate(`/restaurants/${restaurant.id}/edit`)}
         onRemove={removeRestaurant}
         onShare={(restaurant) => shareRestaurant({ data: restaurant })}
+        onVisit={(restaurant) => navigate(`/restaurants/${restaurant.id}/visit`)}
       />
     </main>
   );

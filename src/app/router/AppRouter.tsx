@@ -2,6 +2,7 @@ import { LoginScreen } from '@screens/login';
 import { RestaurantCreateScreen } from '@screens/restaurant-create';
 import { RestaurantEditScreen } from '@screens/restaurant-edit';
 import { RestaurantListScreen } from '@screens/restaurant-list';
+import { RestaurantVisitScreen } from '@screens/restaurant-visit';
 import { useAppContext } from '@app/app.context';
 import { BrowserRouter, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ export function AppRouter() {
           <Route path="/restaurants" element={<RestaurantListScreen />} />
           <Route path="/restaurants/new" element={<RestaurantCreateScreen />} />
           <Route path="/restaurants/:restaurantId/edit" element={<RestaurantEditScreen />} />
+          <Route path="/restaurants/:restaurantId/visit" element={<RestaurantVisitScreen />} />
         </Route>
         <Route path="*" element={<FallbackRoute />} />
       </Routes>
