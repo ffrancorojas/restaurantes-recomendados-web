@@ -1,6 +1,9 @@
-.restaurant-link-actions-linkButton.linkButton {
+.restaurant-link-actions-linkButton {
   width: var(--field-height);
+  min-width: var(--field-height);
   height: var(--field-height);
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .restaurant-link-actions-googleButton {

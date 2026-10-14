@@ -6,9 +6,12 @@
   border-radius: var(--radius-button);
 }
 
-.radius-pill,
-.radius-pill-group .MuiToggleButtonGroup-grouped {
+.radius-pill {
   border-radius: var(--radius-pill);
+}
+
+.radius-toggle-group .MuiToggleButtonGroup-grouped {
+  border-radius: var(--radius-toggle) !important;
 }
 
 .radius-md,

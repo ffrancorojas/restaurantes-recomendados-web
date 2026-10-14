@@ -11,14 +11,14 @@ export function TypeSelector({ value, onChange }: TypeSelectorProps) {
       onChange={(_, nextValue: string[]) =>
         onChange({ value: nextValue as TypeSelectorProps['value'] })
       }
-      className="flex flex-wrap gap-small radius-pill-group"
+      className="flex flex-wrap gap-small radius-toggle-group"
       aria-label="Tipos de cocina"
     >
       {RESTAURANT_TYPES.map((type) => (
         <ToggleButton
           key={type}
           value={type}
-          className={classNames('border-default', 'radius-pill', 'padding-button-compact', 'font-size-xs', 'text-muted', 'background-color-surface', 'type-selector-button', {
+          className={classNames('border-default', 'padding-button-compact', 'font-size-xs', 'text-muted', 'background-color-surface', 'type-selector-button', {
             ['background-color-soft-green text-secondary']: value.includes(type),
           })}
         >
