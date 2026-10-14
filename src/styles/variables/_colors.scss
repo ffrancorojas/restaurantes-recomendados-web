@@ -2,6 +2,7 @@ $background: #fff9f4;
 $surface: #ffffff;
 $text: #24201d;
 $muted: #726963;
+$placeholder: #8a817a;
 $border: #e7ded5;
 $primary: #e85d3f;
 $secondary: #3f776c;
@@ -9,10 +10,12 @@ $map: #276559;
 $soft-green: #e1f0eb;
 $soft-sand: #f1e9e2;
 $danger: #a94e3d;
+$on-accent: #ffffff;
 $dark-background: #171b19;
 $dark-surface: #222825;
 $dark-text: #f6f0eb;
 $dark-muted: #b6aca4;
+$dark-placeholder: #9b9189;
 $dark-border: #3d4843;
 $dark-primary: #ff8a70;
 $dark-secondary: #91d4c1;
@@ -20,6 +23,7 @@ $dark-map: #91d4c1;
 $dark-soft-green: #263d36;
 $dark-soft-sand: #38312c;
 $dark-danger: #ff9a87;
+$dark-on-accent: #201713;
 
 :root {
   color-scheme: light;
@@ -27,6 +31,7 @@ $dark-danger: #ff9a87;
   --color-surface: #{$surface};
   --color-text: #{$text};
   --color-muted: #{$muted};
+  --color-placeholder: #{$placeholder};
   --color-border: #{$border};
   --color-primary: #{$primary};
   --color-secondary: #{$secondary};
@@ -34,6 +39,7 @@ $dark-danger: #ff9a87;
   --color-soft-green: #{$soft-green};
   --color-soft-sand: #{$soft-sand};
   --color-danger: #{$danger};
+  --color-on-accent: #{$on-accent};
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,6 +49,7 @@ $dark-danger: #ff9a87;
     --color-surface: #{$dark-surface};
     --color-text: #{$dark-text};
     --color-muted: #{$dark-muted};
+    --color-placeholder: #{$dark-placeholder};
     --color-border: #{$dark-border};
     --color-primary: #{$dark-primary};
     --color-secondary: #{$dark-secondary};
@@ -50,5 +57,6 @@ $dark-danger: #ff9a87;
     --color-soft-green: #{$dark-soft-green};
     --color-soft-sand: #{$dark-soft-sand};
     --color-danger: #{$dark-danger};
+    --color-on-accent: #{$dark-on-accent};
   }
 }

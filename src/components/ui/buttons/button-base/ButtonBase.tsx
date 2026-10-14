@@ -30,7 +30,7 @@ export function ButtonBase({
           'background-transparent': variant === 'ghost',
         },
         {
-          'text-surface': variant === 'primary' || variant === 'danger',
+          'text-on-accent': variant === 'primary' || variant === 'danger',
           'text-muted': variant === 'secondary' || variant === 'ghost',
         },
         { 'padding-button': variant !== 'ghost', 'padding-button-compact': variant === 'ghost' },
