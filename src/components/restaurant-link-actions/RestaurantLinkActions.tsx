@@ -18,14 +18,22 @@ export function RestaurantLinkActions({
         iconName="location"
         name="Abrir en Google Maps"
         disabled={disabled}
-        style={{ ...styles.mapsButton, ...(compact ? styles.compactButton : undefined) }}
+        style={{
+          ...styles.linkButton,
+          ...styles.mapsButton,
+          ...(compact ? styles.compactButton : undefined),
+        }}
         onClick={() => openMaps({ restaurant })}
       />
       <Button.Icon
         iconName="google"
         name="Buscar en Google"
         disabled={disabled}
-        style={{ ...styles.googleButton, ...(compact ? styles.compactButton : undefined) }}
+        style={{
+          ...styles.linkButton,
+          ...styles.googleButton,
+          ...(compact ? styles.compactButton : undefined),
+        }}
         onClick={() => openGoogle({ restaurant })}
       />
     </div>
