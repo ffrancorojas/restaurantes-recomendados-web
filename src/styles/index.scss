@@ -79,17 +79,11 @@ button:disabled {
   }
 }
 @media (max-width: 560px) {
-  [data-responsive-header] {
-    padding: 0 18px !important;
-  }
-  [data-responsive-account] {
-    gap: 10px !important;
-  }
-  [data-responsive-account] > span {
-    display: none !important;
-  }
   [data-responsive-screen] {
     padding: 28px 12px 56px !important;
+  }
+  [data-responsive-list] {
+    padding-top: 0 !important;
   }
   [data-responsive-hero] {
     display: block !important;

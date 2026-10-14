@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   page: {
-    minHeight: 'calc(100vh - var(--header-height))',
+    minHeight: '100vh',
     padding: '0 28px 80px',
     background: 'var(--color-background)',
   },
