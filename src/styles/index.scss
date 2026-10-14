@@ -120,6 +120,9 @@ button:disabled {
   [data-responsive-form] form {
     padding: 1.125rem 0.875rem !important;
   }
+  [data-responsive-back] {
+    margin-left: 0.375rem !important;
+  }
   [data-responsive-install] {
     right: 0.875rem !important;
     bottom: 0.875rem !important;

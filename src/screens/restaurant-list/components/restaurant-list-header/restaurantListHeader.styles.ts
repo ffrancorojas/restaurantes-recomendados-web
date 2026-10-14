@@ -7,6 +7,7 @@ export const styles: Record<string, CSSProperties> = {
     justifyContent: 'space-between',
     marginBottom: '0.625rem',
   },
+  backButton: { paddingLeft: 0 },
   headingRow: { display: 'flex', alignItems: 'center', gap: '1rem' },
   actions: {
     display: 'flex',
