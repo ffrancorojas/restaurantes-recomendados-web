@@ -24,6 +24,7 @@ export const muiStyles: SxProps<Theme> = {
     borderRadius: 'var(--radius-md)',
     backgroundColor: 'var(--color-surface)',
     '& .MuiSelect-select': { color: 'var(--color-text)' },
+    '& .MuiSelect-icon': { right: '0.875rem' },
     '& .MuiSvgIcon-root': { color: 'var(--color-muted)' },
     '& fieldset': { borderColor: 'var(--color-border)' },
     '&:hover fieldset': { borderColor: 'var(--color-muted)' },
