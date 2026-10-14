@@ -1,21 +1,22 @@
 .type-selector-button {
-  border-color: var(--color-border);
-  text-transform: none;
+  border: 0 !important;
+  background-color: var(--color-soft-sand) !important;
+  color: var(--color-text) !important;
+  font-size: 0.8125rem;
+  text-transform: none !important;
 
   &.MuiToggleButton-root {
-    background-color: var(--color-surface);
+    padding: 0.5625rem 0.75rem;
   }
 
-  &.MuiToggleButton-root:hover {
+  &:hover {
     background-color: var(--color-soft-sand);
   }
 
-  &.MuiToggleButton-root.Mui-selected {
-    border-color: var(--color-secondary);
-    background-color: var(--color-soft-green);
-  }
-
-  &.MuiToggleButton-root.Mui-selected:hover {
-    background-color: var(--color-soft-green);
+  &.Mui-selected,
+  &.Mui-selected:hover {
+    border-color: var(--color-secondary) !important;
+    background-color: var(--color-secondary) !important;
+    color: var(--color-surface) !important;
   }
 }

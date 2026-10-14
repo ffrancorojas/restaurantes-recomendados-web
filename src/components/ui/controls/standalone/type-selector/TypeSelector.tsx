@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { RESTAURANT_TYPES } from '@assets/constants';
 import './typeSelector.styles.scss';
@@ -14,17 +13,20 @@ export function TypeSelector({ value, onChange }: TypeSelectorProps) {
       className="flex flex-wrap gap-small radius-toggle-group"
       aria-label="Tipos de cocina"
     >
-      {RESTAURANT_TYPES.map((type) => (
-        <ToggleButton
-          key={type}
-          value={type}
-          className={classNames('border-default', 'padding-button-compact', 'font-size-xs', 'text-muted', 'background-color-surface', 'type-selector-button', {
-            ['background-color-soft-green text-secondary']: value.includes(type),
-          })}
-        >
-          {type}
-        </ToggleButton>
-      ))}
+      {RESTAURANT_TYPES.map((type) => {
+        const isSelected = value.includes(type);
+        const label = `${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()}`;
+
+        return (
+          <ToggleButton
+            key={type}
+            value={type}
+            className="padding-button-compact font-semibold type-selector-button"
+          >
+            {isSelected ? '✓ ' : ''}{label}
+          </ToggleButton>
+        );
+      })}
     </ToggleButtonGroup>
   );
 }

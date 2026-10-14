@@ -1,3 +1,13 @@
 .visit-status-button-form-root {
   width: fit-content;
+
+  .visit-status-button-form-button {
+    min-height: 2.75rem;
+    padding: 0 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-soft-green) !important;
+    color: var(--color-map) !important;
+    font-size: 0.8125rem;
+    font-weight: 800;
+  }
 }
