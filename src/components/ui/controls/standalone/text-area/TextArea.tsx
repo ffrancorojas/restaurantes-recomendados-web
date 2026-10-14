@@ -26,7 +26,7 @@ export function TextArea({
       minRows={4}
       fullWidth
       size="small"
-      className={classNames('margin-bottom-regular', 'width-full', 'background-color-surface', 'text-area-root', className)}
+      className={classNames('margin-bottom-regular', 'width-full', 'text-area-root', className)}
     />
   );
 }

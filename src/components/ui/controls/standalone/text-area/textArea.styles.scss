@@ -1,5 +1,7 @@
 .text-area-root {
   .MuiOutlinedInput-root {
+    background-color: var(--color-surface);
+
     textarea {
       &::placeholder {
         opacity: 1;
