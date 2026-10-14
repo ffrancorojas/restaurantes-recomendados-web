@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
-  tags: { display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8, paddingTop: 0 },
+  tags: { display: 'flex', flexWrap: 'wrap', gap: 6 },
   tag: {
     alignSelf: 'flex-start',
     padding: '3px 7px',

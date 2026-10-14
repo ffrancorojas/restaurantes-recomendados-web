@@ -1,1 +1,1 @@
-export type RestaurantLocationProps = { locality: string };
+export type RestaurantLocationProps = { locality: string; collapsed?: boolean };

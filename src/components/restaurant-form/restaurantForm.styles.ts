@@ -2,18 +2,19 @@ import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
   page: {
     minHeight: '100vh',
-    padding: '0 28px 80px',
+    width: '100%',
+    padding: '0 0 56px',
     background: 'var(--color-background)',
   },
   pageForm: {
     width: '100%',
-    maxWidth: 680,
-    margin: '0 auto',
+    minHeight: '100vh',
+    margin: 0,
     padding: 28,
-    background: 'var(--color-surface)',
-    border: '1px solid var(--color-border)',
-    borderRadius: 'var(--radius-card)',
-    boxShadow: 'var(--shadow-card)',
+    background: 'transparent',
+    border: 0,
+    borderRadius: 0,
+    boxShadow: 'none',
   },
   error: {
     margin: '0 0 16px',

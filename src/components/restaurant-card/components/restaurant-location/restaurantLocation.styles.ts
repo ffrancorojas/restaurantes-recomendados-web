@@ -8,4 +8,5 @@ export const styles: Record<string, CSSProperties> = {
     fontSize: 12,
     flexShrink: 1,
   },
+  collapsed: { minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
 };

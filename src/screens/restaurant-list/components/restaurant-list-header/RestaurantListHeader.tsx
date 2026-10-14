@@ -19,7 +19,6 @@ export function RestaurantListHeader({
         </h1>
       </div>
       <div data-responsive-actions style={styles.actions}>
-        {showFilters && <FilterButton open={filtersOpen} onClick={onToggleFilters} />}
         <Button.Text
           rightText="Nueva entrada"
           iconName="add"
@@ -27,6 +26,7 @@ export function RestaurantListHeader({
           style={styles.createButton}
           onClick={onCreate}
         />
+        {showFilters && <FilterButton open={filtersOpen} onClick={onToggleFilters} />}
       </div>
     </section>
   );
