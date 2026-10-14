@@ -1,5 +1,8 @@
 .select-field-root {
   min-height: var(--field-height);
+  overflow: hidden;
+  border-radius: var(--radius-field) !important;
+  background-color: var(--color-surface) !important;
 
   .MuiSelect-icon {
     right: 0.875rem;
@@ -13,6 +16,7 @@
 
   .MuiOutlinedInput-notchedOutline {
     border-color: var(--color-border);
+    border-radius: inherit;
   }
 
   &:hover .MuiOutlinedInput-notchedOutline {
