@@ -1,6 +1,7 @@
 .text-field-root {
   .MuiOutlinedInput-root {
     min-height: var(--field-height);
+    background-color: var(--color-surface);
 
     input {
       &::placeholder {
