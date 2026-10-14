@@ -88,9 +88,13 @@ button:disabled {
   [data-responsive-hero] {
     display: block !important;
   }
-  [data-responsive-new] {
+  [data-responsive-actions] {
+    display: flex;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 16px;
+  }
+  [data-responsive-new] {
+    min-width: 0;
   }
   [data-responsive-toolbar] {
     display: block !important;

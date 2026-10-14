@@ -5,16 +5,9 @@ import type { RestaurantFormHeaderProps } from './restaurantFormHeader.types';
 export function RestaurantFormHeader({ isEditing, onBack }: RestaurantFormHeaderProps) {
   return (
     <header style={styles.title}>
-      <div>
-        {!isEditing && (
-          <p className="text-eyebrow" style={styles.eyebrow}>
-            NUEVA HISTORIA
-          </p>
-        )}
-        <h2 className="text-title" style={styles.heading}>
-          {isEditing ? 'Editar restaurante' : 'Añadir restaurante'}
-        </h2>
-      </div>
+      <h2 className="text-title" style={styles.heading}>
+        {isEditing ? 'Editar restaurante' : 'Añadir restaurante'}
+      </h2>
       <Button.Text
         leftText="Volver"
         iconName="back"
