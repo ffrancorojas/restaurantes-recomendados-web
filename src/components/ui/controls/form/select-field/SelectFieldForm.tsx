@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText, InputLabel } from '@mui/material';
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { SelectField } from '../../standalone/select-field';
-import { getFormFieldRules } from '../formField.types';
+import { getFormFieldRules } from '../formField.tools';
 import { styles } from './selectFieldForm.styles';
 import type { SelectFieldFormProps } from './selectFieldForm.types';
 

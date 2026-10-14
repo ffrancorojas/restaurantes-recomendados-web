@@ -1,6 +1,6 @@
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { TextArea } from '../../standalone/text-area';
-import { getFormFieldRules } from '../formField.types';
+import { getFormFieldRules } from '../formField.tools';
 import { styles } from './textAreaForm.styles';
 import type { TextAreaFormProps } from './textAreaForm.types';
 

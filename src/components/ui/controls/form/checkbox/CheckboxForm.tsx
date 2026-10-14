@@ -1,7 +1,7 @@
 import { FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { Checkbox } from '../../standalone/checkbox';
-import { getFormFieldRules } from '../formField.types';
+import { getFormFieldRules } from '../formField.tools';
 import { styles } from './checkboxForm.styles';
 import type { CheckboxFormProps } from './checkboxForm.types';
 

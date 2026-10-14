@@ -2,7 +2,7 @@ import { FormControl, FormHelperText } from '@mui/material';
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import type { RestaurantType } from '@contracts';
 import { TypeSelector } from '../../standalone/type-selector';
-import { getFormFieldRules } from '../formField.types';
+import { getFormFieldRules } from '../formField.tools';
 import { styles } from './typeSelectorForm.styles';
 import type { TypeSelectorFormProps } from './typeSelectorForm.types';
 

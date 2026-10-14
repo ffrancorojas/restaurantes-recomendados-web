@@ -1,7 +1,7 @@
 import { FormControl, FormControlLabel, FormHelperText } from '@mui/material';
 import { Controller, type FieldPathByValue, type FieldValues } from 'react-hook-form';
 import { Switch } from '../../standalone/switch';
-import { getFormFieldRules } from '../formField.types';
+import { getFormFieldRules } from '../formField.tools';
 import { styles } from './switchForm.styles';
 import type { SwitchFormProps } from './switchForm.types';
 
