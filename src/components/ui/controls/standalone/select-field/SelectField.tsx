@@ -10,7 +10,9 @@ export function SelectField({ label, value, options, onChange, className }: Sele
       label={label}
       value={value}
       inputProps={{ 'aria-label': label }}
-      IconComponent={() => <Icon name="chevronDown" size={18} />}
+      IconComponent={({ className: iconClassName }: { className?: string }) => (
+        <Icon name="chevronDown" size={18} className={iconClassName} />
+      )}
       onChange={(event) => onChange({ value: event.target.value as string })}
       className={classNames('background-color-surface', 'text-color', 'select-field-root', className)}
       size="small"
