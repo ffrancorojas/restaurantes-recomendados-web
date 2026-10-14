@@ -9,8 +9,20 @@ $map: #276559;
 $soft-green: #e1f0eb;
 $soft-sand: #f1e9e2;
 $danger: #a94e3d;
+$dark-background: #171b19;
+$dark-surface: #222825;
+$dark-text: #f6f0eb;
+$dark-muted: #b6aca4;
+$dark-border: #3d4843;
+$dark-primary: #ff8a70;
+$dark-secondary: #91d4c1;
+$dark-map: #91d4c1;
+$dark-soft-green: #263d36;
+$dark-soft-sand: #38312c;
+$dark-danger: #ff9a87;
 
 :root {
+  color-scheme: light;
   --color-background: #{$background};
   --color-surface: #{$surface};
   --color-text: #{$text};
@@ -22,4 +34,21 @@ $danger: #a94e3d;
   --color-soft-green: #{$soft-green};
   --color-soft-sand: #{$soft-sand};
   --color-danger: #{$danger};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-background: #{$dark-background};
+    --color-surface: #{$dark-surface};
+    --color-text: #{$dark-text};
+    --color-muted: #{$dark-muted};
+    --color-border: #{$dark-border};
+    --color-primary: #{$dark-primary};
+    --color-secondary: #{$dark-secondary};
+    --color-map: #{$dark-map};
+    --color-soft-green: #{$dark-soft-green};
+    --color-soft-sand: #{$dark-soft-sand};
+    --color-danger: #{$dark-danger};
+  }
 }

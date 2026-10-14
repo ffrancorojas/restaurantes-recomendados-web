@@ -36,6 +36,27 @@ button:disabled {
   opacity: 0.7;
 }
 
+.MuiMenu-paper,
+.MuiPopover-paper {
+  color: var(--color-text) !important;
+  background-color: var(--color-surface) !important;
+  background-image: none !important;
+  border: 1px solid var(--color-border);
+}
+
+.MuiMenuItem-root {
+  color: var(--color-text);
+}
+
+.MuiMenuItem-root.Mui-selected,
+.MuiMenuItem-root:hover {
+  background-color: var(--color-soft-green) !important;
+}
+
+.MuiDialog-container .MuiPaper-root {
+  color: var(--color-text);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
