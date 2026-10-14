@@ -11,7 +11,7 @@ export function RestaurantListHeader({
   onToggleFilters,
 }: RestaurantListHeaderProps) {
   return (
-    <section className="flex align-items-center justify-content-space-between restaurant-list-header-hero">
+    <section className="flex-column gap-small width-full restaurant-list-header-hero">
       <div className="flex align-items-center gap-extra-large">
         <Button.Text
           rightText="Volver"
@@ -22,7 +22,7 @@ export function RestaurantListHeader({
         />
         <h1 className="margin-none text-title font-size-lg">Mi listado</h1>
       </div>
-      <div className="flex align-items-stretch gap-small margin-left-none min-width-zero restaurant-list-header-actions">
+      <div className="flex align-items-stretch gap-small width-full min-width-zero restaurant-list-header-actions">
         <Button.Text
           rightText="Nueva entrada"
           iconName="add"
