@@ -7,17 +7,20 @@ import type { UseRestaurantFormParams } from './restaurantForm.types';
 export function useRestaurantForm({ initial, onSave }: UseRestaurantFormParams) {
   const navigate = useNavigate();
   const isEditing = Boolean(initial.id);
+  const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
+
   const initialValues = useMemo(() => {
     const { id: _id, createdAt: _createdAt, source: _source, ...values } = initial;
     return values;
   }, [initial]);
+
   const {
     control,
     handleSubmit,
     watch,
     formState: { isDirty, isSubmitting },
   } = useForm<RestaurantFormData>({ defaultValues: initialValues });
-  const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
+
   const data = watch();
   const submit = handleSubmit((formData) =>
     onSave({

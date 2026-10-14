@@ -1,5 +1,5 @@
-import { Button } from '@components/buttons';
-import { styles } from './filterButton.styles';
+import { Button } from '@components/ui/buttons';
+import './filterButton.styles.scss';
 import type { FilterButtonProps } from './filterButton.types';
 
 export function FilterButton({ open, onClick }: FilterButtonProps) {
@@ -12,7 +12,7 @@ export function FilterButton({ open, onClick }: FilterButtonProps) {
       aria-label={open ? 'Ocultar filtros' : 'Mostrar filtros'}
       title={open ? 'Ocultar filtros' : 'Mostrar filtros'}
       onClick={onClick}
-      style={styles.button}
+      className="background-soft-sand text-muted radius-md padding-none filter-button-button"
     />
   );
 }

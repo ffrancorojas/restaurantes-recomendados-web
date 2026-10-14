@@ -1,0 +1,8 @@
+.switch-root {
+  .MuiSwitch-switchBase.Mui-checked {
+    & + .MuiSwitch-track {
+      background-color: var(--color-secondary);
+      opacity: 1;
+    }
+  }
+}

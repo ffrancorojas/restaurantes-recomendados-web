@@ -1,15 +1,18 @@
-import { Controller } from 'react-hook-form';
 import { PRICE_RANGES } from '@contracts';
-import { Button } from '@components/buttons';
-import { ConfirmDialog } from '@components/confirm-dialog';
-import { RatingSelector, RestaurantFormHeader } from '@components/restaurant-form/components';
-import { RestaurantLinkActions } from '@components/restaurant-link-actions';
-import { SelectField } from '@components/select-field';
-import { TextArea } from '@components/text-area';
-import { TextField } from '@components/text-field';
-import { TypeSelector } from '@components/type-selector';
+import { Button } from '@components/ui/buttons';
+import { ConfirmDialog } from '@components/ui/feedback/confirm-dialog';
+import { RestaurantFormHeader } from '@components/restaurant-form/components';
+import { RestaurantLinkActions } from '@components/features/restaurant-link-actions';
+import {
+  SelectFieldForm,
+  RatingSelectorForm,
+  TextAreaForm,
+  TextFieldForm,
+  TypeSelectorForm,
+  VisitStatusButtonForm,
+} from '@components/ui/controls/form';
 import { useRestaurantForm } from '@components/restaurant-form/useRestaurantForm';
-import { styles } from './restaurantForm.styles';
+import './restaurantForm.styles.scss';
 import type { RestaurantFormProps } from './restaurantForm.types';
 
 export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) {
@@ -26,146 +29,48 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
   const isEditing = Boolean(initial.id);
 
   return (
-    <div data-responsive-form style={styles.page}>
-      <form style={styles.pageForm} onSubmit={submit}>
-        {error && <p style={styles.error}>{error}</p>}
+    <div className="background-app width-full restaurant-form-page">
+      <form className="background-transparent margin-none padding-form padding-form-mobile width-full restaurant-form-pageForm" onSubmit={submit}>
+        {error && <p className="background-danger-subtle text-danger radius-md font-size-sm restaurant-form-error">{error}</p>}
         <RestaurantFormHeader isEditing={isEditing} onBack={requestCancel} />
-        <Controller
-          name="name"
+        <TextFieldForm
           control={control}
-          rules={{ required: 'El nombre es obligatorio.' }}
-          render={({ field, fieldState }) => (
-            <TextField
-              label="Nombre"
-              required
-              error={fieldState.error?.message}
-              value={field.value}
-              onChange={({ value }) => field.onChange(value)}
-              onBlur={field.onBlur}
-              name={field.name}
-            />
-          )}
+          name="name"
+          label="Nombre"
+          required
+          requiredMessage="El nombre es obligatorio."
         />
-        <div style={styles.localityRow}>
-          <Controller
-            name="locality"
+        <div className="flex align-items-start gap-medium restaurant-form-localityRow">
+          <TextFieldForm
             control={control}
-            rules={{ required: 'La localidad es obligatoria.' }}
-            render={({ field, fieldState }) => (
-              <TextField
-                label="Localidad"
-                required
-                error={fieldState.error?.message}
-                value={field.value}
-                onChange={({ value }) => field.onChange(value)}
-                onBlur={field.onBlur}
-                name={field.name}
-              />
-            )}
+            name="locality"
+            label="Localidad"
+            required
+            requiredMessage="La localidad es obligatoria."
           />
           <RestaurantLinkActions name={data.name} locality={data.locality} />
         </div>
-        <Controller
+        <SelectFieldForm
+          control={control}
           name="price"
-          control={control}
-          render={({ field }) => (
-            <SelectField
-              label="Precio"
-              value={field.value}
-              options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
-              onChange={({ value }) => field.onChange(value)}
-            />
-          )}
+          label="Precio"
+          options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
         />
-        <Controller
-          name="dishes"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              label="Platos recomendados"
-              value={field.value}
-              onChange={({ value }) => field.onChange(value)}
-              onBlur={field.onBlur}
-              name={field.name}
-            />
-          )}
-        />
-        <Controller
-          name="recommendedBy"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              label="Recomendado por"
-              value={field.value}
-              onChange={({ value }) => field.onChange(value)}
-              onBlur={field.onBlur}
-              name={field.name}
-            />
-          )}
-        />
-        <Controller
-          name="notes"
-          control={control}
-          render={({ field }) => (
-            <TextArea
-              label="Observaciones"
-              value={field.value}
-              onChange={({ value }) => field.onChange(value)}
-              onBlur={field.onBlur}
-              name={field.name}
-            />
-          )}
-        />
-        <label style={styles.label}>
+        <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
+        <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
+        <TextAreaForm control={control} name="notes" label="Observaciones" />
+        <label className="flex-column gap-small margin-bottom-regular text-muted font-semibold font-size-sm">
           Tipos de cocina
-          <Controller
-            name="type"
-            control={control}
-            render={({ field }) => (
-              <TypeSelector value={field.value} onChange={({ value }) => field.onChange(value)} />
-            )}
-          />
+          <TypeSelectorForm control={control} name="type" />
         </label>
-        <Controller
-          name="visited"
-          control={control}
-          render={({ field }) => (
-            <Button.Text
-              leftText={field.value ? 'Quitar visita' : 'Registrar visita'}
-              variant="secondary"
-              type="button"
-              onClick={() => field.onChange(!field.value)}
-            />
-          )}
-        />
+        <VisitStatusButtonForm control={control} name="visited" />
         {data.visited && (
           <>
-            <Controller
-              name="opinion"
-              control={control}
-              render={({ field }) => (
-                <TextArea
-                  label="Mi opinión"
-                  value={field.value}
-                  onChange={({ value }) => field.onChange(value)}
-                  onBlur={field.onBlur}
-                  name={field.name}
-                />
-              )}
-            />
-            <Controller
-              name="rating"
-              control={control}
-              render={({ field }) => (
-                <RatingSelector
-                  value={field.value}
-                  onChange={({ value }) => field.onChange(value)}
-                />
-              )}
-            />
+            <TextAreaForm control={control} name="opinion" label="Mi opinión" />
+            <RatingSelectorForm control={control} name="rating" />
           </>
         )}
-        <div style={styles.actions}>
+        <div className="flex justify-content-flex-end gap-medium padding-top-medium">
           <Button.Text
             leftText="Cancelar"
             variant="secondary"

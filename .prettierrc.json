@@ -1,5 +1,6 @@
 {
   "printWidth": 100,
+  "objectWrap": "collapse",
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,

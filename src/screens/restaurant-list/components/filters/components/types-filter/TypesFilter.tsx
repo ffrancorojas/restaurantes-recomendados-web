@@ -5,11 +5,10 @@ import {
   Checkbox,
   FormControlLabel,
 } from '@mui/material';
-import type { CSSProperties } from 'react';
-import { Button } from '@components/buttons';
-import { Icon } from '@components/icons';
+import { Button } from '@components/ui/buttons';
+import { Icon } from '@components/ui/icons';
 import type { RestaurantType } from '@contracts';
-import { styles } from './typesFilter.styles';
+import './typesFilter.styles.scss';
 import type { FiltersTypesChangeParams } from '../../filters.types';
 
 type TypesFilterProps = {
@@ -20,18 +19,21 @@ type TypesFilterProps = {
 
 export function TypesFilter({ value, options, onChange }: TypesFilterProps) {
   return (
-    <Accordion disableGutters elevation={0} sx={styles.accordion}>
-      <AccordionSummary expandIcon={<Icon name="chevronDown" size={16} />} sx={styles.summary}>
+    <Accordion disableGutters elevation={0} className="background-surface radius-md margin-bottom-regular border-default types-filter-accordion">
+      <AccordionSummary
+        expandIcon={<Icon name="chevronDown" size={16} />}
+        className="flex filter-row text-color justify-content-space-between padding-inline-small font-semibold font-size-sm types-filter-summary"
+      >
         {value.length ? `Tipos de comida (${value.length})` : 'Todos los tipos de comida'}
       </AccordionSummary>
-      <AccordionDetails sx={styles.options}>
+      <AccordionDetails className="flex flex-wrap gap-small types-filter-options">
         {value.length > 0 && (
-          <Button.Text
+        <Button.Text
             leftText="Limpiar selección · Mostrar todos"
             variant="ghost"
             type="button"
             onClick={() => onChange({ value: [] })}
-            style={styles.clear as CSSProperties}
+            className="font-size-xs justify-content-flex-start types-filter-clear"
           />
         )}
         {options.map((type) => {
@@ -40,14 +42,14 @@ export function TypesFilter({ value, options, onChange }: TypesFilterProps) {
             <FormControlLabel
               key={type}
               label={type}
-              sx={styles.option}
+              className="min-width-zero text-muted font-size-sm types-filter-option"
               control={
                 <Checkbox
                   size="small"
                   checked={selected}
                   icon={<Icon name="checkbox" size={18} />}
                   checkedIcon={<Icon name="checkboxChecked" size={18} />}
-                  sx={styles.checkbox}
+                  className="text-border"
                   onChange={() =>
                     onChange({
                       value: selected ? value.filter((item) => item !== type) : [...value, type],

@@ -1,0 +1,23 @@
+.restaurant-list-content-cards {
+  gap: 0.5rem 1.125rem;
+
+  > * {
+    flex: 1 1 calc((100% - 2.25rem) / 3);
+  }
+}
+
+.restaurant-list-content-empty {
+  text-align: center;
+}
+
+@media (max-width: 50rem) {
+  .restaurant-list-content-cards > * {
+    flex-basis: calc((100% - 1.125rem) / 2);
+  }
+}
+
+@media (max-width: 35rem) {
+  .restaurant-list-content-cards > * {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,32 @@
+.home-screen-screen {
+  min-height: 100vh;
+  padding: 2rem 1.75rem 1.5rem;
+}
+
+.home-screen-content {
+  max-width: 35rem;
+  flex: 1;
+  align-self: center;
+}
+
+.home-screen-title {
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.home-screen-accent {
+  font-style: normal;
+}
+
+.home-screen-subtitle {
+  max-width: 28.75rem;
+  margin: 1.125rem 0 1.75rem;
+}
+
+.home-screen-actions {
+  max-width: 22.5rem;
+}
+
+.home-screen-footer {
+  padding-top: 1.5rem;
+}

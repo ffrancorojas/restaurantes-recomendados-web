@@ -1,0 +1,17 @@
+$shadow-card: 0 0.5rem 1.5rem #493b2e14;
+$shadow-floating: 0 0.75rem 2.125rem #493b2e22;
+$shadow-modal: 0 1.125rem 4.375rem #24201d33;
+
+:root {
+  --shadow-card: #{$shadow-card};
+  --shadow-floating: #{$shadow-floating};
+  --shadow-modal: #{$shadow-modal};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-card: 0 0.5rem 1.5rem #0000002e;
+    --shadow-floating: 0 0.75rem 2.125rem #00000045;
+    --shadow-modal: 0 1.125rem 4.375rem #00000070;
+  }
+}

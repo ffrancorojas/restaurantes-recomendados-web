@@ -1,4 +1,4 @@
-import { AppLayout } from '@components/app-layout';
+import { AppLayout } from '@components/ui/layout/app-layout';
 import { AppProvider } from '@app/AppProvider';
 import { AppRouter } from '@app/router';
 

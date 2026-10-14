@@ -1,6 +1,6 @@
-import { RestaurantCard } from '@components/restaurant-card';
-import { Spinner } from '@components/spinner';
-import { styles } from './restaurantListContent.styles';
+import { RestaurantCard } from '@components/features/restaurant-card';
+import { Spinner } from '@components/ui/feedback/spinner';
+import './restaurantListContent.styles.scss';
 import type { RestaurantListContentProps } from './restaurantListContent.types';
 
 export function RestaurantListContent({
@@ -18,7 +18,7 @@ export function RestaurantListContent({
 
   if (!totalRestaurants) {
     return (
-      <div style={styles.empty}>
+      <div className="text-muted padding-empty-state restaurant-list-content-empty">
         <p>Añade un restaurante</p>
       </div>
     );
@@ -26,7 +26,7 @@ export function RestaurantListContent({
 
   if (!restaurants.length) {
     return (
-      <div style={styles.empty}>
+      <div className="text-muted padding-empty-state restaurant-list-content-empty">
         <h2>Aún no hay coincidencias</h2>
         <p>Prueba otra búsqueda.</p>
       </div>
@@ -34,7 +34,7 @@ export function RestaurantListContent({
   }
 
   return (
-    <div data-responsive-grid style={styles.grid}>
+    <div className="flex flex-wrap restaurant-list-content-cards">
       {restaurants.map((restaurant) => (
         <RestaurantCard
           key={restaurant.id}
