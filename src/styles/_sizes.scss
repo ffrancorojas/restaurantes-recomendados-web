@@ -1,11 +1,9 @@
-$header-height: 78px;
 $content-width: 1120px;
 $field-height: 46px;
 $icon-size: 34px;
 $card-min-height: 270px;
 
 :root {
-  --header-height: #{$header-height};
   --content-width: #{$content-width};
   --field-height: #{$field-height};
   --icon-size: #{$icon-size};

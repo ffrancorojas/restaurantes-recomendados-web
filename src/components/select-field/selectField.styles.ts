@@ -20,7 +20,16 @@ export const styles: Record<string, CSSProperties> = {
 
 export const muiStyles: SxProps<Theme> = {
   marginBottom: 2,
-  '& .MuiOutlinedInput-root': { borderRadius: 'var(--radius-md)' },
+  '& .MuiOutlinedInput-root': {
+    borderRadius: 'var(--radius-md)',
+    backgroundColor: 'var(--color-surface)',
+    '& .MuiSelect-select': { color: 'var(--color-text)' },
+    '& .MuiSvgIcon-root': { color: 'var(--color-muted)' },
+    '& fieldset': { borderColor: 'var(--color-border)' },
+    '&:hover fieldset': { borderColor: 'var(--color-muted)' },
+    '&.Mui-focused fieldset': { borderColor: 'var(--color-secondary)' },
+  },
   '& .MuiOutlinedInput-notchedOutline': { borderColor: 'var(--color-border)' },
   '& .MuiInputLabel-root': { color: 'var(--color-muted)', fontWeight: 600 },
+  '& .MuiInputLabel-root.Mui-focused': { color: 'var(--color-secondary)' },
 };

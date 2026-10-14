@@ -19,7 +19,12 @@ export function useRestaurantForm({ initial, onSave }: UseRestaurantFormParams) 
   } = useForm<RestaurantFormData>({ defaultValues: initialValues });
   const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
   const data = watch();
-  const submit = handleSubmit((formData) => onSave({ data: formData, id: initial.id }));
+  const submit = handleSubmit((formData) =>
+    onSave({
+      data: { ...formData, rating: formData.visited ? formData.rating : '' },
+      id: initial.id,
+    }),
+  );
 
   const requestCancel = () => {
     if (isSubmitting) return;

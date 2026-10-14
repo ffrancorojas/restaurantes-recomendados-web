@@ -1,4 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Icon } from '@components/icons';
 import { muiStyles, styles } from './selectField.styles';
 import type { SelectFieldProps } from './selectField.types';
 export function SelectField({ label, value, options, onChange }: SelectFieldProps) {
@@ -8,6 +9,7 @@ export function SelectField({ label, value, options, onChange }: SelectFieldProp
       <Select
         label={label}
         value={value}
+        IconComponent={() => <Icon name="chevronDown" size={18} />}
         onChange={(event) => onChange({ value: event.target.value })}
         sx={styles.select}
       >

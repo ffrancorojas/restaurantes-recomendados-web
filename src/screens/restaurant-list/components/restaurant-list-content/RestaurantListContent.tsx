@@ -10,6 +10,7 @@ export function RestaurantListContent({
   onEdit,
   onRemove,
   onShare,
+  onVisit,
 }: RestaurantListContentProps) {
   if (loading) {
     return <Spinner label="Cargando tus restaurantes…" />;
@@ -41,6 +42,7 @@ export function RestaurantListContent({
           onEdit={() => onEdit(restaurant)}
           onRemove={() => onRemove(restaurant.id)}
           onShare={() => onShare(restaurant)}
+          onVisit={() => onVisit(restaurant)}
         />
       ))}
     </div>

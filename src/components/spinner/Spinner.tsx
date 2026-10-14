@@ -1,10 +1,11 @@
 import { styles } from './spinner.styles';
 import type { SpinnerProps } from './spinner.types';
+import { Icon } from '@components/icons';
 
 export function Spinner({ label = 'Cargando…', size = 34 }: SpinnerProps) {
   return (
     <div role="status" style={styles.container}>
-      <span aria-hidden="true" style={{ ...styles.spinner, width: size, height: size }} />
+      <Icon name="spinner" size={size} style={styles.spinner} />
       <span>{label}</span>
     </div>
   );

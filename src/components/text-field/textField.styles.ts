@@ -30,8 +30,16 @@ export const muiStyles: SxProps<Theme> = {
     minHeight: 'var(--field-height)',
     borderRadius: 'var(--radius-md)',
     backgroundColor: 'var(--color-surface)',
+    '& input': {
+      color: 'var(--color-text)',
+      '&::placeholder': { color: 'var(--color-muted)', opacity: 1 },
+    },
+    '& fieldset': { borderColor: 'var(--color-border)' },
+    '&:hover fieldset': { borderColor: 'var(--color-muted)' },
+    '&.Mui-focused fieldset': { borderColor: 'var(--color-secondary)' },
   },
   '& .MuiOutlinedInput-notchedOutline': { borderColor: 'var(--color-border)' },
   '& .MuiInputLabel-root': { color: 'var(--color-muted)', fontWeight: 600 },
+  '& .MuiInputLabel-root.Mui-focused': { color: 'var(--color-secondary)' },
   '& .MuiFormHelperText-root': { marginLeft: 0, color: 'var(--color-danger)' },
 };
