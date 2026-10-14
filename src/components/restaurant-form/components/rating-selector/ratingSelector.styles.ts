@@ -1,13 +1,13 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
-  label: { margin: '0 0 8px', color: 'var(--color-text)', fontWeight: 800 },
-  container: { display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 },
+  label: { margin: '0 0 0.5rem', color: 'var(--color-text)', fontWeight: 800 },
+  container: { display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' },
   button: {
     display: 'flex',
-    minHeight: 52,
+    minHeight: '3.25rem',
     alignItems: 'center',
-    gap: 8,
-    padding: '8px 10px',
+    gap: '0.5rem',
+    padding: '0.5rem 0.625rem',
     color: 'var(--color-muted)',
     background: 'var(--color-soft-sand)',
     border: '1px solid var(--color-border)',

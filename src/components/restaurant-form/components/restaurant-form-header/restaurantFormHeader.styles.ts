@@ -5,7 +5,7 @@ export const styles: Record<string, CSSProperties> = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 22,
+    marginBottom: '1.375rem',
   },
   heading: { margin: 0 },
 };

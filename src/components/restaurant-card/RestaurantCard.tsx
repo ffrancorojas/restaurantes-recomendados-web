@@ -33,7 +33,7 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit 
           showRemove={false}
           showShare={false}
         />
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
           <RestaurantLinkActions name={restaurant.name} locality={restaurant.locality} compact />
           <ToggleRestaurantInfoButton
             expanded={expanded}
