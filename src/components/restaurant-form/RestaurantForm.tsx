@@ -51,14 +51,17 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
             />
             <RestaurantLinkActions name={data.name} locality={data.locality} />
           </div>
-          <SelectFieldForm
-            control={control}
-            name="price"
-            label="Precio"
-            options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
-          />
           <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
-          <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
+          <div className="flex align-items-start gap-medium restaurant-form-recommended-price-row">
+            <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
+            <SelectFieldForm
+              control={control}
+              name="price"
+              label="Precio"
+              options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
+              containerClassName="restaurant-form-price-select"
+            />
+          </div>
           <TextAreaForm control={control} name="notes" label="Observaciones" />
           <label className="flex-column gap-small text-muted font-semibold font-size-sm">
             Tipos de cocina

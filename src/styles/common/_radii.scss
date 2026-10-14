@@ -11,14 +11,20 @@
 }
 
 .radius-toggle-group .MuiToggleButtonGroup-grouped {
+  margin: 0 !important;
+  border-left: 0 !important;
   border-radius: var(--radius-toggle) !important;
 }
 
-.radius-md,
+.radius-md {
+  border-radius: var(--radius-md);
+}
+
+.radius-field,
 .select-field-root,
 .text-field-root .MuiOutlinedInput-root,
 .text-area-root .MuiOutlinedInput-root {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-field);
 }
 
 .radius-sm {

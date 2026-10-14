@@ -21,6 +21,7 @@ export function VisitStatusButtonForm<
           <Button.Text
             leftText={field.value ? removeVisitText : markVisitedText}
             variant="secondary"
+            className="visit-status-button-form-button"
             type="button"
             onClick={() => field.onChange(!field.value)}
           />

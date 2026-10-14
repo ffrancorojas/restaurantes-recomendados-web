@@ -5,7 +5,7 @@ export function RestaurantFormHeader({ isEditing, onBack }: RestaurantFormHeader
   return (
     <header className="flex align-items-center justify-content-flex-start gap-extra-large margin-bottom-section">
       <Button.Text
-        leftText="Volver"
+        rightText="Volver"
         iconName="back"
         variant="ghost"
         type="button"
