@@ -1,10 +1,10 @@
 import {
   CardActions,
-  EditRestaurantButton,
   RestaurantDetails,
   RestaurantLocation,
   RestaurantOpinion,
   RestaurantTags,
+  RestaurantVisitStatus,
   ToggleRestaurantInfoButton,
 } from './components';
 import { RestaurantLinkActions } from '@components/restaurant-link-actions';
@@ -13,7 +13,7 @@ import type { RestaurantCardProps } from './restaurantCard.types';
 import { useState } from 'react';
 import { getPriceLabel } from './restaurantCard.tools';
 
-export function RestaurantCard({ restaurant, onEdit, onRemove, onShare }: RestaurantCardProps) {
+export function RestaurantCard({ restaurant, onEdit, onRemove, onShare, onVisit }: RestaurantCardProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -43,7 +43,7 @@ export function RestaurantCard({ restaurant, onEdit, onRemove, onShare }: Restau
             <span style={styles.price}>{getPriceLabel({ price: restaurant.price })}</span>
           )}
         </div>
-        <EditRestaurantButton visited={restaurant.visited} onClick={onEdit} />
+        <RestaurantVisitStatus restaurant={restaurant} onVisit={onVisit} />
       </div>
       {expanded && (
         <>

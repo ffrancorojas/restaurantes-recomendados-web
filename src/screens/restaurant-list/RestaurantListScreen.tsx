@@ -33,9 +33,9 @@ export function RestaurantListScreen() {
   } = useRestaurantListScreen();
 
   return (
-    <main data-responsive-screen style={styles.screen}>
+    <main data-responsive-screen data-responsive-list style={styles.screen}>
       <RestaurantListHeader
-        restaurantCount={restaurants.length}
+        onBack={() => navigate('/')}
         onCreate={() => navigate('/restaurants/new')}
       />
       {!loading && restaurants.length > 0 && (
@@ -66,6 +66,7 @@ export function RestaurantListScreen() {
         onEdit={(restaurant) => navigate(`/restaurants/${restaurant.id}/edit`)}
         onRemove={removeRestaurant}
         onShare={(restaurant) => shareRestaurant({ data: restaurant })}
+        onVisit={(restaurant) => navigate(`/restaurants/${restaurant.id}/visit`)}
       />
     </main>
   );

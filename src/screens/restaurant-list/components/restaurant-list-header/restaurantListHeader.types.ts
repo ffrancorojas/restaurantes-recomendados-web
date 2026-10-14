@@ -1,4 +1,4 @@
 export type RestaurantListHeaderProps = {
-  restaurantCount: number;
+  onBack: () => void;
   onCreate: () => void;
 };

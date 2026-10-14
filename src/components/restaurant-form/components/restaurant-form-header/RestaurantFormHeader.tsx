@@ -6,9 +6,11 @@ export function RestaurantFormHeader({ isEditing, onBack }: RestaurantFormHeader
   return (
     <header style={styles.title}>
       <div>
-        <p className="text-eyebrow" style={styles.eyebrow}>
-          NUEVA HISTORIA
-        </p>
+        {!isEditing && (
+          <p className="text-eyebrow" style={styles.eyebrow}>
+            NUEVA HISTORIA
+          </p>
+        )}
         <h2 className="text-title" style={styles.heading}>
           {isEditing ? 'Editar restaurante' : 'Añadir restaurante'}
         </h2>

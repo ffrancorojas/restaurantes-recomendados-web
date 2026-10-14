@@ -4,5 +4,6 @@ export type RestaurantCardProps = {
   onEdit: () => void;
   onRemove: () => void;
   onShare: () => void;
+  onVisit: () => void;
 };
 export type GetPriceLabelParams = { price: PriceRange };

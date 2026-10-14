@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 import type { CSSProperties } from 'react';
 import { Button } from '@components/buttons';
+import { Icon } from '@components/icons';
 import type { RestaurantType } from '@contracts';
 import { styles } from './typesFilter.styles';
 import type { FiltersTypesChangeParams } from '../../filters.types';
@@ -20,7 +21,7 @@ type TypesFilterProps = {
 export function TypesFilter({ value, options, onChange }: TypesFilterProps) {
   return (
     <Accordion disableGutters elevation={0} sx={styles.accordion}>
-      <AccordionSummary expandIcon={<span aria-hidden="true">▾</span>} sx={styles.summary}>
+      <AccordionSummary expandIcon={<Icon name="chevronDown" size={16} />} sx={styles.summary}>
         {value.length ? `Tipos de comida (${value.length})` : 'Todos los tipos de comida'}
       </AccordionSummary>
       <AccordionDetails sx={styles.options}>
@@ -44,6 +45,8 @@ export function TypesFilter({ value, options, onChange }: TypesFilterProps) {
                 <Checkbox
                   size="small"
                   checked={selected}
+                  icon={<Icon name="checkbox" size={18} />}
+                  checkedIcon={<Icon name="checkboxChecked" size={18} />}
                   sx={styles.checkbox}
                   onChange={() =>
                     onChange({

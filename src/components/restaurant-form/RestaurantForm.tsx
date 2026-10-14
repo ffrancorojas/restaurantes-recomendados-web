@@ -1,7 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { PRICE_RANGES } from '@contracts';
 import { Button } from '@components/buttons';
-import { Checkbox } from '@components/checkbox';
 import { ConfirmDialog } from '@components/confirm-dialog';
 import { RatingSelector, RestaurantFormHeader } from '@components/restaurant-form/components';
 import { RestaurantLinkActions } from '@components/restaurant-link-actions';
@@ -31,26 +30,23 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
       <form style={styles.pageForm} onSubmit={submit}>
         {error && <p style={styles.error}>{error}</p>}
         <RestaurantFormHeader isEditing={isEditing} onBack={requestCancel} />
-        <div style={styles.nameRow}>
-          <Controller
-            name="name"
-            control={control}
-            rules={{ required: 'El nombre es obligatorio.' }}
-            render={({ field, fieldState }) => (
-              <TextField
-                label="Nombre"
-                required
-                error={fieldState.error?.message}
-                value={field.value}
-                onChange={({ value }) => field.onChange(value)}
-                onBlur={field.onBlur}
-                name={field.name}
-              />
-            )}
-          />
-          <RestaurantLinkActions name={data.name} locality={data.locality} />
-        </div>
-        <div style={styles.two}>
+        <Controller
+          name="name"
+          control={control}
+          rules={{ required: 'El nombre es obligatorio.' }}
+          render={({ field, fieldState }) => (
+            <TextField
+              label="Nombre"
+              required
+              error={fieldState.error?.message}
+              value={field.value}
+              onChange={({ value }) => field.onChange(value)}
+              onBlur={field.onBlur}
+              name={field.name}
+            />
+          )}
+        />
+        <div style={styles.localityRow}>
           <Controller
             name="locality"
             control={control}
@@ -67,25 +63,52 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
               />
             )}
           />
-          <Controller
-            name="price"
-            control={control}
-            render={({ field }) => (
-              <SelectField
-                label="Precio"
-                value={field.value}
-                options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
-                onChange={({ value }) => field.onChange(value)}
-              />
-            )}
-          />
+          <RestaurantLinkActions name={data.name} locality={data.locality} />
         </div>
+        <Controller
+          name="price"
+          control={control}
+          render={({ field }) => (
+            <SelectField
+              label="Precio"
+              value={field.value}
+              options={[{ value: '', label: 'Sin indicar' }, ...PRICE_RANGES]}
+              onChange={({ value }) => field.onChange(value)}
+            />
+          )}
+        />
         <Controller
           name="dishes"
           control={control}
           render={({ field }) => (
             <TextField
               label="Platos recomendados"
+              value={field.value}
+              onChange={({ value }) => field.onChange(value)}
+              onBlur={field.onBlur}
+              name={field.name}
+            />
+          )}
+        />
+        <Controller
+          name="recommendedBy"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              label="Recomendado por"
+              value={field.value}
+              onChange={({ value }) => field.onChange(value)}
+              onBlur={field.onBlur}
+              name={field.name}
+            />
+          )}
+        />
+        <Controller
+          name="notes"
+          control={control}
+          render={({ field }) => (
+            <TextArea
+              label="Observaciones"
               value={field.value}
               onChange={({ value }) => field.onChange(value)}
               onBlur={field.onBlur}
@@ -107,10 +130,11 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
           name="visited"
           control={control}
           render={({ field }) => (
-            <Checkbox
-              label="Ya he estado"
-              checked={field.value}
-              onChange={({ checked }) => field.onChange(checked)}
+            <Button.Text
+              leftText={field.value ? 'Quitar visita' : 'Registrar visita'}
+              variant="secondary"
+              type="button"
+              onClick={() => field.onChange(!field.value)}
             />
           )}
         />

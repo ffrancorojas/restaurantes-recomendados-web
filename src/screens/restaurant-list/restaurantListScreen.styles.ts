@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 export const styles: Record<string, CSSProperties> = {
-  screen: { maxWidth: 1120, margin: 'auto', padding: '60px 28px 80px' },
+  screen: { maxWidth: 1120, margin: 'auto', padding: '0 28px 80px' },
   error: {
     padding: '10px 14px',
     color: 'var(--color-danger)',

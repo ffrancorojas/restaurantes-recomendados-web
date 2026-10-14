@@ -1,9 +1,12 @@
 import { styles } from '@screens/login/loginScreen.styles';
+import { Icon } from '@components/icons';
 import type { LoginScreenProps } from '@screens/login/loginScreen.types';
 export function LoginScreen({ error, loading, onLogin }: LoginScreenProps) {
   return (
     <main style={styles.screen}>
-      <div style={styles.brand}>✦</div>
+      <div style={styles.brand}>
+        <Icon name="sparkle" size={30} />
+      </div>
       <p className="text-eyebrow" style={styles.eyebrow}>
         TU MAPA GASTRONÓMICO
       </p>
@@ -19,7 +22,7 @@ export function LoginScreen({ error, loading, onLogin }: LoginScreenProps) {
         dispositivo.
       </p>
       <button style={styles.submit} onClick={onLogin} disabled={loading} aria-busy={loading}>
-        {loading && <span aria-hidden="true" style={styles.spinner} />}
+        {loading && <Icon name="spinner" size={16} style={styles.spinner} />}
         {loading ? 'Iniciando sesión…' : 'Continuar con Google'}
       </button>
       {error && (
