@@ -4,8 +4,8 @@ export const styles: Record<string, CSSProperties> = {
   field: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 7,
-    marginBottom: 16,
+    gap: '0.4375rem',
+    marginBottom: '1rem',
     color: 'var(--color-muted)',
     fontSize: 'var(--font-size-sm)',
     fontWeight: 700,
@@ -19,7 +19,7 @@ export const styles: Record<string, CSSProperties> = {
 };
 
 export const muiStyles: SxProps<Theme> = {
-  marginBottom: 2,
+  marginBottom: '1rem',
   '& .MuiOutlinedInput-root': {
     borderRadius: 'var(--radius-md)',
     backgroundColor: 'var(--color-surface)',

@@ -17,7 +17,7 @@ export function IconButton({
       icon={<Icon name={iconName} />}
       leftText={leftText}
       rightText={rightText}
-      style={{ fontSize: 22, lineHeight: 1, padding: '0 4px', ...style }}
+      style={{ fontSize: '1.375rem', lineHeight: 1, padding: '0 0.25rem', ...style }}
     />
   );
 }

@@ -26,7 +26,7 @@ export function ConfirmDialog({
         paper: {
           sx: {
             width: '100%',
-            maxWidth: 420,
+            maxWidth: '26.25rem',
             border: '1px solid var(--color-border)',
             borderRadius: 'var(--radius-card)',
             backgroundColor: 'var(--color-surface)',
@@ -44,7 +44,7 @@ export function ConfirmDialog({
           {message}
         </DialogContentText>
       </DialogContent>
-      <DialogActions sx={{ gap: 1, padding: '8px 24px 24px' }}>
+      <DialogActions sx={{ gap: '0.5rem', padding: '0.5rem 1.5rem 1.5rem' }}>
         <Button.Text leftText={cancelText} variant="secondary" onClick={onCancel} />
         <Button.Text leftText={confirmText} onClick={onConfirm} />
       </DialogActions>

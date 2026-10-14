@@ -5,8 +5,8 @@ export const styles: Record<string, CSSProperties> = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginBottom: 16,
+    gap: '0.5rem',
+    marginBottom: '1rem',
     color: 'var(--color-muted)',
     fontSize: 'var(--font-size-sm)',
     fontWeight: 700,
@@ -14,6 +14,6 @@ export const styles: Record<string, CSSProperties> = {
 };
 
 export const muiStyles: Record<'control' | 'checkbox', SxProps<Theme>> = {
-  control: { margin: '0 0 16px', color: 'var(--color-muted)', fontWeight: 700 },
+  control: { margin: '0 0 1rem', color: 'var(--color-muted)', fontWeight: 700 },
   checkbox: { color: 'var(--color-border)', '&.Mui-checked': { color: 'var(--color-secondary)' } },
 };

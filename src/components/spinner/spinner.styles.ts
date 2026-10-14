@@ -4,8 +4,8 @@ export const styles: Record<string, CSSProperties> = {
   container: {
     display: 'grid',
     placeItems: 'center',
-    gap: 14,
-    padding: '110px 20px',
+    gap: '0.875rem',
+    padding: '6.875rem 1.25rem',
     color: 'var(--color-muted)',
     textAlign: 'center',
   },
