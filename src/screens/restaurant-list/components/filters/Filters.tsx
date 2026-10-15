@@ -3,6 +3,7 @@ import { LocalityFilter } from './components/locality-filter';
 import { PriceFilter } from './components/price-filter';
 import { TypesFilter } from './components/types-filter';
 import { VisitedFilter } from './components/visited-filter';
+import { Button } from '@components/ui/buttons';
 import './filters.styles.scss';
 import type { FiltersProps } from './filters.types';
 
@@ -18,9 +19,17 @@ export function Filters({
   onPriceChange,
   onTypesChange,
   onVisitedChange,
+  onApply,
+  onClear,
 }: FiltersProps) {
   return (
-    <div className="flex-column gap-medium filters-container">
+    <form
+      className="flex-column gap-medium filters-container"
+      onSubmit={(event) => {
+        event.preventDefault();
+        onApply();
+      }}
+    >
       <SearchFilter value={search} onChange={onSearchChange} />
       <div className="flex gap-medium filters-row">
         <LocalityFilter value={locality} onChange={onLocalityChange} />
@@ -28,6 +37,10 @@ export function Filters({
       </div>
       <TypesFilter value={types} options={availableTypes} onChange={onTypesChange} />
       <VisitedFilter value={onlyVisited} onChange={onVisitedChange} />
-    </div>
+      <div className="flex gap-small filters-actions">
+        <Button.Text rightText="Borrar filtros" type="button" variant="ghost" onClick={onClear} />
+        <Button.Text rightText="Aplicar" type="submit" className="filters-apply-button" />
+      </div>
+    </form>
   );
 }

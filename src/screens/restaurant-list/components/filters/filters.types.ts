@@ -16,4 +16,6 @@ export type FiltersProps = {
   onPriceChange: (params: FiltersValueChangeParams) => void;
   onTypesChange: (params: FiltersTypesChangeParams) => void;
   onVisitedChange: (params: FiltersVisitedChangeParams) => void;
+  onApply: () => void;
+  onClear: () => void;
 };
