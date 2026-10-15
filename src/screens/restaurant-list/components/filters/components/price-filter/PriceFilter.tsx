@@ -1,8 +1,12 @@
-import { PRICE_RANGES, type PriceRange } from '@contracts';
+import { PRICE_RANGES } from '@contracts';
 import { SelectField } from '@components/ui/controls/standalone/select-field';
+import type { PriceFilterValue } from '@screens/restaurant-list/restaurantListScreen.types';
 import type { FiltersValueChangeParams } from '../../filters.types';
 
-type PriceFilterProps = { value: PriceRange; onChange: (params: FiltersValueChangeParams) => void };
+type PriceFilterProps = {
+  value: PriceFilterValue;
+  onChange: (params: FiltersValueChangeParams) => void;
+};
 
 export function PriceFilter({ value, onChange }: PriceFilterProps) {
   return (
@@ -10,7 +14,8 @@ export function PriceFilter({ value, onChange }: PriceFilterProps) {
       label="Precio"
       className="min-width-zero"
       value={value}
-      options={[{ value: '', label: 'Todos los precios' }, ...PRICE_RANGES]}
+      emptyValueLabel="Precio"
+      options={[{ value: '', label: 'Precio' }, { value: 'all', label: 'Todos' }, ...PRICE_RANGES]}
       onChange={onChange}
     />
   );

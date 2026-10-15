@@ -1,4 +1,7 @@
-import type { FilterRestaurantsParams, RestaurantListState } from '@screens/restaurant-list/restaurantListScreen.types';
+import type {
+  FilterRestaurantsParams,
+  RestaurantListState,
+} from '@screens/restaurant-list/restaurantListScreen.types';
 import type { Restaurant } from '@contracts';
 
 export const INITIAL_RESTAURANT_LIST_STATE: RestaurantListState = {
@@ -34,7 +37,7 @@ export function filterRestaurants({
     const matchesFilters = [
       restaurant.name.toLowerCase().includes(normalizedSearch),
       restaurant.locality.toLowerCase().includes(normalizedLocality),
-      !price || restaurant.price === price,
+      !price || price === 'all' || restaurant.price === price,
       !types.length || restaurant.type.some((type) => types.includes(type)),
       !onlyVisited || restaurant.visited,
     ];

@@ -3,8 +3,11 @@
 }
 
 .filters-row {
-
   > * {
     flex: 1 1 0;
+  }
+
+  > :last-child {
+    flex: 0 0 7.5rem;
   }
 }

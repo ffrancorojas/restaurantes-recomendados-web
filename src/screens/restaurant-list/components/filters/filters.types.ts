@@ -1,4 +1,5 @@
-import type { PriceRange, RestaurantType } from '@contracts';
+import type { RestaurantType } from '@contracts';
+import type { PriceFilterValue } from '@screens/restaurant-list/restaurantListScreen.types';
 export type FiltersSearchChangeParams = { value: string };
 export type FiltersVisitedChangeParams = { checked: boolean };
 export type FiltersValueChangeParams = { value: string };
@@ -6,7 +7,7 @@ export type FiltersTypesChangeParams = { value: RestaurantType[] };
 export type FiltersProps = {
   search: string;
   locality: string;
-  price: PriceRange;
+  price: PriceFilterValue;
   types: RestaurantType[];
   availableTypes: readonly RestaurantType[];
   onlyVisited: boolean;
