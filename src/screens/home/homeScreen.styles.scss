@@ -1,7 +1,6 @@
 .home-screen-screen {
   min-height: 100vh;
   padding: 2rem 1.75rem 1.5rem;
-  position: relative;
 }
 
 .home-screen-content {
@@ -30,15 +29,29 @@
 
 .home-screen-footer {
   padding-top: 1.5rem;
+  gap: 1rem;
 }
 
 .home-screen-settings-button {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  z-index: 1;
   width: 2.75rem;
   height: 2.75rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  min-width: 2.75rem;
+  flex: 0 0 2.75rem;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.home-screen-settings-button:hover,
+.home-screen-settings-button:active,
+.home-screen-settings-button:focus {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.home-screen-logout-button {
+  height: 2.75rem;
+  padding-block: 0;
 }
