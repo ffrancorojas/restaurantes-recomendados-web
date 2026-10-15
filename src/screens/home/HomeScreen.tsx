@@ -43,7 +43,7 @@ export function HomeScreen() {
         <Button.Overlay
           id="home-screen-settings-menu"
           iconName="settings"
-          iconSize={22}
+          iconSize={44}
           name="Configuración"
           disabled={exporting}
           className="home-screen-settings-button"
