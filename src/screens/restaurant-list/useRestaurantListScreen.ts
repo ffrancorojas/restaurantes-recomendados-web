@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { restaurantService } from '@services';
 import { useAuthenticatedSession } from '@app/router/router.context';
@@ -19,7 +19,7 @@ export function useRestaurantListScreen() {
   const navigate = useNavigate();
   const session = useAuthenticatedSession();
   const requestId = useRef(0);
-  const searchDebounce = useRef<number | null>(null);
+  const appliedListState = useRef(INITIAL_RESTAURANT_LIST_STATE);
   const [listState, setListState] = useState<RestaurantListState>(INITIAL_RESTAURANT_LIST_STATE);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [availableTypes, setAvailableTypes] = useState<RestaurantType[]>([]);
@@ -45,12 +45,7 @@ export function useRestaurantListScreen() {
       setError('');
 
       return restaurantService
-        .list(getRestaurantListParams({
-          session,
-          filters,
-          requestedPageSize,
-          requestedPage,
-        }))
+        .list(getRestaurantListParams({ session, filters, requestedPageSize, requestedPage }))
         .then((result) => {
           if (currentRequestId !== requestId.current) return;
           setRestaurants(result.items);
@@ -60,7 +55,9 @@ export function useRestaurantListScreen() {
         })
         .catch((cause) => {
           if (currentRequestId === requestId.current) {
-            setError(getErrorMessage({ cause, fallback: 'No se pudieron cargar tus restaurantes.' }));
+            setError(
+              getErrorMessage({ cause, fallback: 'No se pudieron cargar tus restaurantes.' }),
+            );
           }
         })
         .finally(() => {
@@ -80,68 +77,56 @@ export function useRestaurantListScreen() {
 
     return () => {
       requestId.current += 1;
-      if (searchDebounce.current !== null) window.clearTimeout(searchDebounce.current);
     };
   }, [getAllRestaurants, getAvailableTypes]);
 
-  const hasActiveFilters = useMemo(
-    () =>
-      Boolean(
-        listState.search.trim() ||
-        listState.locality.trim() ||
-        (listState.price && listState.price !== 'all') ||
-        listState.types.length ||
-        listState.onlyVisited,
-      ),
-    [listState],
+  const hasActiveFilters = Boolean(
+    appliedListState.current.search.trim() ||
+    appliedListState.current.locality.trim() ||
+    (appliedListState.current.price && appliedListState.current.price !== 'all') ||
+    appliedListState.current.types.length ||
+    appliedListState.current.onlyVisited,
   );
 
   const updateListState = <TProperty extends keyof RestaurantListState>(
     property: TProperty,
     value: RestaurantListState[TProperty],
   ) => {
-    const nextListState = { ...listState, [property]: value };
-    setListState(nextListState);
-    setPage(1);
-
-    if (searchDebounce.current !== null) window.clearTimeout(searchDebounce.current);
-    if (property === 'search' && typeof value === 'string' && value.trim()) {
-      requestId.current += 1;
-      setLoading(true);
-      setError('');
-      searchDebounce.current = window.setTimeout(
-        () =>
-          getAllRestaurants({
-            filters: nextListState,
-            requestedPage: 1,
-            requestedPageSize: pageSize,
-          }),
-        250,
-      );
-      return;
-    }
-
-    getAllRestaurants({
-      filters: nextListState,
-      requestedPage: 1,
-      requestedPageSize: pageSize,
-    });
+    setListState((current) => ({ ...current, [property]: value }));
   };
 
+  const applyFilters = () => {
+    appliedListState.current = listState;
+    setPage(1);
+    setFiltersOpen(false);
+    getAllRestaurants({ filters: listState, requestedPage: 1, requestedPageSize: pageSize });
+  };
+
+  const clearFilters = () => setListState(INITIAL_RESTAURANT_LIST_STATE);
+
   const setSearch = (value: RestaurantListState['search']) => updateListState('search', value);
-  const setLocality = (value: RestaurantListState['locality']) => updateListState('locality', value);
+  const setLocality = (value: RestaurantListState['locality']) =>
+    updateListState('locality', value);
   const setPrice = (value: RestaurantListState['price']) => updateListState('price', value);
   const setTypes = (value: RestaurantListState['types']) => updateListState('types', value);
   const setOnlyVisited = (value: RestaurantListState['onlyVisited']) =>
     updateListState('onlyVisited', value);
   const changePage = (value: number) => {
     setPage(value);
-    getAllRestaurants({ filters: listState, requestedPage: value, requestedPageSize: pageSize });
+    getAllRestaurants({
+      filters: appliedListState.current,
+      requestedPage: value,
+      requestedPageSize: pageSize,
+    });
   };
   const changePageSize = (value: RestaurantPageSize) => {
     setPageSize(value);
     setPage(1);
-    getAllRestaurants({ filters: listState, requestedPage: 1, requestedPageSize: value });
+    getAllRestaurants({
+      filters: appliedListState.current,
+      requestedPage: 1,
+      requestedPageSize: value,
+    });
   };
 
   const confirmRemoveRestaurant = useCallback(() => {
@@ -152,7 +137,7 @@ export function useRestaurantListScreen() {
       .then(() => {
         setRestaurantToRemove(null);
         return getAllRestaurants({
-          filters: listState,
+          filters: appliedListState.current,
           requestedPage: page,
           requestedPageSize: pageSize,
         });
@@ -160,7 +145,7 @@ export function useRestaurantListScreen() {
       .catch((cause) =>
         setError(getErrorMessage({ cause, fallback: 'No se pudo eliminar el restaurante.' })),
       );
-  }, [getAllRestaurants, listState, page, pageSize, restaurantToRemove, session.accessToken]);
+  }, [getAllRestaurants, page, pageSize, restaurantToRemove, session.accessToken]);
 
   const onEdit = useCallback(
     (restaurant: Restaurant) => navigate(`/restaurants/${restaurant.id}/edit`),
@@ -196,6 +181,8 @@ export function useRestaurantListScreen() {
     setPrice,
     setTypes,
     setOnlyVisited,
+    applyFilters,
+    clearFilters,
     setPage: changePage,
     setPageSize: changePageSize,
     onEdit,

@@ -25,6 +25,8 @@ export function RestaurantListScreen() {
     setPrice,
     setTypes,
     setOnlyVisited,
+    applyFilters,
+    clearFilters,
     setPage,
     setPageSize,
     onEdit,
@@ -44,11 +46,11 @@ export function RestaurantListScreen() {
       <RestaurantListHeader
         onBack={onBack}
         onCreate={onCreate}
-        showFilters={!loading && (total > 0 || hasActiveFilters)}
+        showFilters
         filtersOpen={filtersOpen}
         onToggleFilters={() => setFiltersOpen((current) => !current)}
       />
-      {!loading && (total > 0 || hasActiveFilters) && filtersOpen && (
+      {filtersOpen && (
         <Filters
           {...listState}
           availableTypes={availableTypes}
@@ -57,6 +59,8 @@ export function RestaurantListScreen() {
           onPriceChange={({ value }) => setPrice(value as typeof listState.price)}
           onTypesChange={({ value }) => setTypes(value)}
           onVisitedChange={({ checked }) => setOnlyVisited(checked)}
+          onApply={applyFilters}
+          onClear={clearFilters}
         />
       )}
       {error && (

@@ -1,0 +1,45 @@
+.restaurant-accordion-header {
+  min-width: 0;
+}
+
+.restaurant-accordion-actions {
+  flex: 0 0 auto;
+}
+
+.restaurant-accordion-action,
+.restaurant-accordion-toggle {
+  flex: 0 0 auto;
+}
+
+.restaurant-accordion-summary {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.restaurant-accordion-summary:focus-visible,
+.restaurant-accordion-toggle:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 0.125rem;
+}
+
+.restaurant-accordion-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurant-accordion-content {
+  min-width: 0;
+}
+
+.restaurant-accordion-content[hidden] {
+  display: none;
+}

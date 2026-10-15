@@ -1,8 +1,11 @@
-.restaurant-card-title {
-  flex: 1;
-  letter-spacing: -0.02em;
-}
-
 .restaurant-card-metadata {
   flex: 1;
+}
+
+.restaurant-card-location-price {
+  min-width: 0;
+}
+
+.restaurant-card-price {
+  flex: 0 0 auto;
 }

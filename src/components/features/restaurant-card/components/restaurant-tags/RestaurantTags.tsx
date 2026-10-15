@@ -1,13 +1,7 @@
 import './restaurantTags.styles.scss';
 import type { RestaurantTagsProps } from './restaurantTags.types';
 export function RestaurantTags({ types }: RestaurantTagsProps) {
-  return (
-    <>
-      {types.map((type) => (
-        <span className="background-soft-green text-map font-extrabold font-size-xs restaurant-tags-tag" key={type}>
-          {type}
-        </span>
-      ))}
-    </>
-  );
+  if (!types.length) return null;
+
+  return <span className="text-muted font-size-xs restaurant-tags-types">{types.join(' · ')}</span>;
 }

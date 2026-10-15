@@ -17,16 +17,17 @@ export function MultiSelectField<T extends string>({
   onChange,
 }: MultiSelectFieldProps<T>) {
   const handleChange = (event: SelectChangeEvent<T[] | string>) => {
-    const selected = typeof event.target.value === 'string'
-      ? event.target.value.split(',')
-      : event.target.value;
+    const selected =
+      typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value;
 
     if (selected.includes(CLEAR_VALUE)) {
       onChange({ value: [] });
       return;
     }
 
-    onChange({ value: selected.filter((item): item is T => options.some((option) => option.value === item)) });
+    onChange({
+      value: selected.filter((item): item is T => options.some((option) => option.value === item)),
+    });
   };
 
   return (
@@ -35,12 +36,27 @@ export function MultiSelectField<T extends string>({
       value={value}
       displayEmpty
       inputProps={{ 'aria-label': label }}
-      renderValue={(selected) => selected.length ? `${label} (${selected.length})` : emptyLabel}
+      renderValue={(selected) =>
+        selected.length
+          ? selected
+              .map(
+                (selectedValue) =>
+                  options.find((option) => option.value === selectedValue)?.label ?? selectedValue,
+              )
+              .join(', ')
+          : emptyLabel
+      }
       IconComponent={({ className: iconClassName }: { className?: string }) => (
         <Icon name="chevronDown" size={18} className={iconClassName} />
       )}
       onChange={handleChange}
-      className={classNames('background-color-surface', 'text-color', 'select-field-root', 'multi-select-field-root', className)}
+      className={classNames(
+        'background-color-surface',
+        'text-color',
+        'select-field-root',
+        'multi-select-field-root',
+        className,
+      )}
       MenuProps={{ slotProps: { paper: { className: 'multi-select-field-menu' } } }}
       size="small"
     >
