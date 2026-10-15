@@ -6,3 +6,11 @@
 .restaurant-card-metadata {
   flex: 1;
 }
+
+.restaurant-card-location-price {
+  min-width: 0;
+}
+
+.restaurant-card-price {
+  flex: 0 0 auto;
+}

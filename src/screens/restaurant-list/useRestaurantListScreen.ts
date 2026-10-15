@@ -100,8 +100,8 @@ export function useRestaurantListScreen() {
     property: TProperty,
     value: RestaurantListState[TProperty],
   ) => {
-    const nextListState = { ...listState, [property]: value };
-    setListState(nextListState);
+    const filters = { ...listState, [property]: value };
+    setListState((current) => ({ ...current, [property]: value }));
     setPage(1);
 
     if (searchDebounce.current !== null) window.clearTimeout(searchDebounce.current);
@@ -112,7 +112,7 @@ export function useRestaurantListScreen() {
       searchDebounce.current = window.setTimeout(
         () =>
           getAllRestaurants({
-            filters: nextListState,
+            filters,
             requestedPage: 1,
             requestedPageSize: pageSize,
           }),
@@ -122,7 +122,7 @@ export function useRestaurantListScreen() {
     }
 
     getAllRestaurants({
-      filters: nextListState,
+      filters,
       requestedPage: 1,
       requestedPageSize: pageSize,
     });

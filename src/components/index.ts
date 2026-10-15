@@ -1,5 +1,6 @@
 export * from './ui/layout/app-layout';
 export * from './ui/buttons';
+export * from './ui/accordion';
 export * from './ui/icons';
 export * from './ui/feedback/spinner';
 export * from './features/install-prompt';

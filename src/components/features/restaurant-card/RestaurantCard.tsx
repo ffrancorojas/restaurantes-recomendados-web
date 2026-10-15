@@ -9,7 +9,6 @@ import {
 } from './components';
 import { RestaurantLinkActions } from '@components/features/restaurant-link-actions';
 import './restaurantCard.styles.scss';
-import classNames from 'classnames';
 import type { RestaurantCardProps } from './restaurantCard.types';
 import { useState } from 'react';
 import { getPriceLabel } from './restaurantCard.tools';
@@ -49,14 +48,16 @@ export function RestaurantCard({
         </div>
       </div>
       <div className="flex align-items-flex-start gap-small margin-top-small">
-        <div className="flex flex-wrap align-items-center gap-compact min-height-2rem min-width-zero restaurant-card-metadata">
-          <RestaurantLocation locality={restaurant.locality} collapsed={!expanded} />
+        <div className="flex-column gap-compact min-width-zero restaurant-card-metadata">
+          <div className="flex align-items-center gap-small min-width-zero restaurant-card-location-price">
+            <RestaurantLocation locality={restaurant.locality} collapsed={!expanded} />
+            {restaurant.price && (
+              <span className="text-color font-semibold font-size-xs text-nowrap restaurant-card-price">
+                {getPriceLabel({ price: restaurant.price })}
+              </span>
+            )}
+          </div>
           <RestaurantTags types={restaurant.type} />
-          {restaurant.price && (
-            <span className={classNames('text-color font-semibold font-size-xs', { ['min-width-zero text-truncate']: !expanded })}>
-              {getPriceLabel({ price: restaurant.price })}
-            </span>
-          )}
         </div>
         <RestaurantVisitStatus restaurant={restaurant} onVisit={onVisit} />
       </div>

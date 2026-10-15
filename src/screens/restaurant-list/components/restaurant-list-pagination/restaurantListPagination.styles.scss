@@ -11,7 +11,7 @@
 }
 
 .restaurant-list-pagination-page-size-select {
-  width: 4.25rem;
+  width: 5rem;
 }
 
 .restaurant-list-pagination-page-input {
@@ -27,8 +27,12 @@
 }
 
 .restaurant-list-pagination-arrow {
-  min-width: 2.5rem;
-  min-height: 2.5rem;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+}
+
+.restaurant-list-pagination .restaurant-list-pagination-navigation {
+  gap: 0.25rem;
 }
 
 @media (max-width: 30rem) {
@@ -38,14 +42,10 @@
   }
 
   .restaurant-list-pagination-page-size-select {
-    width: 3.5rem;
+    width: 4.25rem;
   }
 
   .restaurant-list-pagination-page-input {
     width: 2.5rem;
-  }
-
-  .restaurant-list-pagination-arrow {
-    min-width: 2rem;
   }
 }
