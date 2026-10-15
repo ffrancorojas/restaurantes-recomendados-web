@@ -1,18 +1,19 @@
-import type { PriceRange, Restaurant, RestaurantType } from '@contracts';
+import type { PriceRange, RestaurantType } from '@contracts';
+
+export type PriceFilterValue = PriceRange | 'all';
+export const RESTAURANT_PAGE_SIZES = [10, 25, 50, 100] as const;
+export type RestaurantPageSize = (typeof RESTAURANT_PAGE_SIZES)[number];
 
 export type RestaurantListState = {
   search: string;
   locality: string;
-  price: PriceRange;
+  price: PriceFilterValue;
   types: RestaurantType[];
   onlyVisited: boolean;
 };
 
-export type FilterRestaurantsParams = {
-  restaurants: Restaurant[];
-  search: string;
-  locality: string;
-  price: Restaurant['price'];
-  types: Restaurant['type'];
-  onlyVisited: boolean;
+export type GetAllRestaurantsParams = {
+  filters: RestaurantListState;
+  requestedPage: number;
+  requestedPageSize: RestaurantPageSize;
 };

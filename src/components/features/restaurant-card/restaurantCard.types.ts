@@ -2,7 +2,7 @@ import type { PriceRange, Restaurant } from '@contracts';
 export type RestaurantCardProps = {
   restaurant: Restaurant;
   onEdit: () => void;
-  onRemove: () => void;
+  onRemove: (restaurant: Restaurant) => void;
   onShare: () => void;
   onVisit: () => void;
 };

@@ -16,7 +16,6 @@
 }
 
 .restaurant-form-localityRow {
-
   > :first-child {
     flex: 1;
   }
@@ -33,6 +32,6 @@
   }
 
   .restaurant-form-price-select .select-field-root {
-    width: calc(13ch + 3rem);
+    width: calc(8ch + 3rem);
   }
 }
