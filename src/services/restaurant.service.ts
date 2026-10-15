@@ -10,6 +10,8 @@ import type {
 export const restaurantService = {
   list: ({ token }: AuthRequestParams) =>
     httpRequest<RestaurantPage>({ path: '/restaurants?limit=100', token }),
+  listRecommenders: ({ token }: AuthRequestParams) =>
+    httpRequest<string[]>({ path: '/restaurants/recommenders', token }),
   getById: ({ token, id }: RestaurantRequestParams) =>
     httpRequest<Restaurant>({ path: `/restaurants/${id}`, token }),
   create: ({ token, data }: CreateRestaurantParams) =>

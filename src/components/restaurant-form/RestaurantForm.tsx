@@ -1,7 +1,10 @@
 import { PRICE_RANGES } from '@contracts';
 import { Button } from '@components/ui/buttons';
 import { ConfirmDialog } from '@components/ui/feedback/confirm-dialog';
-import { RestaurantFormHeader } from '@components/restaurant-form/components';
+import {
+  RecommendedByFieldForm,
+  RestaurantFormHeader,
+} from '@components/restaurant-form/components';
 import { RestaurantLinkActions } from '@components/features/restaurant-link-actions';
 import {
   SelectFieldForm,
@@ -19,6 +22,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
   const {
     control,
     data,
+    recommenderOptions,
     saving,
     showLeaveConfirmation,
     requestCancel,
@@ -51,9 +55,12 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
             />
             <RestaurantLinkActions name={data.name} locality={data.locality} />
           </div>
-          <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
           <div className="flex align-items-start gap-medium restaurant-form-recommended-price-row">
-            <TextFieldForm control={control} name="recommendedBy" label="Recomendado por" />
+            <RecommendedByFieldForm
+              control={control}
+              label="Recomendado por"
+              options={recommenderOptions}
+            />
             <SelectFieldForm
               control={control}
               name="price"
@@ -62,6 +69,7 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
               containerClassName="restaurant-form-price-select"
             />
           </div>
+          <TextFieldForm control={control} name="dishes" label="Platos recomendados" />
           <TextAreaForm control={control} name="notes" label="Observaciones" />
           <label className="flex-column gap-small text-muted font-semibold font-size-sm">
             Tipos de cocina
@@ -85,14 +93,13 @@ export function RestaurantForm({ error, initial, onSave }: RestaurantFormProps) 
           <Button.Text leftText={saving ? 'Guardando…' : 'Guardar'} disabled={saving} />
         </div>
       </form>
-      {showLeaveConfirmation && (
-        <ConfirmDialog
-          title="¿Salir sin guardar?"
-          message="Si continúas se perderán los datos introducidos en el formulario."
-          onCancel={cancelLeave}
-          onConfirm={confirmLeave}
-        />
-      )}
+      <ConfirmDialog
+        open={showLeaveConfirmation}
+        title="¿Salir sin guardar?"
+        message="Si continúas se perderán los datos introducidos en el formulario."
+        onCancel={cancelLeave}
+        onConfirm={confirmLeave}
+      />
     </div>
   );
 }
