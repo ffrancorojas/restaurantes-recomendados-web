@@ -1,2 +1,1 @@
-export { Icon, RATING_ICON_NAMES } from './Icon';
-export type { IconName } from './Icon';
+export { Icon, RATING_ICON_NAMES, type IconName } from './Icon';

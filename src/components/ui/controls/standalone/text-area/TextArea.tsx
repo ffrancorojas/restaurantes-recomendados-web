@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { TextField as MuiTextField } from '@mui/material';
-import type { TextFieldProps as MuiTextFieldProps } from '@mui/material';
+import { TextField as MuiTextField, type TextFieldProps as MuiTextFieldProps } from '@mui/material';
 import './textArea.styles.scss';
 import type { TextAreaProps } from './textArea.types';
 

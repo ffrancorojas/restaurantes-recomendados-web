@@ -1,15 +1,8 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Checkbox,
-  FormControlLabel,
-} from '@mui/material';
 import { Button } from '@components/ui/buttons';
-import { Icon } from '@components/ui/icons';
+import { MultiSelectField } from '@components/ui/controls/standalone';
 import type { RestaurantType } from '@contracts';
-import './typesFilter.styles.scss';
 import type { FiltersTypesChangeParams } from '../../filters.types';
+import './typesFilter.styles.scss';
 
 type TypesFilterProps = {
   value: RestaurantType[];
@@ -19,48 +12,31 @@ type TypesFilterProps = {
 
 export function TypesFilter({ value, options, onChange }: TypesFilterProps) {
   return (
-    <Accordion disableGutters elevation={0} className="background-surface radius-md margin-bottom-regular border-default types-filter-accordion">
-      <AccordionSummary
-        expandIcon={<Icon name="chevronDown" size={16} />}
-        className="flex filter-row text-color justify-content-space-between padding-inline-small font-semibold font-size-sm types-filter-summary"
-      >
-        {value.length ? `Tipos de comida (${value.length})` : 'Todos los tipos de comida'}
-      </AccordionSummary>
-      <AccordionDetails className="flex flex-wrap gap-small types-filter-options">
-        {value.length > 0 && (
-        <Button.Text
-            leftText="Limpiar selección · Mostrar todos"
-            variant="ghost"
-            type="button"
-            onClick={() => onChange({ value: [] })}
-            className="font-size-xs justify-content-flex-start types-filter-clear"
-          />
-        )}
-        {options.map((type) => {
-          const selected = value.includes(type);
-          return (
-            <FormControlLabel
+    <div className="flex-column gap-small">
+      <MultiSelectField
+        label="Tipos de comida"
+        value={value}
+        options={options.map((type) => ({ value: type, label: type }))}
+        emptyLabel="Todos los tipos de comida"
+        clearLabel="Limpiar selección · Mostrar todos"
+        onChange={onChange}
+      />
+      {value.length > 0 && (
+        <div className="flex flex-wrap gap-small" role="group" aria-label="Tipos de comida seleccionados">
+          {value.map((type) => (
+            <Button.Text
               key={type}
-              label={type}
-              className="min-width-zero text-muted font-size-sm types-filter-option"
-              control={
-                <Checkbox
-                  size="small"
-                  checked={selected}
-                  icon={<Icon name="checkbox" size={18} />}
-                  checkedIcon={<Icon name="checkboxChecked" size={18} />}
-                  className="text-border"
-                  onChange={() =>
-                    onChange({
-                      value: selected ? value.filter((item) => item !== type) : [...value, type],
-                    })
-                  }
-                />
-              }
+              leftText={type}
+              iconName="close"
+              variant="secondary"
+              aria-label={`Quitar filtro ${type}`}
+              title={`Quitar filtro ${type}`}
+              className="font-size-xs types-filter-selected-toggle"
+              onClick={() => onChange({ value: value.filter((selectedType) => selectedType !== type) })}
             />
-          );
-        })}
-      </AccordionDetails>
-    </Accordion>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

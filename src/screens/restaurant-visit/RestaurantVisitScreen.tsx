@@ -1,4 +1,4 @@
-import { PRICE_RANGES } from '@contracts';
+import { PRICE_RANGES, type Restaurant, type RestaurantRating } from '@contracts';
 import { Button } from '@components/ui/buttons';
 import { RatingSelector } from '@components/restaurant-form/components';
 import { Spinner } from '@components/ui/feedback/spinner';
@@ -6,7 +6,6 @@ import { TextArea } from '@components/ui/controls/standalone/text-area';
 import { getErrorMessage } from '@app/app.tools';
 import { useAuthenticatedSession } from '@app/router/router.context';
 import { restaurantService } from '@services';
-import type { Restaurant, RestaurantRating } from '@contracts';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './restaurantVisitScreen.styles.scss';
