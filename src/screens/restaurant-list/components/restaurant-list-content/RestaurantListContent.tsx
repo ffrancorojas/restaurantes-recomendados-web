@@ -6,6 +6,7 @@ import type { RestaurantListContentProps } from './restaurantListContent.types';
 export function RestaurantListContent({
   loading,
   totalRestaurants,
+  hasActiveFilters,
   restaurants,
   onEdit,
   onRemove,
@@ -16,7 +17,7 @@ export function RestaurantListContent({
     return <Spinner label="Cargando tus restaurantes…" />;
   }
 
-  if (!totalRestaurants) {
+  if (!totalRestaurants && !hasActiveFilters) {
     return (
       <div className="text-muted padding-empty-state restaurant-list-content-empty">
         <p>Añade un restaurante</p>
@@ -40,7 +41,7 @@ export function RestaurantListContent({
           key={restaurant.id}
           restaurant={restaurant}
           onEdit={() => onEdit(restaurant)}
-          onRemove={() => onRemove(restaurant.id)}
+          onRemove={onRemove}
           onShare={() => onShare(restaurant)}
           onVisit={() => onVisit(restaurant)}
         />

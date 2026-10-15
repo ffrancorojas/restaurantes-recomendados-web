@@ -35,7 +35,7 @@ export function RestaurantCard({
         <h2 className="margin-none min-width-zero font-black font-size-lg restaurant-card-title">{restaurant.name}</h2>
         <CardActions
           onEdit={onEdit}
-          onRemove={onRemove}
+          onRemove={() => onRemove(restaurant)}
           onShare={onShare}
           showRemove={false}
           showShare={false}
@@ -68,8 +68,13 @@ export function RestaurantCard({
             notes={restaurant.notes}
           />
           <RestaurantOpinion opinion={restaurant.opinion} />
-          <div className="flex justify-content-flex-end margin-top-small">
-            <CardActions onEdit={onEdit} onRemove={onRemove} onShare={onShare} showEdit={false} />
+            <div className="flex justify-content-flex-end margin-top-small">
+            <CardActions
+              onEdit={onEdit}
+              onRemove={() => onRemove(restaurant)}
+              onShare={onShare}
+              showEdit={false}
+            />
           </div>
         </>
       )}
