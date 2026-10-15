@@ -39,25 +39,30 @@ export function HomeScreen() {
           />
         </div>
       </section>
-      <footer className="flex justify-content-center home-screen-footer">
-        <Button.Text leftText="Cerrar sesión" variant="secondary" onClick={() => void logout()} />
+      <footer className="flex align-items-center justify-content-space-between home-screen-footer">
+        <Button.Overlay
+          id="home-screen-settings-menu"
+          iconName="settings"
+          iconSize={22}
+          name="Configuración"
+          disabled={exporting}
+          className="home-screen-settings-button"
+          items={[
+            {
+              text: exporting ? 'Exportando…' : 'Exportar a Excel',
+              iconName: 'download',
+              onClick: () => void exportRestaurants(),
+              disabled: exporting,
+            },
+          ]}
+        />
+        <Button.Text
+          leftText="Cerrar sesión"
+          variant="secondary"
+          className="home-screen-logout-button"
+          onClick={() => void logout()}
+        />
       </footer>
-      <Button.Overlay
-        id="home-screen-settings-menu"
-        iconName="settings"
-        iconSize={22}
-        name="Configuración"
-        disabled={exporting}
-        className="home-screen-settings-button"
-        items={[
-          {
-            text: exporting ? 'Exportando…' : 'Exportar a Excel',
-            iconName: 'download',
-            onClick: () => void exportRestaurants(),
-            disabled: exporting,
-          },
-        ]}
-      />
       <ExportDialog
         exporting={exporting}
         notice={exportNotice}

@@ -14,7 +14,7 @@ export function SelectField({
 }: SelectFieldProps) {
   return (
     <Select
-      label={label}
+      label={emptyValueLabel ? undefined : label}
       value={value}
       displayEmpty={Boolean(emptyValueLabel)}
       renderValue={
