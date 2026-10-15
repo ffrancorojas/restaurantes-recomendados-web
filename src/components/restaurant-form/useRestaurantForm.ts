@@ -1,13 +1,34 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import type { RestaurantFormData } from '@contracts';
+import { useAuthenticatedSession } from '@app/router/router.context';
+import { restaurantService } from '@services';
 import type { UseRestaurantFormParams } from './restaurantForm.types';
 
 export function useRestaurantForm({ initial, onSave }: UseRestaurantFormParams) {
   const navigate = useNavigate();
+  const session = useAuthenticatedSession();
   const isEditing = Boolean(initial.id);
   const [showLeaveConfirmation, setShowLeaveConfirmation] = useState(false);
+  const [recommenderOptions, setRecommenderOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    restaurantService
+      .listRecommenders({ token: session.accessToken })
+      .then((options) => {
+        if (isCurrent) setRecommenderOptions(options);
+      })
+      .catch(() => {
+        if (isCurrent) setRecommenderOptions([]);
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [session.accessToken]);
 
   const initialValues = useMemo(() => {
     const { id: _id, createdAt: _createdAt, source: _source, ...values } = initial;
@@ -48,6 +69,7 @@ export function useRestaurantForm({ initial, onSave }: UseRestaurantFormParams) 
   return {
     control,
     data,
+    recommenderOptions,
     isDirty,
     saving: isSubmitting,
     showLeaveConfirmation,

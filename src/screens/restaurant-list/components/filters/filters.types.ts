@@ -1,16 +1,16 @@
 import type { PriceRange, RestaurantType } from '@contracts';
-export type FiltersQueryChangeParams = { value: string };
+export type FiltersSearchChangeParams = { value: string };
 export type FiltersVisitedChangeParams = { checked: boolean };
 export type FiltersValueChangeParams = { value: string };
 export type FiltersTypesChangeParams = { value: RestaurantType[] };
 export type FiltersProps = {
-  query: string;
+  search: string;
   locality: string;
   price: PriceRange;
   types: RestaurantType[];
   availableTypes: readonly RestaurantType[];
   onlyVisited: boolean;
-  onQueryChange: (params: FiltersQueryChangeParams) => void;
+  onSearchChange: (params: FiltersSearchChangeParams) => void;
   onLocalityChange: (params: FiltersValueChangeParams) => void;
   onPriceChange: (params: FiltersValueChangeParams) => void;
   onTypesChange: (params: FiltersTypesChangeParams) => void;

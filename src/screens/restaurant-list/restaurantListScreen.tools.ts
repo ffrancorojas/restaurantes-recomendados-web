@@ -1,25 +1,44 @@
-import type { FilterRestaurantsParams } from '@screens/restaurant-list/restaurantListScreen.types';
+import type { FilterRestaurantsParams, RestaurantListState } from '@screens/restaurant-list/restaurantListScreen.types';
+import type { Restaurant } from '@contracts';
+
+export const INITIAL_RESTAURANT_LIST_STATE: RestaurantListState = {
+  search: '',
+  locality: '',
+  price: '',
+  types: [],
+  onlyVisited: false,
+};
+
+export function getFilteredRestaurants({
+  restaurants,
+  state,
+}: {
+  restaurants: Restaurant[];
+  state: RestaurantListState;
+}) {
+  return filterRestaurants({ restaurants, ...state });
+}
 
 export function filterRestaurants({
   restaurants,
-  query,
+  search,
   locality,
   price,
   types,
   onlyVisited,
 }: FilterRestaurantsParams) {
-  const normalizedQuery = query.toLowerCase();
+  const normalizedSearch = search.toLowerCase();
   const normalizedLocality = locality.toLowerCase();
 
   return restaurants.filter((restaurant) => {
-    const text =
-      `${restaurant.name} ${restaurant.locality} ${restaurant.dishes} ${restaurant.notes} ${restaurant.recommendedBy}`.toLowerCase();
-    return (
-      text.includes(normalizedQuery) &&
-      restaurant.locality.toLowerCase().includes(normalizedLocality) &&
-      (!price || restaurant.price === price) &&
-      (!types.length || restaurant.type.some((type) => types.includes(type))) &&
-      (!onlyVisited || restaurant.visited)
-    );
+    const matchesFilters = [
+      restaurant.name.toLowerCase().includes(normalizedSearch),
+      restaurant.locality.toLowerCase().includes(normalizedLocality),
+      !price || restaurant.price === price,
+      !types.length || restaurant.type.some((type) => types.includes(type)),
+      !onlyVisited || restaurant.visited,
+    ];
+
+    return matchesFilters.every(Boolean);
   });
 }

@@ -10,6 +10,7 @@ import type { ConfirmDialogProps } from './confirmDialog.types';
 import './confirmDialog.styles.scss';
 
 export function ConfirmDialog({
+  open,
   title,
   message,
   confirmText = 'Continuar',
@@ -19,7 +20,7 @@ export function ConfirmDialog({
 }: ConfirmDialogProps) {
   return (
     <Dialog
-      open
+      open={open}
       onClose={onCancel}
       aria-labelledby="confirm-dialog-title"
       aria-describedby="confirm-dialog-description"

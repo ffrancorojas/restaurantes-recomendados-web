@@ -6,7 +6,7 @@ import {
 import { useRestaurantListScreen } from '@screens/restaurant-list/useRestaurantListScreen';
 import '@screens/restaurant-list/restaurantListScreen.styles.scss';
 import { useNavigate } from 'react-router-dom';
-import { shareRestaurant } from '@tools';
+import { ConfirmDialog } from '@components/ui/feedback/confirm-dialog';
 
 export function RestaurantListScreen() {
   const navigate = useNavigate();
@@ -15,20 +15,22 @@ export function RestaurantListScreen() {
     loading,
     error,
     filtered,
-    query,
-    locality,
-    price,
-    types,
-    onlyVisited,
+    listState,
     filtersOpen,
     availableTypes,
-    setQuery,
+    setSearch,
     setLocality,
     setPrice,
     setTypes,
     setOnlyVisited,
+    onEdit,
+    onShare,
+    onVisit,
     setFiltersOpen,
-    removeRestaurant,
+    restaurantToRemove,
+    requestRemoveRestaurant,
+    cancelRemoveRestaurant,
+    confirmRemoveRestaurant,
   } = useRestaurantListScreen();
 
   return (
@@ -43,16 +45,13 @@ export function RestaurantListScreen() {
       {!loading && restaurants.length > 0 && (
         <>
           {filtersOpen && (
+
             <Filters
-              query={query}
-              locality={locality}
-              price={price}
-              types={types}
+              {...listState}
               availableTypes={availableTypes}
-              onlyVisited={onlyVisited}
-              onQueryChange={({ value }) => setQuery(value)}
+              onSearchChange={({ value }) => setSearch(value)}
               onLocalityChange={({ value }) => setLocality(value)}
-              onPriceChange={({ value }) => setPrice(value as typeof price)}
+              onPriceChange={({ value }) => setPrice(value as typeof listState.price)}
               onTypesChange={({ value }) => setTypes(value)}
               onVisitedChange={({ checked }) => setOnlyVisited(checked)}
             />
@@ -64,10 +63,21 @@ export function RestaurantListScreen() {
         loading={loading}
         totalRestaurants={restaurants.length}
         restaurants={filtered}
-        onEdit={(restaurant) => navigate(`/restaurants/${restaurant.id}/edit`)}
-        onRemove={removeRestaurant}
-        onShare={(restaurant) => shareRestaurant({ data: restaurant })}
-        onVisit={(restaurant) => navigate(`/restaurants/${restaurant.id}/visit`)}
+        onEdit={onEdit}
+        onRemove={requestRemoveRestaurant}
+        onShare={onShare}
+        onVisit={onVisit}
+      />
+      <ConfirmDialog
+        open={Boolean(restaurantToRemove)}
+        title="¿Eliminar restaurante?"
+        message={restaurantToRemove
+          ? `¿Quieres eliminar “${restaurantToRemove.name}”? Esta acción no se puede deshacer.`
+          : ''}
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+        onConfirm={confirmRemoveRestaurant}
+        onCancel={cancelRemoveRestaurant}
       />
     </main>
   );

@@ -1,0 +1,28 @@
+.multi-select-field-root {
+  min-width: 0;
+}
+
+.multi-select-field-menu {
+  max-height: 18rem;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md) !important;
+
+  .MuiMenuItem-root {
+    color: var(--color-text);
+  }
+
+  .MuiCheckbox-root {
+    color: var(--color-muted);
+  }
+
+  .MuiCheckbox-root.Mui-checked {
+    color: var(--color-secondary);
+  }
+
+  .multi-select-field-clear {
+    color: var(--color-secondary);
+    font-size: var(--font-size-xs);
+  }
+}

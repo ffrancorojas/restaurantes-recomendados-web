@@ -7,13 +7,13 @@ import './filters.styles.scss';
 import type { FiltersProps } from './filters.types';
 
 export function Filters({
-  query,
+  search,
   locality,
   price,
   types,
   availableTypes,
   onlyVisited,
-  onQueryChange,
+  onSearchChange,
   onLocalityChange,
   onPriceChange,
   onTypesChange,
@@ -21,7 +21,7 @@ export function Filters({
 }: FiltersProps) {
   return (
     <div className="flex-column gap-medium filters-container">
-      <SearchFilter value={query} onChange={onQueryChange} />
+      <SearchFilter value={search} onChange={onSearchChange} />
       <div className="flex gap-medium filters-row">
         <LocalityFilter value={locality} onChange={onLocalityChange} />
         <PriceFilter value={price} onChange={onPriceChange} />
