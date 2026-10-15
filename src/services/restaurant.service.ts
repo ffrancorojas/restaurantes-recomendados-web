@@ -1,17 +1,38 @@
-import type { Restaurant, RestaurantPage } from '@contracts';
-import { httpRequest } from './http.service';
+import type { Restaurant, RestaurantPage, RestaurantType } from '@contracts';
+import { httpDownload, httpRequest } from './http.service';
 import type {
   AuthRequestParams,
   CreateRestaurantParams,
+  ListRestaurantsParams,
   RestaurantRequestParams,
   UpdateRestaurantParams,
 } from './services.types';
 
 export const restaurantService = {
-  list: ({ token }: AuthRequestParams) =>
-    httpRequest<RestaurantPage>({ path: '/restaurants?limit=100', token }),
+  list: ({
+    token,
+    query = '',
+    locality = '',
+    price,
+    types = [],
+    visitedOnly = false,
+    limit = 50,
+    offset = 0,
+  }: ListRestaurantsParams) => {
+    const params = new URLSearchParams({ limit: String(limit), offset: String(offset) });
+    if (query) params.set('query', query);
+    if (locality) params.set('locality', locality);
+    if (price) params.set('price', price);
+    types.forEach((type) => params.append('types', type));
+    if (visitedOnly) params.set('visitedOnly', 'true');
+
+    return httpRequest<RestaurantPage>({ path: `/restaurants?${params}`, token });
+  },
+  listTypes: ({ token }: AuthRequestParams) =>
+    httpRequest<RestaurantType[]>({ path: '/restaurants/types', token }),
   listRecommenders: ({ token }: AuthRequestParams) =>
     httpRequest<string[]>({ path: '/restaurants/recommenders', token }),
+  exportAll: ({ token }: AuthRequestParams) => httpDownload({ path: '/restaurants/export', token }),
   getById: ({ token, id }: RestaurantRequestParams) =>
     httpRequest<Restaurant>({ path: `/restaurants/${id}`, token }),
   create: ({ token, data }: CreateRestaurantParams) =>

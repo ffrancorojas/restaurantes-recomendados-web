@@ -25,4 +25,4 @@ export type User = {
   createdAt: string;
 };
 export type AuthSession = { accessToken: string; expiresAt: string; user: User };
-export type RestaurantPage = { items: Restaurant[]; limit: number; offset: number };
+export type RestaurantPage = { items: Restaurant[]; limit: number; offset: number; total: number };

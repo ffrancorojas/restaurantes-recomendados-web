@@ -29,6 +29,10 @@ export type IconName =
   | 'filter'
   | 'chevronDown'
   | 'chevronUp'
+  | 'chevronLeft'
+  | 'chevronRight'
+  | 'settings'
+  | 'download'
   | 'check'
   | 'checkbox'
   | 'checkboxChecked'
@@ -175,6 +179,26 @@ const iconRenderers = {
     lineIcon(size, <path {...strokeProps} d="M4 5h16l-6 7v6l-4 2v-8L4 5Z" />),
   chevronDown: (size: number) => lineIcon(size, <path {...strokeProps} d="m6 9 6 6 6-6" />),
   chevronUp: (size: number) => lineIcon(size, <path {...strokeProps} d="m6 15 6-6 6 6" />),
+  chevronLeft: (size: number) => lineIcon(size, <path {...strokeProps} d="m15 18-6-6 6-6" />),
+  chevronRight: (size: number) => lineIcon(size, <path {...strokeProps} d="m9 18 6-6-6-6" />),
+  settings: (size: number) =>
+    lineIcon(
+      size,
+      <>
+        <path {...strokeProps} d="M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5Z" />
+        <path
+          {...strokeProps}
+          d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.6.9l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.6-.9l-1.7.7-1.4-2.4 1.4-1.1a7 7 0 0 1 0-1.9l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.6-.9l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.6.9l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1 0 1.9Z"
+        />
+      </>,
+    ),
+  download: (size: number) =>
+    lineIcon(
+      size,
+      <>
+        <path {...strokeProps} d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4" />
+      </>,
+    ),
   check: (size: number) => lineIcon(size, <path {...strokeProps} d="m5 12 4.5 4.5L19 7" />),
   checkbox: (size: number) =>
     lineIcon(size, <rect {...strokeProps} x="3.5" y="3.5" width="17" height="17" rx="3" />),
@@ -215,6 +239,7 @@ type IconProps = { name: IconName; size?: number; className?: string };
 
 export function Icon({ name, size = 22, className }: IconProps) {
   const icon = iconRenderers[name](size);
-  if (className) return <span className={classNames('inline-flex', 'icon-wrapper', className)}>{icon}</span>;
+  if (className)
+    return <span className={classNames('inline-flex', 'icon-wrapper', className)}>{icon}</span>;
   return icon;
 }
