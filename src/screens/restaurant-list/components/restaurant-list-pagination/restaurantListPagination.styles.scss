@@ -1,7 +1,8 @@
 .restaurant-list-pagination {
   min-height: 3rem;
   padding-block: 0.5rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
 }
 
 .restaurant-list-pagination-page-size,
@@ -28,4 +29,23 @@
 .restaurant-list-pagination-arrow {
   min-width: 2.5rem;
   min-height: 2.5rem;
+}
+
+@media (max-width: 30rem) {
+  .restaurant-list-pagination-navigation,
+  .restaurant-list-pagination-page-size {
+    gap: 0.25rem;
+  }
+
+  .restaurant-list-pagination-page-size-select {
+    width: 3.5rem;
+  }
+
+  .restaurant-list-pagination-page-input {
+    width: 2.5rem;
+  }
+
+  .restaurant-list-pagination-arrow {
+    min-width: 2rem;
+  }
 }

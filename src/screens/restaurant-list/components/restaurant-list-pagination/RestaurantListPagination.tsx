@@ -41,23 +41,9 @@ export function RestaurantListPagination({
 
   return (
     <nav
-      className="flex align-items-center justify-content-space-between gap-small restaurant-list-pagination"
+      className="flex align-items-center justify-content-space-between restaurant-list-pagination"
       aria-label="Paginación de restaurantes"
     >
-      <div className="flex align-items-center gap-small restaurant-list-pagination-page-size">
-        <span>Mostrar</span>
-        <SelectField
-          label="Restaurantes por página"
-          value={String(pageSize)}
-          options={RESTAURANT_PAGE_SIZES.map((size) => ({
-            value: String(size),
-            label: String(size),
-          }))}
-          onChange={handlePageSizeChange}
-          className="restaurant-list-pagination-page-size-select"
-        />
-        <span>por página</span>
-      </div>
       {pageCount > 1 && (
         <div className="flex align-items-center gap-small restaurant-list-pagination-navigation">
           <Button.Icon
@@ -69,7 +55,6 @@ export function RestaurantListPagination({
             className="restaurant-list-pagination-arrow"
           />
           <label className="flex align-items-center gap-small">
-            <span>Página</span>
             <input
               aria-label="Número de página"
               className="restaurant-list-pagination-page-input"
@@ -100,6 +85,19 @@ export function RestaurantListPagination({
           />
         </div>
       )}
+      <div className="flex align-items-center gap-small restaurant-list-pagination-page-size">
+        <SelectField
+          label="Restaurantes por página"
+          value={String(pageSize)}
+          options={RESTAURANT_PAGE_SIZES.map((size) => ({
+            value: String(size),
+            label: String(size),
+          }))}
+          onChange={handlePageSizeChange}
+          className="restaurant-list-pagination-page-size-select"
+        />
+        <span>por página</span>
+      </div>
     </nav>
   );
 }
