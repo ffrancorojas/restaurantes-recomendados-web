@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import type { Restaurant } from '@contracts';
 import { RestaurantAccordionActionButtons } from './components/action-buttons';
 import { RestaurantAccordionDefaultContent } from './components/default-template';
-import './restaurantAccordion.styles.scss';
+import './accordion.styles.scss';
 import type { RestaurantAccordionProps } from './accordion.types';
 
 export function RestaurantAccordion({
@@ -29,21 +29,23 @@ export function RestaurantAccordion({
         'radius-card',
         'border-default',
         'flex-column',
-        'gap-large',
         'min-width-zero',
         className,
       )}
+      onClick={(event) => {
+        if ((event.target as HTMLElement).closest('button')) return;
+        toggleExpanded();
+      }}
     >
-      <div className="flex align-items-center gap-small restaurant-accordion-header">
+      <div className="flex align-items-flex-end justify-content-space-between gap-small restaurant-accordion-header">
         <button
           type="button"
-          className="flex-column gap-compact min-width-zero restaurant-accordion-summary"
+          className="margin-none min-width-zero font-black font-size-lg restaurant-accordion-summary"
           aria-expanded={expanded}
           aria-controls={contentId}
           onClick={toggleExpanded}
         >
-          <span className="font-black font-size-lg restaurant-accordion-title">{restaurant.name}</span>
-          <span className="width-full restaurant-accordion-collapsed-content">{collapsedContent}</span>
+          <span className="restaurant-accordion-title">{restaurant.name}</span>
         </button>
         <RestaurantAccordionActionButtons
           expanded={expanded}
@@ -53,6 +55,9 @@ export function RestaurantAccordion({
           onSearchGoogle={onSearchGoogle}
           onToggle={toggleExpanded}
         />
+      </div>
+      <div className="margin-top-small restaurant-accordion-collapsed-content">
+        {typeof collapsedContent === 'function' ? collapsedContent(expanded) : collapsedContent}
       </div>
       <div id={contentId} className="restaurant-accordion-content" hidden={!expanded}>
         {children ?? (

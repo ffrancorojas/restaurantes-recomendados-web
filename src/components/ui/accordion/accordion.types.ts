@@ -3,7 +3,7 @@ import type { Restaurant } from '@contracts';
 
 export type RestaurantAccordionProps = {
   restaurant: Restaurant;
-  collapsedContent: ReactNode;
+  collapsedContent: ReactNode | ((expanded: boolean) => ReactNode);
   children?: ReactNode;
   onEdit: () => void;
   onRemove: () => void;

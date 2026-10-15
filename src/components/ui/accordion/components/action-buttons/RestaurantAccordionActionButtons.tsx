@@ -39,7 +39,7 @@ export function RestaurantAccordionActionButtons({
         aria-expanded={expanded}
         aria-controls={contentId}
         onClick={onToggle}
-        className="compact-control padding-none text-muted restaurant-accordion-toggle"
+        className="compact-control padding-none text-muted font-size-base restaurant-accordion-toggle"
       />
     </div>
   );

@@ -12,7 +12,9 @@
 }
 
 .restaurant-accordion-summary {
+  display: block;
   flex: 1;
+  overflow: hidden;
   border: 0;
   padding: 0;
   background: transparent;
@@ -27,8 +29,8 @@
   outline-offset: 0.125rem;
 }
 
-.restaurant-accordion-title,
-.restaurant-accordion-collapsed-content {
+.restaurant-accordion-title {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
