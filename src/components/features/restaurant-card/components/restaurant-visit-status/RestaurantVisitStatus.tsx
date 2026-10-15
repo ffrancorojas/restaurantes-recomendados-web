@@ -13,7 +13,10 @@ export function RestaurantVisitStatus({ restaurant, onVisit }: RestaurantVisitSt
         rightText="Registrar visita"
         variant="secondary"
         className="background-soft-green text-map radius-button font-extrabold text-nowrap min-height-2rem padding-inline-small font-size-xs restaurant-visit-status-button"
-        onClick={onVisit}
+        onClick={(event) => {
+          event.stopPropagation();
+          onVisit();
+        }}
       />
     );
   }
@@ -26,7 +29,11 @@ export function RestaurantVisitStatus({ restaurant, onVisit }: RestaurantVisitSt
       aria-label={`Visitado${rating ? `, ${rating.label}` : ''}`}
       title={rating?.label ?? 'Visitado'}
     >
-      <Icon name="check" size={20} className="text-map font-black restaurant-visit-status-visitedIcon" />
+      <Icon
+        name="check"
+        size={20}
+        className="text-map font-black restaurant-visit-status-visitedIcon"
+      />
       {rating && <Icon name={RATING_ICON_NAMES[rating.value]} size={32} />}
     </div>
   );

@@ -1,3 +1,22 @@
+.restaurant-accordion.MuiAccordion-root {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.restaurant-accordion.MuiAccordion-root::before {
+  display: none;
+}
+
+.restaurant-accordion.MuiAccordion-root.Mui-expanded {
+  margin: 0;
+}
+
 .restaurant-accordion-header {
   min-width: 0;
 }
@@ -11,16 +30,23 @@
   flex: 0 0 auto;
 }
 
-.restaurant-accordion-summary {
-  display: block;
-  flex: 1;
-  overflow: hidden;
-  border: 0;
+.restaurant-accordion-summary.MuiAccordionSummary-root {
+  width: 100%;
+  min-height: 0 !important;
   padding: 0;
-  background: transparent;
   color: inherit;
-  text-align: start;
   cursor: pointer;
+}
+
+.restaurant-accordion-summary.MuiAccordionSummary-root.Mui-expanded {
+  min-height: 0;
+}
+
+.restaurant-accordion-summary .MuiAccordionSummary-content,
+.restaurant-accordion-summary .MuiAccordionSummary-content.Mui-expanded {
+  display: block;
+  min-width: 0;
+  margin: 0;
 }
 
 .restaurant-accordion-summary:focus-visible,
@@ -36,10 +62,7 @@
   white-space: nowrap;
 }
 
-.restaurant-accordion-content {
+.restaurant-accordion-content.MuiAccordionDetails-root {
   min-width: 0;
-}
-
-.restaurant-accordion-content[hidden] {
-  display: none;
+  padding: 0;
 }
